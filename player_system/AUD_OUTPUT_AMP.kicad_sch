@@ -672,7 +672,7 @@
   (symbol (lib_id "power:+BATT") (at 148.59 49.53 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 0419be9c-0d3b-430f-967b-0bec20270860)
-    (property "Reference" "#PWR049" (at 148.59 53.34 0)
+    (property "Reference" "#PWR094" (at 148.59 53.34 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+BATT" (at 148.59 45.72 0)
@@ -688,22 +688,22 @@
     (instances
       (project "player_system"
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/9705b87e-11c6-46e2-ad15-46b34c9e1e53"
-          (reference "#PWR049") (unit 1)
+          (reference "#PWR094") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/35a9c8dc-797f-4324-802f-055b81465fe4"
-          (reference "#PWR061") (unit 1)
+          (reference "#PWR0106") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/887d63dc-c7eb-4648-a7d2-6303070065ab"
-          (reference "#PWR055") (unit 1)
+          (reference "#PWR0100") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/f460cae6-3b5f-46ba-b1fa-28bbe944132e"
-          (reference "#PWR067") (unit 1)
+          (reference "#PWR0112") (unit 1)
         )
       )
     )
   )
 
-  (symbol (lib_id "Device:R_Pack04_Split") (at 97.79 68.58 90) (mirror x) (unit 3)
+  (symbol (lib_id "Device:R_Pack04_Split") (at 97.79 68.58 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 06a894d9-895d-4560-826a-88e2cc811a99)
     (property "Reference" "RN4" (at 97.79 74.93 90)
@@ -729,16 +729,16 @@
     (instances
       (project "player_system"
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/9705b87e-11c6-46e2-ad15-46b34c9e1e53"
-          (reference "RN4") (unit 3)
+          (reference "RN4") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/887d63dc-c7eb-4648-a7d2-6303070065ab"
-          (reference "RN3") (unit 3)
+          (reference "RN4") (unit 3)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/f460cae6-3b5f-46ba-b1fa-28bbe944132e"
-          (reference "RN9") (unit 3)
+          (reference "RN7") (unit 3)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/35a9c8dc-797f-4324-802f-055b81465fe4"
-          (reference "RN8") (unit 3)
+          (reference "RN6") (unit 3)
         )
       )
     )
@@ -747,7 +747,7 @@
   (symbol (lib_id "power:+5V") (at 114.3 58.42 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 300cdbb6-4725-4a0b-899a-bba034ec8ea1)
-    (property "Reference" "#PWR065" (at 114.3 54.61 0)
+    (property "Reference" "#PWR0110" (at 114.3 54.61 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 114.3 63.5 0)
@@ -763,16 +763,16 @@
     (instances
       (project "player_system"
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/f460cae6-3b5f-46ba-b1fa-28bbe944132e"
-          (reference "#PWR065") (unit 1)
+          (reference "#PWR0110") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/9705b87e-11c6-46e2-ad15-46b34c9e1e53"
-          (reference "#PWR047") (unit 1)
+          (reference "#PWR092") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/887d63dc-c7eb-4648-a7d2-6303070065ab"
-          (reference "#PWR053") (unit 1)
+          (reference "#PWR098") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/35a9c8dc-797f-4324-802f-055b81465fe4"
-          (reference "#PWR059") (unit 1)
+          (reference "#PWR0104") (unit 1)
         )
       )
     )
@@ -781,7 +781,7 @@
   (symbol (lib_id "Connector:TestPoint_Alt") (at 161.29 67.31 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 3b1912a0-fe37-49a4-99ba-89f696d379c8)
-    (property "Reference" "TP91" (at 161.544 67.818 90)
+    (property "Reference" "TP89" (at 161.544 67.818 90)
       (effects (font (size 0.5 0.5)) (justify left))
     )
     (property "Value" "~" (at 163.322 69.85 0)
@@ -797,16 +797,16 @@
     (instances
       (project "player_system"
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/9705b87e-11c6-46e2-ad15-46b34c9e1e53"
-          (reference "TP91") (unit 1)
+          (reference "TP89") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/887d63dc-c7eb-4648-a7d2-6303070065ab"
-          (reference "TP95") (unit 1)
+          (reference "TP93") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/35a9c8dc-797f-4324-802f-055b81465fe4"
-          (reference "TP99") (unit 1)
+          (reference "TP97") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/f460cae6-3b5f-46ba-b1fa-28bbe944132e"
-          (reference "TP103") (unit 1)
+          (reference "TP101") (unit 1)
         )
       )
     )
@@ -851,7 +851,7 @@
   (symbol (lib_id "power:GND") (at 148.59 78.74 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 42420dde-a998-4cd9-9877-513a5c5bcef3)
-    (property "Reference" "#PWR050" (at 148.59 85.09 0)
+    (property "Reference" "#PWR095" (at 148.59 85.09 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 151.13 78.74 0)
@@ -867,16 +867,16 @@
     (instances
       (project "player_system"
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/9705b87e-11c6-46e2-ad15-46b34c9e1e53"
-          (reference "#PWR050") (unit 1)
+          (reference "#PWR095") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/35a9c8dc-797f-4324-802f-055b81465fe4"
-          (reference "#PWR062") (unit 1)
+          (reference "#PWR0107") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/887d63dc-c7eb-4648-a7d2-6303070065ab"
-          (reference "#PWR056") (unit 1)
+          (reference "#PWR0101") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/f460cae6-3b5f-46ba-b1fa-28bbe944132e"
-          (reference "#PWR068") (unit 1)
+          (reference "#PWR0113") (unit 1)
         )
       )
     )
@@ -885,7 +885,7 @@
   (symbol (lib_id "power:+3.3V") (at 138.43 49.53 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 47b78721-ea8a-43ac-9553-985f8ae2b49d)
-    (property "Reference" "#PWR048" (at 138.43 53.34 0)
+    (property "Reference" "#PWR093" (at 138.43 53.34 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 138.43 45.72 0)
@@ -901,16 +901,16 @@
     (instances
       (project "player_system"
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/9705b87e-11c6-46e2-ad15-46b34c9e1e53"
-          (reference "#PWR048") (unit 1)
+          (reference "#PWR093") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/887d63dc-c7eb-4648-a7d2-6303070065ab"
-          (reference "#PWR054") (unit 1)
+          (reference "#PWR099") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/35a9c8dc-797f-4324-802f-055b81465fe4"
-          (reference "#PWR060") (unit 1)
+          (reference "#PWR0105") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/f460cae6-3b5f-46ba-b1fa-28bbe944132e"
-          (reference "#PWR066") (unit 1)
+          (reference "#PWR0111") (unit 1)
         )
       )
     )
@@ -919,7 +919,7 @@
   (symbol (lib_id "Device:R_Pack04_Split") (at 148.59 54.61 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4c6cc207-e477-4ff2-8080-f2dd3644c23f)
-    (property "Reference" "RN7" (at 146.05 57.15 90)
+    (property "Reference" "RN5" (at 146.05 57.15 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 148.59 55.88 90)
@@ -942,16 +942,16 @@
     (instances
       (project "player_system"
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/9705b87e-11c6-46e2-ad15-46b34c9e1e53"
-          (reference "RN7") (unit 1)
+          (reference "RN5") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/887d63dc-c7eb-4648-a7d2-6303070065ab"
-          (reference "RN7") (unit 4)
+          (reference "RN5") (unit 4)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/f460cae6-3b5f-46ba-b1fa-28bbe944132e"
-          (reference "RN9") (unit 4)
+          (reference "RN7") (unit 4)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/35a9c8dc-797f-4324-802f-055b81465fe4"
-          (reference "RN5") (unit 1)
+          (reference "RN7") (unit 1)
         )
       )
     )
@@ -960,7 +960,7 @@
   (symbol (lib_id "power:GND") (at 90.17 71.12 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 57893447-7890-4db4-9037-9031c6da3431)
-    (property "Reference" "#PWR045" (at 90.17 77.47 0)
+    (property "Reference" "#PWR090" (at 90.17 77.47 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 87.63 71.12 0)
@@ -976,16 +976,16 @@
     (instances
       (project "player_system"
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/9705b87e-11c6-46e2-ad15-46b34c9e1e53"
-          (reference "#PWR045") (unit 1)
+          (reference "#PWR090") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/35a9c8dc-797f-4324-802f-055b81465fe4"
-          (reference "#PWR057") (unit 1)
+          (reference "#PWR0102") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/887d63dc-c7eb-4648-a7d2-6303070065ab"
-          (reference "#PWR051") (unit 1)
+          (reference "#PWR096") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/f460cae6-3b5f-46ba-b1fa-28bbe944132e"
-          (reference "#PWR063") (unit 1)
+          (reference "#PWR0108") (unit 1)
         )
       )
     )
@@ -994,7 +994,7 @@
   (symbol (lib_id "Connector:TestPoint_Alt") (at 101.6 55.88 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 624e1e16-9af8-4538-aeb5-6ee911d9d61a)
-    (property "Reference" "TP88" (at 101.346 55.372 90)
+    (property "Reference" "TP86" (at 101.346 55.372 90)
       (effects (font (size 0.5 0.5)) (justify left))
     )
     (property "Value" "~" (at 99.568 53.34 0)
@@ -1010,22 +1010,22 @@
     (instances
       (project "player_system"
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/9705b87e-11c6-46e2-ad15-46b34c9e1e53"
-          (reference "TP88") (unit 1)
+          (reference "TP86") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/887d63dc-c7eb-4648-a7d2-6303070065ab"
-          (reference "TP92") (unit 1)
+          (reference "TP90") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/f460cae6-3b5f-46ba-b1fa-28bbe944132e"
-          (reference "TP100") (unit 1)
+          (reference "TP98") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/35a9c8dc-797f-4324-802f-055b81465fe4"
-          (reference "TP96") (unit 1)
+          (reference "TP94") (unit 1)
         )
       )
     )
   )
 
-  (symbol (lib_id "Device:R_Pack04_Split") (at 105.41 68.58 90) (mirror x) (unit 2)
+  (symbol (lib_id "Device:R_Pack04_Split") (at 105.41 68.58 90) (mirror x) (unit 4)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 9560076b-d010-466c-bb62-fc6cff2ba209)
     (property "Reference" "RN4" (at 105.41 74.93 90)
@@ -1051,16 +1051,16 @@
     (instances
       (project "player_system"
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/9705b87e-11c6-46e2-ad15-46b34c9e1e53"
-          (reference "RN4") (unit 2)
+          (reference "RN4") (unit 4)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/887d63dc-c7eb-4648-a7d2-6303070065ab"
-          (reference "RN3") (unit 2)
+          (reference "RN4") (unit 2)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/f460cae6-3b5f-46ba-b1fa-28bbe944132e"
-          (reference "RN9") (unit 2)
+          (reference "RN7") (unit 2)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/35a9c8dc-797f-4324-802f-055b81465fe4"
-          (reference "RN8") (unit 2)
+          (reference "RN6") (unit 2)
         )
       )
     )
@@ -1105,7 +1105,7 @@
   (symbol (lib_id "RTOS_POD:MCP6489-E/SL") (at 109.22 53.34 0) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid acc42421-0e64-429f-86b9-c9c9b384d286)
-    (property "Reference" "U4" (at 118.11 57.15 0)
+    (property "Reference" "U5" (at 118.11 57.15 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "~" (at 121.92 48.26 0)
@@ -1134,16 +1134,16 @@
     (instances
       (project "player_system"
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/9705b87e-11c6-46e2-ad15-46b34c9e1e53"
-          (reference "U4") (unit 1)
+          (reference "U5") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/887d63dc-c7eb-4648-a7d2-6303070065ab"
-          (reference "U4") (unit 2)
+          (reference "U5") (unit 2)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/f460cae6-3b5f-46ba-b1fa-28bbe944132e"
-          (reference "U4") (unit 3)
+          (reference "U5") (unit 3)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/35a9c8dc-797f-4324-802f-055b81465fe4"
-          (reference "U4") (unit 4)
+          (reference "U5") (unit 4)
         )
       )
     )
@@ -1152,7 +1152,7 @@
   (symbol (lib_id "power:GND") (at 114.3 48.26 0) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b095b19b-d90e-4135-b5f7-2ecce03b3e5e)
-    (property "Reference" "#PWR046" (at 114.3 41.91 0)
+    (property "Reference" "#PWR091" (at 114.3 41.91 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 116.84 48.26 0)
@@ -1168,16 +1168,16 @@
     (instances
       (project "player_system"
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/9705b87e-11c6-46e2-ad15-46b34c9e1e53"
-          (reference "#PWR046") (unit 1)
+          (reference "#PWR091") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/35a9c8dc-797f-4324-802f-055b81465fe4"
-          (reference "#PWR058") (unit 1)
+          (reference "#PWR0103") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/887d63dc-c7eb-4648-a7d2-6303070065ab"
-          (reference "#PWR052") (unit 1)
+          (reference "#PWR097") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/f460cae6-3b5f-46ba-b1fa-28bbe944132e"
-          (reference "#PWR064") (unit 1)
+          (reference "#PWR0109") (unit 1)
         )
       )
     )
@@ -1186,7 +1186,7 @@
   (symbol (lib_id "Connector:TestPoint_Alt") (at 148.59 60.96 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid d786ca54-4207-4777-894e-0f94881cc6d9)
-    (property "Reference" "TP90" (at 148.336 60.452 90)
+    (property "Reference" "TP88" (at 148.336 60.452 90)
       (effects (font (size 0.5 0.5)) (justify left))
     )
     (property "Value" "~" (at 146.558 58.42 0)
@@ -1202,16 +1202,16 @@
     (instances
       (project "player_system"
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/9705b87e-11c6-46e2-ad15-46b34c9e1e53"
-          (reference "TP90") (unit 1)
+          (reference "TP88") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/887d63dc-c7eb-4648-a7d2-6303070065ab"
-          (reference "TP94") (unit 1)
+          (reference "TP92") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/f460cae6-3b5f-46ba-b1fa-28bbe944132e"
-          (reference "TP102") (unit 1)
+          (reference "TP100") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/35a9c8dc-797f-4324-802f-055b81465fe4"
-          (reference "TP98") (unit 1)
+          (reference "TP96") (unit 1)
         )
       )
     )
@@ -1220,7 +1220,7 @@
   (symbol (lib_id "Device:R_Pack04_Split") (at 138.43 59.69 0) (mirror x) (unit 2)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid f6b0db1d-41b2-4c56-a062-9903623533e5)
-    (property "Reference" "RN7" (at 135.89 62.23 90)
+    (property "Reference" "RN5" (at 135.89 62.23 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "10k" (at 138.43 60.96 90)
@@ -1243,16 +1243,16 @@
     (instances
       (project "player_system"
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/9705b87e-11c6-46e2-ad15-46b34c9e1e53"
-          (reference "RN7") (unit 2)
-        )
-        (path "/81c17b42-923e-4300-8661-2d9ed419c599/887d63dc-c7eb-4648-a7d2-6303070065ab"
-          (reference "RN7") (unit 3)
-        )
-        (path "/81c17b42-923e-4300-8661-2d9ed419c599/f460cae6-3b5f-46ba-b1fa-28bbe944132e"
           (reference "RN5") (unit 2)
         )
+        (path "/81c17b42-923e-4300-8661-2d9ed419c599/887d63dc-c7eb-4648-a7d2-6303070065ab"
+          (reference "RN5") (unit 3)
+        )
+        (path "/81c17b42-923e-4300-8661-2d9ed419c599/f460cae6-3b5f-46ba-b1fa-28bbe944132e"
+          (reference "RN6") (unit 1)
+        )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/35a9c8dc-797f-4324-802f-055b81465fe4"
-          (reference "RN8") (unit 4)
+          (reference "RN6") (unit 4)
         )
       )
     )
@@ -1261,7 +1261,7 @@
   (symbol (lib_id "Connector:TestPoint_Alt") (at 121.92 53.34 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid f72ae502-b0f3-4b1d-af95-0bd1e231fd24)
-    (property "Reference" "TP89" (at 122.428 53.086 90)
+    (property "Reference" "TP87" (at 122.428 53.086 90)
       (effects (font (size 0.5 0.5)) (justify left))
     )
     (property "Value" "~" (at 124.46 51.308 0)
@@ -1277,16 +1277,16 @@
     (instances
       (project "player_system"
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/9705b87e-11c6-46e2-ad15-46b34c9e1e53"
-          (reference "TP89") (unit 1)
+          (reference "TP87") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/887d63dc-c7eb-4648-a7d2-6303070065ab"
-          (reference "TP93") (unit 1)
+          (reference "TP91") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/f460cae6-3b5f-46ba-b1fa-28bbe944132e"
-          (reference "TP101") (unit 1)
+          (reference "TP99") (unit 1)
         )
         (path "/81c17b42-923e-4300-8661-2d9ed419c599/35a9c8dc-797f-4324-802f-055b81465fe4"
-          (reference "TP97") (unit 1)
+          (reference "TP95") (unit 1)
         )
       )
     )
