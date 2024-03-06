@@ -2,6 +2,7 @@
 
 void main_wyatt(void) {
 	//setup
+	// What is the airspeed of an unladen swallow?
 
 	while(1) {
 
