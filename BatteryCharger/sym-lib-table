@@ -1,0 +1,9 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "462FinalProject")(type "KiCad")(uri "${KIPRJMOD}/462FinalProject.kicad_sym")(options "")(descr ""))
+  (lib (name "RTOS_POD")(type "KiCad")(uri "${KIPRJMOD}/RTOS_POD.kicad_sym")(options "")(descr ""))
+  (lib (name "SRR1205-500YL")(type "KiCad")(uri "${KIPRJMOD}/SRR1205-500YL.kicad_sym")(options "")(descr ""))
+  (lib (name "MIC5504-3_3YM5-TR")(type "KiCad")(uri "${KIPRJMOD}/MIC5504-3_3YM5-TR.kicad_sym")(options "")(descr ""))
+  (lib (name "TPS562231DRLR")(type "KiCad")(uri "${KIPRJMOD}/TPS562231DRLR.kicad_sym")(options "")(descr ""))
+  (lib (name "BSS84AK_215")(type "KiCad")(uri "${KIPRJMOD}/BSS84AK_215.kicad_sym")(options "")(descr ""))
+)
