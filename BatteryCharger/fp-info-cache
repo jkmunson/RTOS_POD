@@ -1,4 +1,4 @@
-22643244400811998
+22648373496491627
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -62779,6 +62779,27 @@ Library
 CR0603-FX-4532ELF
 
 
+0
+2
+2
+Library
+SOT95P230X110-3N
+BSS84AK
+MOSFET (P-Channel)
+0
+3
+3
+Library
+SOTFL50P160X60-6N
+TPS562231DRLR
+Integrated Circuit
+0
+6
+6
+Library
+SRR1205500YL
+SRR1205-500YL-1
+Inductor
 0
 2
 2
