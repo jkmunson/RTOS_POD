@@ -99,7 +99,10 @@ static void MX_ADC5_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+#include "jeremy.h"
+#include "wyatt.h"
+#include "bryant.h"
+#include "braeden.h"
 /* USER CODE END 0 */
 
 /**
