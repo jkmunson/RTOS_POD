@@ -1,0 +1,5 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "1")(type "Legacy")(uri "/home/jkmunson/workspace/win24/EENG_490a/analog_module_board/symbols/STM32G474VEH6.lib")(options "")(descr "")(disabled)(hidden))
+  (lib (name "RTOS_POD")(type "KiCad")(uri "${KIPRJMOD}/RTOS_POD.kicad_sym")(options "")(descr ""))
+)
