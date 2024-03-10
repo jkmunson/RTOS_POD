@@ -1,0 +1,103 @@
+BEGINNING OF NOTES BY WYATT:
+3/10/2024
+
+* TFT display guide: https://www.youtube.com/watch?v=3qnB5gsp8eE&t=2s
+* SD card guide: https://01001000.xyz/2020-08-09-Tutorial-STM32CubeIDE-SD-card/
+* All the SPI and GPIO pin assignments are made in the .ioc file.
+* SCK, MISO, and MOSI are automaticly assigned by the SPI enabled in the .ioc
+* ^ but CS, RESET, and DC need to be assigned manually.
+* The ili9341.h file and main.h file will need to reflect the .ioc file pin assignments. 
+* I used stack size = 512 for the display/SD thread. Testing lower values has caused a fault in the past.
+* Will need to change the "startup file" from f4xxxx to whichever board we are using.
+* None of the display's touch screen pins are used (i.e. T_IRQ1, T_DO, T_DIN, T_CS, T_CLK)
+
+I was on an f4xxx board, but I used the following SPI/GPIOs for the SD/Display:
+SD:
+	SCK		->	PB10
+	MISO	->	PC2
+	MOSI	->	PC1
+	CS		->	PC3
+DISPLAY:
+	SD0 (MISO)	->	n/a (specify master only transmit in .ioc)
+	LED			->	+3.3V
+	SCK			->	PA5
+	SDI	(MOSI)	->	PA7
+	DC			->	PB1
+	RESET		->	PB0
+	CS			->	PA4
+	VCC			->  +5V
+	
+I uploaded my wyatt.c and wyatt.h code, but it doesn't look like main.c is configured for FreeRTOS to run.
+Once it is, ADD THE FOLLOWING CODE AS ITS OWN THREAD:
+
+  /* USER CODE BEGIN 5 */
+  init();							// initialize TFT display
+  ILI9341_DrawImage(0, 0, 320, 240, (const uint16_t*)startup_img_320x240);
+  osDelay(2000);					// Stall to view intro screen
+
+  mountFileSystem();				// connect with SD card
+  getSDstats();						// View total space / available space
+  osDelay(1000);					// delay to view stats
+
+  ILI9341_DrawImage(0, 0, 320, 240, (const uint16_t*)startup_img_320x240);
+  gatherFileNames();				// gather file names
+  //f_mount(NULL, "", 0); 			// de-mount drive
+
+  nextState = currentState;			// initialize next state
+
+
+  /* Infinite loop */
+  for(;;)
+  {
+	  /* ---------- NEXT STATE LOGIC ---------- */
+	  switch (currentState){
+		  case viewingDirectory:
+			  if (readFile) {
+				  nextState = readingFile;
+				  readFile = viewDirectory = contentsPosted = false;
+			  }
+			  break;
+		  case readingFile:
+			  if (viewDirectory) {
+				  nextState = viewingDirectory;
+				  readFile = viewDirectory = false;
+			  }
+			  break;
+	  }
+
+	  //FSMtest();					// used to change states without hardware
+
+	  /* ---------- OUTPUT LOGIC ---------- */
+	  if (currentState == viewingDirectory){
+		  showFileNames();
+	  } else {
+		  if (!contentsPosted){		// Prevents display rewrite redundancy
+			  showFileContents();	// Displays selected file's contents
+		  }
+	  }
+
+	  if (currentState != nextState) ILI9341_DrawImage(0, 0, 320, 240, (const uint16_t*)startup_img_320x240); // clear screen for transition
+
+	  /* ---------- STATE REGISTER ---------- */
+	  checkNewSelection();			// Adjusts current file selection
+	  currentState = nextState;		// transition to next state
+
+	  //sprintf(disp_buf, "ticks: %u", tick);
+	  //ILI9341_WriteString(0,0*SPACER, disp_buf,Font_7x10,MAIN_FONT_COLOR, BG_COLOR);
+	  tick++;
+	  osDelay(500);
+  }
+  /* USER CODE END 5 */
+  
+  
+  
+*   HOW THE FSM WORKS:
+	The display initializes by showing the names of the files on the SD card, and blinking to show which file is currently hovered over.
+	Change boolean variables "sel_next" and "sel_prev" to highlight files other than the one currently highlighted.
+	change boolean variable "readFile" to open the file that's currently hovered over and access its contents.
+	change boolean variable "viewDirectory" to close the file you're reading and view the list of file names again.
+	
+	changing "readFile" while already reading a file does nothing.
+	changing "viewDirectory" while already viewing the directory does nothing.
+	
+END OF NOTES BY WYATT.
