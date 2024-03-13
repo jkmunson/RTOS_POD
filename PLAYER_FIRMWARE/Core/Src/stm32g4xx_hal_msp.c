@@ -70,6 +70,8 @@ void HAL_MspInit(void)
   __HAL_RCC_PWR_CLK_ENABLE();
 
   /* System interrupt init*/
+  /* PendSV_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(PendSV_IRQn, 15, 0);
 
   /* USER CODE BEGIN MspInit 1 */
 
@@ -445,6 +447,9 @@ void HAL_DAC_MspInit(DAC_HandleTypeDef* hdac)
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(TFT_LED_LVL_GPIO_Port, &GPIO_InitStruct);
 
+    /* DAC2 interrupt Init */
+    HAL_NVIC_SetPriority(TIM7_DAC_IRQn, 15, 0);
+    HAL_NVIC_EnableIRQ(TIM7_DAC_IRQn);
   /* USER CODE BEGIN DAC2_MspInit 1 */
 
   /* USER CODE END DAC2_MspInit 1 */
@@ -467,6 +472,9 @@ void HAL_DAC_MspInit(DAC_HandleTypeDef* hdac)
   /* USER CODE END DAC4_MspInit 0 */
     /* Peripheral clock enable */
     __HAL_RCC_DAC4_CLK_ENABLE();
+    /* DAC4 interrupt Init */
+    HAL_NVIC_SetPriority(TIM7_DAC_IRQn, 15, 0);
+    HAL_NVIC_EnableIRQ(TIM7_DAC_IRQn);
   /* USER CODE BEGIN DAC4_MspInit 1 */
 
   /* USER CODE END DAC4_MspInit 1 */
@@ -513,6 +521,15 @@ void HAL_DAC_MspDeInit(DAC_HandleTypeDef* hdac)
     */
     HAL_GPIO_DeInit(TFT_LED_LVL_GPIO_Port, TFT_LED_LVL_Pin);
 
+    /* DAC2 interrupt DeInit */
+  /* USER CODE BEGIN DAC2:TIM7_DAC_IRQn disable */
+    /**
+    * Uncomment the line below to disable the "TIM7_DAC_IRQn" interrupt
+    * Be aware, disabling shared interrupt may affect other IPs
+    */
+    /* HAL_NVIC_DisableIRQ(TIM7_DAC_IRQn); */
+  /* USER CODE END DAC2:TIM7_DAC_IRQn disable */
+
   /* USER CODE BEGIN DAC2_MspDeInit 1 */
 
   /* USER CODE END DAC2_MspDeInit 1 */
@@ -535,6 +552,16 @@ void HAL_DAC_MspDeInit(DAC_HandleTypeDef* hdac)
   /* USER CODE END DAC4_MspDeInit 0 */
     /* Peripheral clock disable */
     __HAL_RCC_DAC4_CLK_DISABLE();
+
+    /* DAC4 interrupt DeInit */
+  /* USER CODE BEGIN DAC4:TIM7_DAC_IRQn disable */
+    /**
+    * Uncomment the line below to disable the "TIM7_DAC_IRQn" interrupt
+    * Be aware, disabling shared interrupt may affect other IPs
+    */
+    /* HAL_NVIC_DisableIRQ(TIM7_DAC_IRQn); */
+  /* USER CODE END DAC4:TIM7_DAC_IRQn disable */
+
   /* USER CODE BEGIN DAC4_MspDeInit 1 */
 
   /* USER CODE END DAC4_MspDeInit 1 */
@@ -765,6 +792,7 @@ void HAL_QSPI_MspInit(QSPI_HandleTypeDef* hqspi)
     __HAL_RCC_QSPI_CLK_ENABLE();
 
     __HAL_RCC_GPIOD_CLK_ENABLE();
+    __HAL_RCC_GPIOF_CLK_ENABLE();
     __HAL_RCC_GPIOE_CLK_ENABLE();
     /**QUADSPI1 GPIO Configuration
     PD6     ------> QUADSPI1_BK2_IO2
@@ -772,11 +800,11 @@ void HAL_QSPI_MspInit(QSPI_HandleTypeDef* hqspi)
     PD4     ------> QUADSPI1_BK2_IO0
     PD7     ------> QUADSPI1_BK2_IO3
     PD3     ------> QUADSPI1_BK2_NCS
+    PF10     ------> QUADSPI1_CLK
     PE12     ------> QUADSPI1_BK1_IO0
     PE15     ------> QUADSPI1_BK1_IO3
     PE11     ------> QUADSPI1_BK1_NCS
     PE14     ------> QUADSPI1_BK1_IO2
-    PE10     ------> QUADSPI1_CLK
     PE13     ------> QUADSPI1_BK1_IO1
     */
     GPIO_InitStruct.Pin = GPIO_PIN_6|GPIO_PIN_5|GPIO_PIN_4|GPIO_PIN_7
@@ -787,8 +815,15 @@ void HAL_QSPI_MspInit(QSPI_HandleTypeDef* hqspi)
     GPIO_InitStruct.Alternate = GPIO_AF10_QUADSPI;
     HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
+    GPIO_InitStruct.Pin = GPIO_PIN_10;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    GPIO_InitStruct.Alternate = GPIO_AF10_QUADSPI;
+    HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
+
     GPIO_InitStruct.Pin = GPIO_PIN_12|GPIO_PIN_15|GPIO_PIN_11|GPIO_PIN_14
-                          |GPIO_PIN_10|GPIO_PIN_13;
+                          |GPIO_PIN_13;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -824,18 +859,20 @@ void HAL_QSPI_MspDeInit(QSPI_HandleTypeDef* hqspi)
     PD4     ------> QUADSPI1_BK2_IO0
     PD7     ------> QUADSPI1_BK2_IO3
     PD3     ------> QUADSPI1_BK2_NCS
+    PF10     ------> QUADSPI1_CLK
     PE12     ------> QUADSPI1_BK1_IO0
     PE15     ------> QUADSPI1_BK1_IO3
     PE11     ------> QUADSPI1_BK1_NCS
     PE14     ------> QUADSPI1_BK1_IO2
-    PE10     ------> QUADSPI1_CLK
     PE13     ------> QUADSPI1_BK1_IO1
     */
     HAL_GPIO_DeInit(GPIOD, GPIO_PIN_6|GPIO_PIN_5|GPIO_PIN_4|GPIO_PIN_7
                           |GPIO_PIN_3);
 
+    HAL_GPIO_DeInit(GPIOF, GPIO_PIN_10);
+
     HAL_GPIO_DeInit(GPIOE, GPIO_PIN_12|GPIO_PIN_15|GPIO_PIN_11|GPIO_PIN_14
-                          |GPIO_PIN_10|GPIO_PIN_13);
+                          |GPIO_PIN_13);
 
   /* USER CODE BEGIN QUADSPI_MspDeInit 1 */
 
