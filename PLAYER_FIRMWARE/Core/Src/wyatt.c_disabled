@@ -9,6 +9,9 @@
 #include "ili9341_touch.h"
 #include "fonts.h"
 
+#include <FreeRTOS.h>
+#include <task.h>
+
 #include "wyatt.h"
 
 //internal functions
@@ -220,7 +223,7 @@ void FSMtest(){
 	  }
 }
 
-void wyatt_main(void) {
+void wyatt_main(void *ignore) {
 	  init();							// initialize TFT display
 	  ILI9341_DrawImage(0, 0, 320, 240, (const uint16_t*)startup_img_320x240);
 	  osDelay(2000);					// Stall to view intro screen
@@ -277,5 +280,7 @@ void wyatt_main(void) {
 		  tick++;
 		  osDelay(500);
 	  }
+	  vTaskSuspend(xTaskGetCurrentTaskHandle()); //LEAVE AT THE END
+	  vTaskDelete(NULL);
 }
 

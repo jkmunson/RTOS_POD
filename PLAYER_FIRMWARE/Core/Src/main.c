@@ -23,7 +23,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <FreeRTOS.h>
+#include <task.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -112,7 +113,7 @@ void StartDefaultTask(void *argument);
 /* USER CODE BEGIN 0 */
 #include "jeremy.h"
 //#include "wyatt.h"
-void wyatt_main(void){}; //temporary measure
+void wyatt_main(void *ignore){}; //temporary measure
 #include "bryant.h"
 #include "braeden.h"
 
@@ -120,6 +121,7 @@ uint8_t __attribute__((section(".sram1_low"))) wyatt_memspace[4096];
 uint8_t __attribute__((section(".sram1_low"))) bryant_memspace[4096];
 uint8_t __attribute__((section(".sram1_low"))) braeden_memspace[4096];
 uint8_t __attribute__((section(".sram1_low"))) jeremy_memspace[4096];
+uint8_t __attribute__((section(".sram1_upper"))) audio_buffer[49152]; //48k
 
 /* USER CODE END 0 */
 
@@ -203,7 +205,10 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_THREADS */
   static StaticTask_t threads[4];
-  xTaskCreateStatic(wyatt_main, "wyatt_main_thread", 1024, null, 5, (StackType_t *)wyatt_memspace, threads[0]);
+  xTaskCreateStatic(wyatt_main, 	"wyatt_main_thread", 	1024, NULL, 5, (StackType_t *)wyatt_memspace, 	&threads[0]);
+  xTaskCreateStatic(jeremy_main, 	"jeremy_main_thread", 	1024, NULL, 5, (StackType_t *)jeremy_memspace, 	&threads[1]);
+  xTaskCreateStatic(bryant_main, 	"bryant_main_thread", 	1024, NULL, 5, (StackType_t *)bryant_memspace, 	&threads[2]);
+  xTaskCreateStatic(braeden_main, 	"braeden_main_thread", 	1024, NULL, 5, (StackType_t *)braeden_memspace, &threads[3]);
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_EVENTS */

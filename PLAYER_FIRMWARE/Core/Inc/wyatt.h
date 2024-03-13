@@ -42,7 +42,7 @@ extern char filenames[10][20];	// string array of file names
 
 extern BYTE readBuf[30];
 
-void wyatt_main(void);
+void wyatt_main(void *);
 
 
 #endif // WYATT_H

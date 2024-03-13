@@ -1,3 +1,1 @@
-void main_bryant(void);
-//making sure I can push/commit
-
+void bryant_main(void*);

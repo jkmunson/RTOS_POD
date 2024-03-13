@@ -1,10 +1,9 @@
+#include <FreeRTOS.h>
+#include <task.h>
+
+void jeremy_main(void *ignore) {
 
 
-void main_jeremy(void) {
-	//setup
-
-	while(1) {
-
-		vTaskDelay(10); //Delay for 10ms
-	}
+	vTaskSuspend(xTaskGetCurrentTaskHandle()); //LEAVE AT THE END
+	vTaskDelete(NULL);
 }

@@ -1,1 +1,1 @@
-void main_braeden(void);
+void braeden_main(void*);

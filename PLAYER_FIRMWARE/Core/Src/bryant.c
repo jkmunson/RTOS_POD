@@ -1,10 +1,11 @@
+#include <FreeRTOS.h>
+#include <task.h>
+
+extern uint8_t audio_buffer[49152]; //Can be recast to a more appropriate type.
+
+void bryant_main(void *ignore) {
 
 
-void main_bryant(void) {
-	//setup
-
-	while(1) {
-
-		vTaskDelay(10); //Delay for 10ms
-	}
+	vTaskSuspend(xTaskGetCurrentTaskHandle()); //LEAVE AT THE END
+	vTaskDelete(NULL);
 }

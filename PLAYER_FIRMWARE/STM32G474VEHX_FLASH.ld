@@ -59,9 +59,30 @@ SECTIONS
   .sram1_low :
   {
   	. = ALIGN(4);
-  	KEEP (*.sram1_low);
+  	KEEP (*(.sram1_low));
   	. = ALIGN(4);
   } > SRAM1_LOW
+  
+  .sram1_upper :
+  {
+  	. = ALIGN(4);
+  	KEEP (*(.sram1_upper));
+  	. = ALIGN(4);
+  } > SRAM1_UPPER
+  
+  .sram2 :
+  {
+  	. = ALIGN(4);
+  	KEEP (*(.sram2));
+  	. = ALIGN(4);
+  } > SRAM2
+  
+  .ccm_sram_all :
+  {
+  	. = ALIGN(4);
+  	KEEP (*(.ccm_sram_all));
+  	. = ALIGN(4);
+  } > CCM_SRAM_ALL
   
   /* The startup code into "FLASH" Rom type memory */
   .isr_vector :

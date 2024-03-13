@@ -1,1 +1,1 @@
-void main_jeremy(void);
+void jeremy_main(void*);

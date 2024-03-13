@@ -1,10 +1,8 @@
+#include <FreeRTOS.h>
+#include <task.h>
 
+void braeden_main(void *ignore) {
 
-void main_braeden(void) {
-	//setup
-
-	while(1) {
-
-		vTaskDelay(10); //Delay for 10ms
-	}
+	vTaskSuspend(xTaskGetCurrentTaskHandle()); //LEAVE AT THE END
+	vTaskDelete(NULL);
 }
