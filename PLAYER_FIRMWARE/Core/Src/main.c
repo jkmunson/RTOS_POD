@@ -223,6 +223,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -976,12 +977,12 @@ static void MX_QUADSPI1_Init(void)
   /* USER CODE END QUADSPI1_Init 1 */
   /* QUADSPI1 parameter configuration*/
   hqspi1.Instance = QUADSPI;
-  hqspi1.Init.ClockPrescaler = 255;
+  hqspi1.Init.ClockPrescaler = 1;
   hqspi1.Init.FifoThreshold = 1;
   hqspi1.Init.SampleShifting = QSPI_SAMPLE_SHIFTING_NONE;
-  hqspi1.Init.FlashSize = 1;
+  hqspi1.Init.FlashSize = 25;
   hqspi1.Init.ChipSelectHighTime = QSPI_CS_HIGH_TIME_1_CYCLE;
-  hqspi1.Init.ClockMode = QSPI_CLOCK_MODE_0;
+  hqspi1.Init.ClockMode = QSPI_CLOCK_MODE_3;
   hqspi1.Init.DualFlash = QSPI_DUALFLASH_ENABLE;
   if (HAL_QSPI_Init(&hqspi1) != HAL_OK)
   {
