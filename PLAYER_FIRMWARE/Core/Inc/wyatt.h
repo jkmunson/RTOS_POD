@@ -20,7 +20,7 @@ extern STATE nextState;
 extern char disp_buf[50];		// display buffer - used to print to display
 extern uint16_t sel;			// Used to select specific files
 extern uint16_t tick;			// Handles blinking effect
-extern uint16_t i;				// handles blinking effect
+extern uint16_t file;			// handles blinking effect
 
 extern bool sel_next;
 extern bool sel_prev;

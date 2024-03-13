@@ -25,7 +25,7 @@ static void FSMtest(void);
 
 char disp_buf[50];
 uint16_t tick = 0;
-uint16_t i = 0;
+uint16_t file = 0;
 uint16_t sel = 1;
 
 bool sel_next = false;
@@ -116,12 +116,12 @@ void gatherFileNames(){
 void showFileNames(){
 	ILI9341_WriteString(10,2*SPACER, "Directory contents:",Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
 
-	for (i=1; i<nfile; i++){
-		if (i == sel & (tick%2==0)){
+	for (file=1; file<nfile; file++){
+		if (file == sel & (tick%2==0)){
 			// flashing effect for selected file
-			ILI9341_WriteString(10,(3+i)*SPACER, filenames[i], Font_7x10,BG_COLOR,MAIN_FONT_COLOR);
+			ILI9341_WriteString(10,(3+file)*SPACER, filenames[file], Font_7x10,BG_COLOR,MAIN_FONT_COLOR);
 		} else {
-			ILI9341_WriteString(10,(3+i)*SPACER, filenames[i], Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
+			ILI9341_WriteString(10,(3+file)*SPACER, filenames[file], Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
 		}
 	}
 }
