@@ -111,9 +111,16 @@ void StartDefaultTask(void *argument);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 #include "jeremy.h"
-#include "wyatt.h"
+//#include "wyatt.h"
+void wyatt_main(void){}; //temporary measure
 #include "bryant.h"
 #include "braeden.h"
+
+uint8_t __attribute__((section(".sram1_low"))) wyatt_memspace[4096];
+uint8_t __attribute__((section(".sram1_low"))) bryant_memspace[4096];
+uint8_t __attribute__((section(".sram1_low"))) braeden_memspace[4096];
+uint8_t __attribute__((section(".sram1_low"))) jeremy_memspace[4096];
+
 /* USER CODE END 0 */
 
 /**
@@ -195,7 +202,8 @@ int main(void)
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
-  /* add threads, ... */
+  static StaticTask_t threads[4];
+  xTaskCreateStatic(wyatt_main, "wyatt_main_thread", 1024, null, 5, (StackType_t *)wyatt_memspace, threads[0]);
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_EVENTS */
@@ -210,7 +218,6 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

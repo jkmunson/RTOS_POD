@@ -1,9 +1,6 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "fatfs.h"
-
-/* Private includes ----------------------------------------------------------*/
-/* USER CODE BEGIN Includes */
 #include <stdio.h>
 #include <string.h>
 #include <stdarg.h>
@@ -13,6 +10,15 @@
 #include "fonts.h"
 
 #include "wyatt.h"
+
+//internal functions
+static void init(void);					// initializes display
+static void mountFileSystem(void);		// mount file system
+static void getSDstats(void);			// gets space stats
+static void showFileNames(void);
+static void checkNewSelection(void);
+static void showFileContents(void);
+static void FSMtest(void);
 
 char disp_buf[50];
 uint16_t tick = 0;
@@ -213,3 +219,63 @@ void FSMtest(){
 
 	  }
 }
+
+void wyatt_main(void) {
+	  init();							// initialize TFT display
+	  ILI9341_DrawImage(0, 0, 320, 240, (const uint16_t*)startup_img_320x240);
+	  osDelay(2000);					// Stall to view intro screen
+
+	  mountFileSystem();				// connect with SD card
+	  getSDstats();						// View total space / available space
+	  osDelay(1000);					// delay to view stats
+
+	  ILI9341_DrawImage(0, 0, 320, 240, (const uint16_t*)startup_img_320x240);
+	  gatherFileNames();				// gather file names
+	  //f_mount(NULL, "", 0); 			// de-mount drive
+
+	  nextState = currentState;			// initialize next state
+
+
+	  /* Infinite loop */
+	  for(;;)
+	  {
+		  /* ---------- NEXT STATE LOGIC ---------- */
+		  switch (currentState){
+			  case viewingDirectory:
+				  if (readFile) {
+					  nextState = readingFile;
+					  readFile = viewDirectory = contentsPosted = false;
+				  }
+				  break;
+			  case readingFile:
+				  if (viewDirectory) {
+					  nextState = viewingDirectory;
+					  readFile = viewDirectory = false;
+				  }
+				  break;
+		  }
+
+		  //FSMtest();					// used to change states without hardware
+
+		  /* ---------- OUTPUT LOGIC ---------- */
+		  if (currentState == viewingDirectory){
+			  showFileNames();
+		  } else {
+			  if (!contentsPosted){		// Prevents display rewrite redundancy
+				  showFileContents();	// Displays selected file's contents
+			  }
+		  }
+
+		  if (currentState != nextState) ILI9341_DrawImage(0, 0, 320, 240, (const uint16_t*)startup_img_320x240); // clear screen for transition
+
+		  /* ---------- STATE REGISTER ---------- */
+		  checkNewSelection();			// Adjusts current file selection
+		  currentState = nextState;		// transition to next state
+
+		  //sprintf(disp_buf, "ticks: %u", tick);
+		  //ILI9341_WriteString(0,0*SPACER, disp_buf,Font_7x10,MAIN_FONT_COLOR, BG_COLOR);
+		  tick++;
+		  osDelay(500);
+	  }
+}
+

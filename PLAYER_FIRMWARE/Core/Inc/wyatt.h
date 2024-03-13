@@ -1,6 +1,9 @@
 #ifndef WYATT_H_
 #define WYATT_H_
 
+#include <stdint.h>
+#include <stdbool.h>
+
 // defines
 #define SPACER		12				// vertical spacer - used to tidy display
 #define MAIN_FONT_COLOR	ILI9341_BLACK
@@ -39,14 +42,7 @@ extern char filenames[10][20];	// string array of file names
 
 extern BYTE readBuf[30];
 
-// external functions
-extern void init(void);					// initializes display
-extern void mountFileSystem(void);		// mount file system
-extern void getSDstats(void);			// gets space stats
-extern void showFileNames(void);
-extern void checkNewSelection(void);
-extern void showFileContents(void);
-extern void FSMtest(void);
+void wyatt_main(void);
 
 
 #endif // WYATT_H

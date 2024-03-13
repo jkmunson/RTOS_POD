@@ -44,13 +44,25 @@ _Min_Stack_Size = 0x400; /* required amount of stack */
 /* Memories definition */
 MEMORY
 {
-  RAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 128K
-  FLASH    (rx)    : ORIGIN = 0x8000000,   LENGTH = 512K
+  RAM    	  	(xrw)    	: ORIGIN = 0x20000000,  LENGTH = 16K /* SRAM1 With Hardware Parity*/
+  SRAM1_LOW 	(xrw)		: ORIGIN = 0x20004000,  LENGTH = 16K /* ^     */
+  SRAM1_UPPER	(xrw)		: ORIGIN = 0x20008000,	LENGTH = 48K /* SRAM1 Without Hardware Parity */
+  SRAM2			(xrw)		: ORIGIN = 0x20014000,	LENGTH = 16K /* SRAM2 No IBus/Dbus */
+  CCM_SRAM_ALL	(xrw)		: ORIGIN = 0x20018000,	LENGTH = 32K /* CCM RAM, Mapped for access by all masters */
+  
+  FLASH    (rx)    	: ORIGIN = 0x8000000,    LENGTH = 512K
 }
 
 /* Sections */
 SECTIONS
 {
+  .sram1_low :
+  {
+  	. = ALIGN(4);
+  	KEEP (*.sram1_low);
+  	. = ALIGN(4);
+  } > SRAM1_LOW
+  
   /* The startup code into "FLASH" Rom type memory */
   .isr_vector :
   {
