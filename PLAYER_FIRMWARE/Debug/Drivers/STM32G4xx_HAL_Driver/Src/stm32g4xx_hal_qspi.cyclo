@@ -1,5 +1,5 @@
-stm32g4xx_hal_qspi.c:291:19:HAL_QSPI_Init	4
-stm32g4xx_hal_qspi.c:392:19:HAL_QSPI_DeInit	2
+stm32g4xx_hal_qspi.c:291:19:HAL_QSPI_Init	5
+stm32g4xx_hal_qspi.c:392:19:HAL_QSPI_DeInit	3
 stm32g4xx_hal_qspi.c:433:13:HAL_QSPI_MspInit	1
 stm32g4xx_hal_qspi.c:448:13:HAL_QSPI_MspDeInit	1
 stm32g4xx_hal_qspi.c:487:6:HAL_QSPI_IRQHandler	29
@@ -24,6 +24,8 @@ stm32g4xx_hal_qspi.c:1931:13:HAL_QSPI_TxHalfCpltCallback	1
 stm32g4xx_hal_qspi.c:1946:13:HAL_QSPI_FifoThresholdCallback	1
 stm32g4xx_hal_qspi.c:1961:13:HAL_QSPI_StatusMatchCallback	1
 stm32g4xx_hal_qspi.c:1976:13:HAL_QSPI_TimeOutCallback	1
+stm32g4xx_hal_qspi.c:2007:19:HAL_QSPI_RegisterCallback	21
+stm32g4xx_hal_qspi.c:2120:19:HAL_QSPI_UnRegisterCallback	20
 stm32g4xx_hal_qspi.c:2234:23:HAL_QSPI_GetState	1
 stm32g4xx_hal_qspi.c:2245:10:HAL_QSPI_GetError	1
 stm32g4xx_hal_qspi.c:2255:19:HAL_QSPI_Abort	7

@@ -9,3 +9,5 @@
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_opamp.c:913:19:HAL_OPAMP_LockTimerMux	24	static
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_opamp.c:968:24:HAL_OPAMP_GetState	16	static
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_opamp.c:990:28:HAL_OPAMP_GetTrimOffset	32	static
+../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_opamp.c:1064:19:HAL_OPAMP_RegisterCallback	32	static
+../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_opamp.c:1132:19:HAL_OPAMP_UnRegisterCallback	24	static

@@ -42,6 +42,8 @@
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c:713:19:HAL_ADC_DeInit	32	static
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c:912:13:HAL_ADC_MspInit	16	static
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c:929:13:HAL_ADC_MspDeInit	16	static
+../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c:963:19:HAL_ADC_RegisterCallback	32	static
+../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c:1088:19:HAL_ADC_UnRegisterCallback	24	static
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c:1219:19:HAL_ADC_Start	32	static
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c:1354:19:HAL_ADC_Stop	24	static
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c:1408:19:HAL_ADC_PollForConversion	40	static

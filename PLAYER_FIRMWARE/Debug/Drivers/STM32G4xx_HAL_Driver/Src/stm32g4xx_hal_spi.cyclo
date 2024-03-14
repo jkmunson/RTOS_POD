@@ -1,7 +1,9 @@
-stm32g4xx_hal_spi.c:314:19:HAL_SPI_Init	8
-stm32g4xx_hal_spi.c:489:19:HAL_SPI_DeInit	2
+stm32g4xx_hal_spi.c:314:19:HAL_SPI_Init	9
+stm32g4xx_hal_spi.c:489:19:HAL_SPI_DeInit	3
 stm32g4xx_hal_spi.c:533:13:HAL_SPI_MspInit	1
 stm32g4xx_hal_spi.c:549:13:HAL_SPI_MspDeInit	1
+stm32g4xx_hal_spi.c:569:19:HAL_SPI_RegisterCallback	17
+stm32g4xx_hal_spi.c:680:19:HAL_SPI_UnRegisterCallback	16
 stm32g4xx_hal_spi.c:821:19:HAL_SPI_Transmit	27
 stm32g4xx_hal_spi.c:1011:19:HAL_SPI_Receive	23
 stm32g4xx_hal_spi.c:1256:19:HAL_SPI_TransmitReceive	43

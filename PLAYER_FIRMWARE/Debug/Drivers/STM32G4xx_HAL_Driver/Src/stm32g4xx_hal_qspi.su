@@ -24,6 +24,8 @@
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_qspi.c:1946:13:HAL_QSPI_FifoThresholdCallback	16	static
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_qspi.c:1961:13:HAL_QSPI_StatusMatchCallback	16	static
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_qspi.c:1976:13:HAL_QSPI_TimeOutCallback	16	static
+../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_qspi.c:2007:19:HAL_QSPI_RegisterCallback	32	static
+../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_qspi.c:2120:19:HAL_QSPI_UnRegisterCallback	24	static
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_qspi.c:2234:23:HAL_QSPI_GetState	16	static
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_qspi.c:2245:10:HAL_QSPI_GetError	16	static
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_qspi.c:2255:19:HAL_QSPI_Abort	32	static

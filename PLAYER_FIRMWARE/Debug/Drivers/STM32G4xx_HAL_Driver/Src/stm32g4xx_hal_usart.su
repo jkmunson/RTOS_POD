@@ -2,6 +2,8 @@
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:338:19:HAL_USART_DeInit	16	static
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:381:13:HAL_USART_MspInit	16	static
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:396:13:HAL_USART_MspDeInit	16	static
+../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:429:19:HAL_USART_RegisterCallback	32	static
+../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:553:19:HAL_USART_UnRegisterCallback	24	static
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:744:19:HAL_USART_Transmit	48	static
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:842:19:HAL_USART_Receive	48	static
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:954:19:HAL_USART_TransmitReceive	64	static
@@ -26,6 +28,7 @@
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:2445:13:HAL_USART_AbortCpltCallback	16	static
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:2482:24:HAL_USART_GetState	16	static
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:2493:10:HAL_USART_GetError	16	static
+../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:2516:6:USART_InitCallbacksToDefault	16	static
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:2536:13:USART_EndTransfer	16	static
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:2552:13:USART_DMATransmitCplt	24	static
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_usart.c:2592:13:USART_DMATxHalfCplt	24	static

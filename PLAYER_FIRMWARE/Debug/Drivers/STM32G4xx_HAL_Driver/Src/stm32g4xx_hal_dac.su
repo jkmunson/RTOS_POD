@@ -16,6 +16,8 @@
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dac.c:1144:19:HAL_DAC_ConfigChannel	48	static
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dac.c:1390:22:HAL_DAC_GetState	16	static
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dac.c:1403:10:HAL_DAC_GetError	16	static
+../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dac.c:1447:19:HAL_DAC_RegisterCallback	32	static
+../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dac.c:1559:19:HAL_DAC_UnRegisterCallback	24	static
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dac.c:1675:6:DAC_DMAConvCpltCh1	24	static
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dac.c:1694:6:DAC_DMAHalfConvCpltCh1	24	static
 ../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dac.c:1711:6:DAC_DMAErrorCh1	24	static

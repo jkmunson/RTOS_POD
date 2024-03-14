@@ -38,10 +38,12 @@ stm32g4xx_ll_adc.h:8893:22:LL_ADC_EnableIT_AWD3	1
 stm32g4xx_ll_adc.h:8992:22:LL_ADC_DisableIT_AWD1	1
 stm32g4xx_ll_adc.h:9003:22:LL_ADC_DisableIT_AWD2	1
 stm32g4xx_ll_adc.h:9014:22:LL_ADC_DisableIT_AWD3	1
-stm32g4xx_hal_adc.c:396:19:HAL_ADC_Init	22
-stm32g4xx_hal_adc.c:713:19:HAL_ADC_DeInit	11
+stm32g4xx_hal_adc.c:396:19:HAL_ADC_Init	23
+stm32g4xx_hal_adc.c:713:19:HAL_ADC_DeInit	12
 stm32g4xx_hal_adc.c:912:13:HAL_ADC_MspInit	1
 stm32g4xx_hal_adc.c:929:13:HAL_ADC_MspDeInit	1
+stm32g4xx_hal_adc.c:963:19:HAL_ADC_RegisterCallback	17
+stm32g4xx_hal_adc.c:1088:19:HAL_ADC_UnRegisterCallback	16
 stm32g4xx_hal_adc.c:1219:19:HAL_ADC_Start	21
 stm32g4xx_hal_adc.c:1354:19:HAL_ADC_Stop	4
 stm32g4xx_hal_adc.c:1408:19:HAL_ADC_PollForConversion	30
