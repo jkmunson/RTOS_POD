@@ -118,7 +118,7 @@ void StartDefaultTask(void *argument);
 /* USER CODE BEGIN 0 */
 #include "jeremy.h"
 //#include "wyatt.h"
-void wyatt_main(void *ignore){}; //temporary measure
+void wyatt_main(void *ignore){vTaskDelete(NULL);}; //temporary measure
 #include "bryant.h"
 #include "braeden.h"
 
