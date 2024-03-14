@@ -4123,7 +4123,7 @@
     (effects (font (size 1.27 1.27) (color 0 0 0 1)) (justify left top))
     (uuid 38d49430-da42-44c6-8b32-2b0e291ec9a8)
   )
-  (text_box "* Preamp Audio is boosted by factor of 2\n* Max output voltage is 5v, so preamp audio output should not exceed 2.5v.\n* Trimmable gain from 1 to 40\n* If this is not an appropriate range, we can consider Changing the resistors\n* Will need to be carefully trimmed in bost bias and gain to get good output"
+  (text_box "* Preamp Audio is boosted by factor of 2\n* Max output voltage is 5v, so preamp audio output should not exceed 2.5v.\n* Trimmable gain from 1 to 40\n* If this is not an appropriate range, we can consider Changing the resistors\n* Will need to be carefully trimmed in both bias and gain to get good output"
     (at 252.73 226.06 0) (size 54.61 35.56)
     (stroke (width 0) (type default))
     (fill (type color) (color 255 255 255 1))
@@ -4170,10 +4170,6 @@
   (text "TFT Display + Touch + SD Card Module\n" (at 331.47 259.08 0)
     (effects (font (size 3 3) (thickness 0.6) bold) (justify left bottom))
     (uuid 62453e79-4b68-4e06-8741-8bac5b6054f2)
-  )
-  (text "ADD bridge NRST pin" (at 64.77 364.49 0)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid 69a88398-0062-4f02-b7f2-275ea2ccfd84)
   )
   (text "Volume Wheel" (at 322.58 41.91 0)
     (effects (font (size 3 3) (thickness 0.6) bold) (justify left bottom))
