@@ -7,7 +7,7 @@
 
 
 
-#include "stm32f4xx_hal.h"
+#include "stm32g4xx_hal.h"
 #include "ili9341.h"
 
 static void ILI9341_Select() {

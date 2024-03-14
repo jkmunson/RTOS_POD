@@ -47,6 +47,22 @@ extern "C" {
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
 
+//Defines Needed for SD card
+#define SD_SPI_HANDLE hspi4
+#define SD_CS_GPIO_Port GPIOE
+#define SD_CS_Pin GPIO_PIN_4
+
+//Defines needed for Audio out on green
+extern DAC_HandleTypeDef hdac1;
+
+#define AUD_GREEN_DAC hdac1
+
+extern TIM_HandleTypeDef htim6;
+
+#define AUDIO_44_1_KHZ_TIMER htim6
+
+extern uint8_t audio_buffer[49152];
+
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/

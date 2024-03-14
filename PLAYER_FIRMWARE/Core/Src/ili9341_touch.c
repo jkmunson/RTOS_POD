@@ -6,7 +6,7 @@
  */
 
 
-#include "stm32f4xx_hal.h"
+#include "stm32g4xx_hal.h"
 #include "ili9341_touch.h"
 
 #define READ_X 0xD0
