@@ -126,7 +126,8 @@ uint8_t __attribute__((section(".sram1_low"))) wyatt_memspace[4096];
 uint8_t __attribute__((section(".sram1_low"))) bryant_memspace[4096];
 uint8_t __attribute__((section(".sram1_low"))) braeden_memspace[4096];
 uint8_t __attribute__((section(".sram1_low"))) jeremy_memspace[4096];
-uint8_t __attribute__((section(".sram1_upper"))) audio_buffer[49152]; //48k
+
+uint8_t __attribute__((section(".sram1_upper"))) audio_buffer[AUD_BUFFER_SIZE]; //48k
 
 /* USER CODE END 0 */
 

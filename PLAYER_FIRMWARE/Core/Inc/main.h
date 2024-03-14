@@ -61,7 +61,8 @@ extern TIM_HandleTypeDef htim6;
 
 #define AUDIO_44_1_KHZ_TIMER htim6
 
-extern uint8_t audio_buffer[49152];
+#define AUD_BUFFER_SIZE 49152
+extern uint8_t audio_buffer[AUD_BUFFER_SIZE];
 
 /* USER CODE END EM */
 
