@@ -14,6 +14,7 @@
 #define MIN(a,b) (((a)<(b))? (a):(b))
 typedef void (*funcP)(uint8_t channels, uint16_t numSamples, void *pIn, uint16_t *pOutput);
 
+
 uint8_t flg_dma_done;
 
 static uint8_t fileBuffer[BUFSIZE];
@@ -167,31 +168,7 @@ done :
     return;
 }
 
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-  if(htim->Instance == TIM2)
-  {
-	  if (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2) == GPIO_PIN_RESET)
-	  {
-	   if (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_4) == GPIO_PIN_RESET)
-	   {
-	    while (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_4) == GPIO_PIN_RESET){};
-	    counter--;
-	    while (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2) == GPIO_PIN_RESET){};
-	   }
-	  }
 
-	   else {
-		   if (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_4) == GPIO_PIN_RESET)
-		   	  {
-	    counter++;
-	    while (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_4) == GPIO_PIN_RESET){};
-	    while (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2) == GPIO_PIN_RESET){};
-		   	  }
-	   }
-  }
-
-}
 void bryant_main(void *ignore) {
 
 

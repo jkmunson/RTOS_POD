@@ -73,6 +73,7 @@ TIM_HandleTypeDef htim6;
 
 UART_HandleTypeDef huart5;
 USART_HandleTypeDef husart3;
+int counter= 0;
 
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
@@ -1442,7 +1443,27 @@ void StartDefaultTask(void *argument)
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   /* USER CODE BEGIN Callback 0 */
+	  if(htim->Instance == TIM2)
+	  {
+		  if (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2) == GPIO_PIN_RESET)
+		  {
+		   if (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_4) == GPIO_PIN_RESET)
+		   {
+		    while (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_4) == GPIO_PIN_RESET){};
+		    counter--;
+		    while (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2) == GPIO_PIN_RESET){};
+		   }
+		  }
 
+		   else {
+			   if (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_4) == GPIO_PIN_RESET)
+			   	  {
+		    counter++;
+		    while (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_4) == GPIO_PIN_RESET){};
+		    while (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2) == GPIO_PIN_RESET){};
+			   	  }
+		   }
+	  }
   /* USER CODE END Callback 0 */
   if (htim->Instance == TIM7) {
     HAL_IncTick();
