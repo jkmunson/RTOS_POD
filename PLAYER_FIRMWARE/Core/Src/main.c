@@ -73,7 +73,6 @@ TIM_HandleTypeDef htim6;
 
 UART_HandleTypeDef huart5;
 USART_HandleTypeDef husart3;
-int counter= 0;
 
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
@@ -83,7 +82,7 @@ const osThreadAttr_t defaultTask_attributes = {
   .stack_size = 128 * 4
 };
 /* USER CODE BEGIN PV */
-
+	int counter;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -230,7 +229,6 @@ int main(void)
 
   /* Start scheduler */
   osKernelStart();
-
   /* We should never get here as control is now taken by the scheduler */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -1229,13 +1227,13 @@ static void MX_UART5_Init(void)
 
   /* USER CODE END UART5_Init 1 */
   huart5.Instance = UART5;
-  huart5.Init.BaudRate = 9600;
+  huart5.Init.BaudRate = 2000000;
   huart5.Init.WordLength = UART_WORDLENGTH_8B;
   huart5.Init.StopBits = UART_STOPBITS_1;
   huart5.Init.Parity = UART_PARITY_NONE;
   huart5.Init.Mode = UART_MODE_TX_RX;
   huart5.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart5.Init.OverSampling = UART_OVERSAMPLING_16;
+  huart5.Init.OverSampling = UART_OVERSAMPLING_8;
   huart5.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
   huart5.Init.ClockPrescaler = UART_PRESCALER_DIV1;
   huart5.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_SWAP_INIT;
@@ -1463,6 +1461,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		    while (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2) == GPIO_PIN_RESET){};
 			   	  }
 		   }
+	  }
+
+	  if(htim->Instance == AUDIO_44_1_KHZ_TIMER.Instance) {
+		  update_green_DMA_addr();
 	  }
   /* USER CODE END Callback 0 */
   if (htim->Instance == TIM7) {
