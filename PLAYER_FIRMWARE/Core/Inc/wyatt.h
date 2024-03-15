@@ -16,8 +16,8 @@ typedef enum {
 	  viewingDirectory, readingFile
 } STATE;
 
-extern SPI_HandleTypeDef hspi4;
-#define SD_SPI_HANDLE hspi4
+//extern SPI_HandleTypeDef hspi4;
+//#define SD_SPI_HANDLE hspi4
 
 extern STATE currentState;
 extern STATE nextState;
