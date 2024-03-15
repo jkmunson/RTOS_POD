@@ -25,6 +25,7 @@
 /* USER CODE BEGIN Includes */
 #include <FreeRTOS.h>
 #include <task.h>
+#include "stm32g4xx_hal.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -253,8 +254,10 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI|RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+  RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLM = RCC_PLLM_DIV1;
@@ -1176,7 +1179,7 @@ static void MX_UART5_Init(void)
 
   /* USER CODE END UART5_Init 1 */
   huart5.Instance = UART5;
-  huart5.Init.BaudRate = 921600;
+  huart5.Init.BaudRate = 9600;
   huart5.Init.WordLength = UART_WORDLENGTH_8B;
   huart5.Init.StopBits = UART_STOPBITS_1;
   huart5.Init.Parity = UART_PARITY_NONE;
@@ -1185,7 +1188,8 @@ static void MX_UART5_Init(void)
   huart5.Init.OverSampling = UART_OVERSAMPLING_16;
   huart5.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
   huart5.Init.ClockPrescaler = UART_PRESCALER_DIV1;
-  huart5.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
+  huart5.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_SWAP_INIT;
+  huart5.AdvancedInit.Swap = UART_ADVFEATURE_SWAP_ENABLE;
   if (HAL_UART_Init(&huart5) != HAL_OK)
   {
     Error_Handler();
@@ -1198,7 +1202,7 @@ static void MX_UART5_Init(void)
   {
     Error_Handler();
   }
-  if (HAL_UARTEx_DisableFifoMode(&huart5) != HAL_OK)
+  if (HAL_UARTEx_EnableFifoMode(&huart5) != HAL_OK)
   {
     Error_Handler();
   }
@@ -1268,7 +1272,7 @@ static void MX_DMA_Init(void)
 
   /* DMA interrupt init */
   /* DMA1_Channel1_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Channel1_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(DMA1_Channel1_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA1_Channel1_IRQn);
 
 }
