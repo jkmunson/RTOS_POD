@@ -1,9 +1,0 @@
-../Core/Src/bryant.c:24:13:setSampleRate	24	static
-../Core/Src/bryant.c:37:24:val2Dac8	24	static
-../Core/Src/bryant.c:43:24:val2Dac16	16	static
-../Core/Src/bryant.c:50:13:prepareDACBuffer_8Bit	48	static
-../Core/Src/bryant.c:65:13:prepareDACBuffer_16Bit	48	static
-../Core/Src/bryant.c:80:13:outputSamples	64	static,ignoring_inline_asm
-../Core/Src/bryant.c:129:16:isSupprtedWavFile	16	static
-../Core/Src/bryant.c:143:13:playWavFile	624	static
-../Core/Src/bryant.c:172:6:bryant_main	664	static

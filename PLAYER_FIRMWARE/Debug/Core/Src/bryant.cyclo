@@ -1,9 +1,0 @@
-bryant.c:24:13:setSampleRate	1
-bryant.c:37:24:val2Dac8	1
-bryant.c:43:24:val2Dac16	1
-bryant.c:50:13:prepareDACBuffer_8Bit	3
-bryant.c:65:13:prepareDACBuffer_16Bit	3
-bryant.c:80:13:outputSamples	8
-bryant.c:129:16:isSupprtedWavFile	4
-bryant.c:143:13:playWavFile	4
-bryant.c:172:6:bryant_main	6
