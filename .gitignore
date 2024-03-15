@@ -3,3 +3,4 @@
 ~*
 /PLAYER_FIRMWARE/Debug/
 /PLAYER_FIRMWARE/Release/
+/PLAYER_FIRMWARE/.settings/.*
