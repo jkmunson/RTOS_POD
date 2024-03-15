@@ -1,6 +1,6 @@
+#include <fatfs.h_disable>
 #include "main.h"
 #include "cmsis_os.h"
-#include "fatfs.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdarg.h>
@@ -12,7 +12,9 @@
 #include <FreeRTOS.h>
 #include <task.h>
 
+#include "startup_img.h"
 #include "wyatt.h"
+
 
 //internal functions
 static void init(void);					// initializes display

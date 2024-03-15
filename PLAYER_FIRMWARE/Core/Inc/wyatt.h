@@ -5,6 +5,8 @@
 #include <stdbool.h>
 
 // defines
+
+
 #define SPACER		12				// vertical spacer - used to tidy display
 #define MAIN_FONT_COLOR	ILI9341_BLACK
 #define BG_COLOR		ILI9341_WHITE
@@ -13,6 +15,9 @@
 typedef enum {
 	  viewingDirectory, readingFile
 } STATE;
+
+extern SPI_HandleTypeDef hspi4;
+#define SD_SPI_HANDLE hspi4
 
 extern STATE currentState;
 extern STATE nextState;

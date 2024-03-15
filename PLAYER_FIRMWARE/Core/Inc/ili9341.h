@@ -20,7 +20,7 @@
 #define ILI9341_MADCTL_MH  0x04
 
 /*** Redefine if necessary ***/
-#define ILI9341_SPI_PORT hspi1
+#define ILI9341_SPI_PORT hspi2
 extern SPI_HandleTypeDef ILI9341_SPI_PORT;
 
 #define ILI9341_RES_Pin       GPIO_PIN_0
