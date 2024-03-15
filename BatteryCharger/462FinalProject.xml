@@ -1,0 +1,1367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>/home/jkmunson/workspace/win24/RTOS_POD/BatteryCharger/462FinalProject.kicad_sch</source>
+    <date>Fri 15 Mar 2024 08:57:17 AM PDT</date>
+    <tool>Eeschema 7.0.10</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>462FinalProject.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="C1">
+      <value>10u</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder</footprint>
+      <fields>
+        <field name="Manufacturer">Samsung Electro-Mechanics</field>
+        <field name="Manufacturer Part Number">CL21A106KOQNNNE</field>
+        <field name="Mouser Part Number">187-CL21A106KOQNNNE</field>
+        <field name="Mouser Price/Stock">https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL21A106KOQNNNE?qs=sGAEpiMZZMsh%252B1woXyUXj7iNKXiFkBmwjufexzBEAvI%3D</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Manufacturer" value="Samsung Electro-Mechanics"/>
+      <property name="Manufacturer Part Number" value="CL21A106KOQNNNE"/>
+      <property name="Mouser Part Number" value="187-CL21A106KOQNNNE"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL21A106KOQNNNE?qs=sGAEpiMZZMsh%252B1woXyUXj7iNKXiFkBmwjufexzBEAvI%3D"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>82c30980-90af-4f7a-8f8f-5addf8bec434</tstamps>
+    </comp>
+    <comp ref="C2">
+      <value>10u</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder</footprint>
+      <fields>
+        <field name="Manufacturer">Samsung Electro-Mechanics</field>
+        <field name="Manufacturer Part Number">CL21A106KOQNNNE</field>
+        <field name="Mouser Part Number">187-CL21A106KOQNNNE</field>
+        <field name="Mouser Price/Stock">https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL21A106KOQNNNE?qs=sGAEpiMZZMsh%252B1woXyUXj7iNKXiFkBmwjufexzBEAvI%3D</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Manufacturer" value="Samsung Electro-Mechanics"/>
+      <property name="Manufacturer Part Number" value="CL21A106KOQNNNE"/>
+      <property name="Mouser Part Number" value="187-CL21A106KOQNNNE"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL21A106KOQNNNE?qs=sGAEpiMZZMsh%252B1woXyUXj7iNKXiFkBmwjufexzBEAvI%3D"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9a650f94-1554-458e-bebc-98a2c074ff17</tstamps>
+    </comp>
+    <comp ref="C3">
+      <value>10u</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder</footprint>
+      <fields>
+        <field name="Manufacturer">Samsung Electro-Mechanics</field>
+        <field name="Manufacturer Part Number">CL21A106KOQNNNE</field>
+        <field name="Mouser Part Number">187-CL21A106KOQNNNE</field>
+        <field name="Mouser Price/Stock">https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL21A106KOQNNNE?qs=sGAEpiMZZMsh%252B1woXyUXj7iNKXiFkBmwjufexzBEAvI%3D</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Manufacturer" value="Samsung Electro-Mechanics"/>
+      <property name="Manufacturer Part Number" value="CL21A106KOQNNNE"/>
+      <property name="Mouser Part Number" value="187-CL21A106KOQNNNE"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL21A106KOQNNNE?qs=sGAEpiMZZMsh%252B1woXyUXj7iNKXiFkBmwjufexzBEAvI%3D"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>3852dc68-deab-4375-a80c-985446b473e9</tstamps>
+    </comp>
+    <comp ref="C4">
+      <value>.1u</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder</footprint>
+      <fields>
+        <field name="Manufacturer">TAIYO YUDEN</field>
+        <field name="Manufacturer Part Number">MSAST105SB5104KFNA01</field>
+        <field name="Mouser Part Number">963-MSAST105SB5104KF</field>
+        <field name="Mouser Price/Stock">https://www.mouser.com/ProductDetail/TAIYO-YUDEN/MSAST105SB5104KFNA01?qs=sGAEpiMZZMsh%252B1woXyUXj3XUfju0vRpjR%2Fm7G6SiQaE%3D</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Manufacturer" value="TAIYO YUDEN"/>
+      <property name="Manufacturer Part Number" value="MSAST105SB5104KFNA01"/>
+      <property name="Mouser Part Number" value="963-MSAST105SB5104KF"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.com/ProductDetail/TAIYO-YUDEN/MSAST105SB5104KFNA01?qs=sGAEpiMZZMsh%252B1woXyUXj3XUfju0vRpjR%2Fm7G6SiQaE%3D"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>abf86bca-65f7-4e1b-b422-5eaa9f38ee97</tstamps>
+    </comp>
+    <comp ref="C5">
+      <value>10u</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder</footprint>
+      <fields>
+        <field name="Manufacturer">Samsung Electro-Mechanics</field>
+        <field name="Manufacturer Part Number">CL21A106KOQNNNE</field>
+        <field name="Mouser Part Number">187-CL21A106KOQNNNE</field>
+        <field name="Mouser Price/Stock">https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL21A106KOQNNNE?qs=sGAEpiMZZMsh%252B1woXyUXj7iNKXiFkBmwjufexzBEAvI%3D</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Manufacturer" value="Samsung Electro-Mechanics"/>
+      <property name="Manufacturer Part Number" value="CL21A106KOQNNNE"/>
+      <property name="Mouser Part Number" value="187-CL21A106KOQNNNE"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL21A106KOQNNNE?qs=sGAEpiMZZMsh%252B1woXyUXj7iNKXiFkBmwjufexzBEAvI%3D"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9cf78a4e-3221-436c-8682-639136757c9e</tstamps>
+    </comp>
+    <comp ref="C6">
+      <value>10u</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder</footprint>
+      <fields>
+        <field name="Manufacturer">Samsung Electro-Mechanics</field>
+        <field name="Manufacturer Part Number">CL21A106KOQNNNE</field>
+        <field name="Mouser Part Number">187-CL21A106KOQNNNE</field>
+        <field name="Mouser Price/Stock">https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL21A106KOQNNNE?qs=sGAEpiMZZMsh%252B1woXyUXj7iNKXiFkBmwjufexzBEAvI%3D</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Manufacturer" value="Samsung Electro-Mechanics"/>
+      <property name="Manufacturer Part Number" value="CL21A106KOQNNNE"/>
+      <property name="Mouser Part Number" value="187-CL21A106KOQNNNE"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL21A106KOQNNNE?qs=sGAEpiMZZMsh%252B1woXyUXj7iNKXiFkBmwjufexzBEAvI%3D"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ee9198b4-6d4b-4427-a707-0b2ccd5d1405</tstamps>
+    </comp>
+    <comp ref="D1">
+      <value>MBR0530 </value>
+      <footprint>Diode_SMD:D_SOD-123</footprint>
+      <datasheet>https://www.microsemi.com/document-portal/doc_download/8865-lds-0040-datasheet</datasheet>
+      <fields>
+        <field name="Manufacturer">Micro Commercial Components</field>
+        <field name="Manufacturer Part Number">MBR0530</field>
+        <field name="Mouser Part Number">833-MBR0530-TP</field>
+        <field name="Mouser Price/Stock">https://www.mouser.com/ProductDetail/Micro-Commercial-Components-MCC/MBR0530-TP?qs=KFo7JewZbUECRHkxGanrdg%3D%3D</field>
+      </fields>
+      <libsource lib="Diode" part="1N5711" description="70V 33mA Schottky diode, DO-35"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.com/ProductDetail/Micro-Commercial-Components-MCC/MBR0530-TP?qs=KFo7JewZbUECRHkxGanrdg%3D%3D"/>
+      <property name="Mouser Part Number" value="833-MBR0530-TP"/>
+      <property name="Manufacturer Part Number" value="MBR0530"/>
+      <property name="Manufacturer" value="Micro Commercial Components"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="70V 33mA Schottky diode, DO-35"/>
+      <property name="ki_keywords" value="diode Schottky"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>663b7b7b-bac1-43a1-b67b-d66a3a2a5e7f</tstamps>
+    </comp>
+    <comp ref="D5">
+      <value>MBR0530 </value>
+      <footprint>Diode_SMD:D_SOD-123</footprint>
+      <datasheet>https://www.microsemi.com/document-portal/doc_download/8865-lds-0040-datasheet</datasheet>
+      <fields>
+        <field name="Manufacturer">Micro Commercial Components</field>
+        <field name="Manufacturer Part Number">MBR0530</field>
+        <field name="Mouser Part Number">833-MBR0530-TP</field>
+        <field name="Mouser Price/Stock">https://www.mouser.com/ProductDetail/Micro-Commercial-Components-MCC/MBR0530-TP?qs=KFo7JewZbUECRHkxGanrdg%3D%3D</field>
+      </fields>
+      <libsource lib="Diode" part="1N5711" description="70V 33mA Schottky diode, DO-35"/>
+      <property name="Manufacturer" value="Micro Commercial Components"/>
+      <property name="Manufacturer Part Number" value="MBR0530"/>
+      <property name="Mouser Part Number" value="833-MBR0530-TP"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.com/ProductDetail/Micro-Commercial-Components-MCC/MBR0530-TP?qs=KFo7JewZbUECRHkxGanrdg%3D%3D"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="70V 33mA Schottky diode, DO-35"/>
+      <property name="ki_keywords" value="diode Schottky"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>6a4597af-9f2f-4e56-981a-2d5a1716666a</tstamps>
+    </comp>
+    <comp ref="D6">
+      <value>MBR0530 </value>
+      <footprint>Diode_SMD:D_SOD-123</footprint>
+      <datasheet>https://www.microsemi.com/document-portal/doc_download/8865-lds-0040-datasheet</datasheet>
+      <fields>
+        <field name="Manufacturer">Micro Commercial Components</field>
+        <field name="Manufacturer Part Number">MBR0530</field>
+        <field name="Mouser Part Number">833-MBR0530-TP</field>
+        <field name="Mouser Price/Stock">https://www.mouser.com/ProductDetail/Micro-Commercial-Components-MCC/MBR0530-TP?qs=KFo7JewZbUECRHkxGanrdg%3D%3D</field>
+      </fields>
+      <libsource lib="Diode" part="1N5711" description="70V 33mA Schottky diode, DO-35"/>
+      <property name="Manufacturer" value="Micro Commercial Components"/>
+      <property name="Manufacturer Part Number" value="MBR0530"/>
+      <property name="Mouser Part Number" value="833-MBR0530-TP"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.com/ProductDetail/Micro-Commercial-Components-MCC/MBR0530-TP?qs=KFo7JewZbUECRHkxGanrdg%3D%3D"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="70V 33mA Schottky diode, DO-35"/>
+      <property name="ki_keywords" value="diode Schottky"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7eccfe3c-d978-4b69-a33d-051820bb8551</tstamps>
+    </comp>
+    <comp ref="D7">
+      <value>MBR0530 </value>
+      <footprint>Diode_SMD:D_SOD-123</footprint>
+      <datasheet>https://www.microsemi.com/document-portal/doc_download/8865-lds-0040-datasheet</datasheet>
+      <fields>
+        <field name="Manufacturer">Micro Commercial Components</field>
+        <field name="Manufacturer Part Number">MBR0530</field>
+        <field name="Mouser Part Number">833-MBR0530-TP</field>
+        <field name="Mouser Price/Stock">https://www.mouser.com/ProductDetail/Micro-Commercial-Components-MCC/MBR0530-TP?qs=KFo7JewZbUECRHkxGanrdg%3D%3D</field>
+      </fields>
+      <libsource lib="Diode" part="1N5711" description="70V 33mA Schottky diode, DO-35"/>
+      <property name="Manufacturer" value="Micro Commercial Components"/>
+      <property name="Manufacturer Part Number" value="MBR0530"/>
+      <property name="Mouser Part Number" value="833-MBR0530-TP"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.com/ProductDetail/Micro-Commercial-Components-MCC/MBR0530-TP?qs=KFo7JewZbUECRHkxGanrdg%3D%3D"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="70V 33mA Schottky diode, DO-35"/>
+      <property name="ki_keywords" value="diode Schottky"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c1b461bf-1050-4316-ad84-a46da1e9590d</tstamps>
+    </comp>
+    <comp ref="IC1">
+      <value>TPS562231DRLR</value>
+      <footprint>Library:SOTFL50P160X60-6N</footprint>
+      <datasheet>https://www.ti.com/lit/gpn/tps562231</datasheet>
+      <fields>
+        <field name="Height">0.6</field>
+        <field name="Manufacturer">Texas Instruments</field>
+        <field name="Manufacturer Part Number">TPS562231DRLR</field>
+        <field name="Mouser Part Number">595-TPS562231DRLR</field>
+        <field name="Mouser Price/Stock">https://www.mouser.co.uk/ProductDetail/Texas-Instruments/TPS562231DRLR?qs=l4Gc20tDgJK5KnXgCyg0Bw%3D%3D</field>
+      </fields>
+      <libsource lib="TPS562231DRLR" part="TPS562231DRLR" description="4.5-V to 17-V input, 2-A output, synchronous step-down converter"/>
+      <property name="Height" value="0.6"/>
+      <property name="Mouser Part Number" value="595-TPS562231DRLR"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.co.uk/ProductDetail/Texas-Instruments/TPS562231DRLR?qs=l4Gc20tDgJK5KnXgCyg0Bw%3D%3D"/>
+      <property name="Manufacturer" value="Texas Instruments"/>
+      <property name="Manufacturer Part Number" value="TPS562231DRLR"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="4.5-V to 17-V input, 2-A output, synchronous step-down converter"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ad569d85-7a27-469f-abb9-9c7681e4e76c</tstamps>
+    </comp>
+    <comp ref="J2">
+      <value>3_Pin_Header_to_Battery</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical</footprint>
+      <libsource lib="Connector" part="Conn_01x03_Pin" description="Generic connector, single row, 01x03, script generated"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="Generic connector, single row, 01x03, script generated"/>
+      <property name="ki_keywords" value="connector"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>822b1ff1-33ec-4628-aac1-a1f7b06ff213</tstamps>
+    </comp>
+    <comp ref="J3">
+      <value>USB_B_Micro</value>
+      <footprint>Library:USB_Micro-B_roundholes</footprint>
+      <libsource lib="Connector" part="USB_B_Micro" description="USB Micro Type B connector"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="USB Micro Type B connector"/>
+      <property name="ki_keywords" value="connector USB micro"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7c23cd5e-5400-4428-8a5a-b81795e1d13f</tstamps>
+    </comp>
+    <comp ref="J4">
+      <value>3_Pin_Header_to_IPOD</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical</footprint>
+      <libsource lib="Connector" part="Conn_01x03_Pin" description="Generic connector, single row, 01x03, script generated"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="Generic connector, single row, 01x03, script generated"/>
+      <property name="ki_keywords" value="connector"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>966d5c1f-b377-45aa-a6a1-14a38bfc8dd9</tstamps>
+    </comp>
+    <comp ref="J5">
+      <value>Conn_01x04_Pin</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical</footprint>
+      <libsource lib="Connector" part="Conn_01x04_Pin" description="Generic connector, single row, 01x04, script generated"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="Generic connector, single row, 01x04, script generated"/>
+      <property name="ki_keywords" value="connector"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>77f05187-b749-4f33-9679-d31e284d9ab2</tstamps>
+    </comp>
+    <comp ref="L1">
+      <value>SRR1205-500YL</value>
+      <footprint>Library:SRR1205500YL</footprint>
+      <datasheet>https://www.bourns.com/data/global/pdfs/SRR1205.pdf</datasheet>
+      <fields>
+        <field name="Height">5.5</field>
+        <field name="Mouser Part Number">652-SRR1205-500YL</field>
+        <field name="Mouser Price/Stock">https://www.mouser.co.uk/ProductDetail/Bourns/SRR1205-500YL?qs=iR9JlTGiDnVu0txHEBsynw%3D%3D</field>
+      </fields>
+      <libsource lib="SRR1205-500YL" part="SRR1205-500YL" description="Fixed Inductors 50uH 15% SMD 1205"/>
+      <property name="Height" value="5.5"/>
+      <property name="Mouser Part Number" value="652-SRR1205-500YL"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.co.uk/ProductDetail/Bourns/SRR1205-500YL?qs=iR9JlTGiDnVu0txHEBsynw%3D%3D"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="Fixed Inductors 50uH 15% SMD 1205"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>4bd22ed4-347e-4edb-b441-ee8ec4db1def</tstamps>
+    </comp>
+    <comp ref="L2">
+      <value>3.3u</value>
+      <footprint>Library:CC322522A-4R7K</footprint>
+      <fields>
+        <field name="Manufacturer">Bourns</field>
+        <field name="Manufacturer Part Number">CC322522A-4R7K</field>
+        <field name="Mouser Part Number">652-CC322522A-4R7K</field>
+        <field name="Mouser Price/Stock">https://www.mouser.com/ProductDetail/Bourns/CC322522A-4R7K?qs=BJlw7L4Cy7%2Fy09%2BRq8LovQ%3D%3D</field>
+      </fields>
+      <libsource lib="Device" part="L" description="Inductor"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.com/ProductDetail/Bourns/CC322522A-4R7K?qs=BJlw7L4Cy7%2Fy09%2BRq8LovQ%3D%3D"/>
+      <property name="Mouser Part Number" value="652-CC322522A-4R7K"/>
+      <property name="Manufacturer Part Number" value="CC322522A-4R7K"/>
+      <property name="Manufacturer" value="Bourns"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="Inductor"/>
+      <property name="ki_keywords" value="inductor choke coil reactor magnetic"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>24d22602-e86a-4dc4-b5d3-96a4708145ef</tstamps>
+    </comp>
+    <comp ref="Q1">
+      <value>MMFTN6001</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
+      <fields>
+        <field name="Manufacturer">Diotec Semiconductor</field>
+        <field name="Manufacturer Part Number">MMFTN6001</field>
+        <field name="Mouser Part Number">637-MMFTN6001</field>
+        <field name="Mouser Price/Stock">https://www.mouser.com/ProductDetail/Diotec-Semiconductor/MMFTN6001?qs=Wj%2FVkw3K%252BMBEABncUaRa2w%3D%3D</field>
+      </fields>
+      <libsource lib="Device" part="Q_NMOS_GSD" description="N-MOSFET transistor, gate/source/drain"/>
+      <property name="Manufacturer" value="Diotec Semiconductor"/>
+      <property name="Manufacturer Part Number" value="MMFTN6001"/>
+      <property name="Mouser Part Number" value="637-MMFTN6001"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.com/ProductDetail/Diotec-Semiconductor/MMFTN6001?qs=Wj%2FVkw3K%252BMBEABncUaRa2w%3D%3D"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="N-MOSFET transistor, gate/source/drain"/>
+      <property name="ki_keywords" value="transistor NMOS N-MOS N-MOSFET"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>57f6120a-f76f-47a5-80bc-677ac9745d37</tstamps>
+    </comp>
+    <comp ref="Q2">
+      <value>MMFTN6001</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
+      <fields>
+        <field name="Manufacturer">Diotec Semiconductor</field>
+        <field name="Manufacturer Part Number">MMFTN6001</field>
+        <field name="Mouser Part Number">637-MMFTN6001</field>
+        <field name="Mouser Price/Stock">https://www.mouser.com/ProductDetail/Diotec-Semiconductor/MMFTN6001?qs=Wj%2FVkw3K%252BMBEABncUaRa2w%3D%3D</field>
+      </fields>
+      <libsource lib="Device" part="Q_NMOS_GSD" description="N-MOSFET transistor, gate/source/drain"/>
+      <property name="Manufacturer" value="Diotec Semiconductor"/>
+      <property name="Manufacturer Part Number" value="MMFTN6001"/>
+      <property name="Mouser Part Number" value="637-MMFTN6001"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.com/ProductDetail/Diotec-Semiconductor/MMFTN6001?qs=Wj%2FVkw3K%252BMBEABncUaRa2w%3D%3D"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="N-MOSFET transistor, gate/source/drain"/>
+      <property name="ki_keywords" value="transistor NMOS N-MOS N-MOSFET"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7dfb4bea-73ab-4d49-b33a-db5850c4f6a5</tstamps>
+    </comp>
+    <comp ref="Q3">
+      <value>SI2302</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
+      <libsource lib="Device" part="Q_NMOS_GSD" description="N-MOSFET transistor, gate/source/drain"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="N-MOSFET transistor, gate/source/drain"/>
+      <property name="ki_keywords" value="transistor NMOS N-MOS N-MOSFET"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0a634cc1-97a1-4c81-bcdd-9b94a0c539a7</tstamps>
+    </comp>
+    <comp ref="Q4">
+      <value>SI2302</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
+      <libsource lib="Device" part="Q_NMOS_GSD" description="N-MOSFET transistor, gate/source/drain"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="N-MOSFET transistor, gate/source/drain"/>
+      <property name="ki_keywords" value="transistor NMOS N-MOS N-MOSFET"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>40e21006-11d8-412e-b968-73a91bd4835a</tstamps>
+    </comp>
+    <comp ref="Q6">
+      <value>BSS84AK,215</value>
+      <footprint>Library:SOT95P230X110-3N</footprint>
+      <fields>
+        <field name="Height">1.1</field>
+        <field name="Manufacturer">Nexperia</field>
+        <field name="Manufacturer Part Number">BSS84AK,215</field>
+        <field name="Mouser Part Number">771-BSS84AK215</field>
+        <field name="Mouser Price/Stock">https://www.mouser.co.uk/ProductDetail/Nexperia/BSS84AK215?qs=A1cBxND5mHJndJgHJTE1yg%3D%3D</field>
+      </fields>
+      <libsource lib="BSS84AK_215" part="BSS84AK,215" description="BSS84AK,215 P-Channel MOSFET, 180 mA, 50 V, 3-Pin SOT-23 Nexperia"/>
+      <property name="Height" value="1.1"/>
+      <property name="Mouser Part Number" value="771-BSS84AK215"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.co.uk/ProductDetail/Nexperia/BSS84AK215?qs=A1cBxND5mHJndJgHJTE1yg%3D%3D"/>
+      <property name="Manufacturer" value="Nexperia"/>
+      <property name="Manufacturer Part Number" value="BSS84AK,215"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="BSS84AK,215 P-Channel MOSFET, 180 mA, 50 V, 3-Pin SOT-23 Nexperia"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>3540381a-ec83-4ee1-9e89-3b9bdf8804aa</tstamps>
+    </comp>
+    <comp ref="Q7">
+      <value>BSS84AK,215</value>
+      <footprint>Library:SOT95P230X110-3N</footprint>
+      <fields>
+        <field name="Height">1.1</field>
+        <field name="Manufacturer">Nexperia</field>
+        <field name="Manufacturer Part Number">BSS84AK,215</field>
+        <field name="Mouser Part Number">771-BSS84AK215</field>
+        <field name="Mouser Price/Stock">https://www.mouser.co.uk/ProductDetail/Nexperia/BSS84AK215?qs=A1cBxND5mHJndJgHJTE1yg%3D%3D</field>
+      </fields>
+      <libsource lib="BSS84AK_215" part="BSS84AK,215" description="BSS84AK,215 P-Channel MOSFET, 180 mA, 50 V, 3-Pin SOT-23 Nexperia"/>
+      <property name="Height" value="1.1"/>
+      <property name="Mouser Part Number" value="771-BSS84AK215"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.co.uk/ProductDetail/Nexperia/BSS84AK215?qs=A1cBxND5mHJndJgHJTE1yg%3D%3D"/>
+      <property name="Manufacturer" value="Nexperia"/>
+      <property name="Manufacturer Part Number" value="BSS84AK,215"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="BSS84AK,215 P-Channel MOSFET, 180 mA, 50 V, 3-Pin SOT-23 Nexperia"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0ff01c8f-5444-4a6c-bc4a-98d5837554d9</tstamps>
+    </comp>
+    <comp ref="Q8">
+      <value>BSS84AK,215</value>
+      <footprint>Library:SOT95P230X110-3N</footprint>
+      <fields>
+        <field name="Height">1.1</field>
+        <field name="Manufacturer">Nexperia</field>
+        <field name="Manufacturer Part Number">BSS84AK,215</field>
+        <field name="Mouser Part Number">771-BSS84AK215</field>
+        <field name="Mouser Price/Stock">https://www.mouser.co.uk/ProductDetail/Nexperia/BSS84AK215?qs=A1cBxND5mHJndJgHJTE1yg%3D%3D</field>
+      </fields>
+      <libsource lib="BSS84AK_215" part="BSS84AK,215" description="BSS84AK,215 P-Channel MOSFET, 180 mA, 50 V, 3-Pin SOT-23 Nexperia"/>
+      <property name="Height" value="1.1"/>
+      <property name="Mouser Part Number" value="771-BSS84AK215"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.co.uk/ProductDetail/Nexperia/BSS84AK215?qs=A1cBxND5mHJndJgHJTE1yg%3D%3D"/>
+      <property name="Manufacturer" value="Nexperia"/>
+      <property name="Manufacturer Part Number" value="BSS84AK,215"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="BSS84AK,215 P-Channel MOSFET, 180 mA, 50 V, 3-Pin SOT-23 Nexperia"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b4d455fd-35ce-4f37-9426-432d95cf898a</tstamps>
+    </comp>
+    <comp ref="Q9">
+      <value>SI2302</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
+      <libsource lib="Device" part="Q_NMOS_GSD" description="N-MOSFET transistor, gate/source/drain"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="N-MOSFET transistor, gate/source/drain"/>
+      <property name="ki_keywords" value="transistor NMOS N-MOS N-MOSFET"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2d4c9eac-3162-4469-b9bb-86f24557f960</tstamps>
+    </comp>
+    <comp ref="R1">
+      <value>100m</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Manufacturer">CTS Electronic Components</field>
+        <field name="Manufacturer Part Number">73L3R10J</field>
+        <field name="Mouser Part Number">774-73L3R10J</field>
+        <field name="Mouser Price/Stock">https://www.mouser.com/ProductDetail/CTS-Electronic-Components/73L3R10J?qs=sGAEpiMZZMtlubZbdhIBII1XFqDdukOvFINJ4CXOzPk%3D</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Manufacturer" value="CTS Electronic Components"/>
+      <property name="Manufacturer Part Number" value="73L3R10J"/>
+      <property name="Mouser Part Number" value="774-73L3R10J"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.com/ProductDetail/CTS-Electronic-Components/73L3R10J?qs=sGAEpiMZZMtlubZbdhIBII1XFqDdukOvFINJ4CXOzPk%3D"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>45274885-d6fc-40de-83e7-2dc6f6ec031d</tstamps>
+    </comp>
+    <comp ref="R4">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Manufacturer">Bourns</field>
+        <field name="Manufacturer Part Number">CR0805-JW-102ELF</field>
+        <field name="Mouser Part Number">652-CR0805JW-102ELF</field>
+        <field name="Mouser Price/Stock">https://www.mouser.com/ProductDetail/Bourns/CR0805-JW-102ELF?qs=sGAEpiMZZMtlubZbdhIBIPJRFm2x4gVbKRFwRkY2vaI%3D</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Manufacturer" value="Bourns"/>
+      <property name="Manufacturer Part Number" value="CR0805-JW-102ELF"/>
+      <property name="Mouser Part Number" value="652-CR0805JW-102ELF"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.com/ProductDetail/Bourns/CR0805-JW-102ELF?qs=sGAEpiMZZMtlubZbdhIBIPJRFm2x4gVbKRFwRkY2vaI%3D"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>05ccff0d-ce71-4f9c-9a07-b737ee9e23ab</tstamps>
+    </comp>
+    <comp ref="R5">
+      <value>45.3k </value>
+      <footprint>Library:CR0603-FX-4532ELF</footprint>
+      <fields>
+        <field name="Manufacturer">YAGEO</field>
+        <field name="Manufacturer Part Number">RC0805FR-0745K3L</field>
+        <field name="Mouser Part Number">603-RC0805FR-0745K3L</field>
+        <field name="Mouser Price/Stock">https://www.mouser.com/ProductDetail/YAGEO/RC0805FR-0745K3L?qs=sGAEpiMZZMtlubZbdhIBIDa%2FhYjOd3Y%252BGf1Ps2lJSb4%3D</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.com/ProductDetail/YAGEO/RC0805FR-0745K3L?qs=sGAEpiMZZMtlubZbdhIBIDa%2FhYjOd3Y%252BGf1Ps2lJSb4%3D"/>
+      <property name="Mouser Part Number" value="603-RC0805FR-0745K3L"/>
+      <property name="Manufacturer Part Number" value="RC0805FR-0745K3L"/>
+      <property name="Manufacturer" value="YAGEO"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>aa6831e3-d88e-447a-a7da-d7be200e12c9</tstamps>
+    </comp>
+    <comp ref="R9">
+      <value>100k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Manufacturer">YAGEO</field>
+        <field name="Manufacturer Part Number">RC0805JR-10100KL</field>
+        <field name="Mouser Part Number">603-RC0805JR-10100KL</field>
+        <field name="Mouser Price/Stock">https://www.mouser.com/ProductDetail/YAGEO/RC0805JR-10100KL?qs=sGAEpiMZZMtlubZbdhIBIAQgR8I6PBLBQg1Kt%2FQ17GM%3D</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Manufacturer" value="YAGEO"/>
+      <property name="Manufacturer Part Number" value="RC0805JR-10100KL"/>
+      <property name="Mouser Part Number" value="603-RC0805JR-10100KL"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.com/ProductDetail/YAGEO/RC0805JR-10100KL?qs=sGAEpiMZZMtlubZbdhIBIAQgR8I6PBLBQg1Kt%2FQ17GM%3D"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>f399208a-11b0-4638-b521-ed5fe1082c33</tstamps>
+    </comp>
+    <comp ref="R10">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Manufacturer">Bourns</field>
+        <field name="Manufacturer Part Number">CR0805-JW-102ELF</field>
+        <field name="Mouser Part Number">652-CR0805JW-102ELF</field>
+        <field name="Mouser Price/Stock">https://www.mouser.com/ProductDetail/Bourns/CR0805-JW-102ELF?qs=sGAEpiMZZMtlubZbdhIBIPJRFm2x4gVbKRFwRkY2vaI%3D</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Manufacturer" value="Bourns"/>
+      <property name="Manufacturer Part Number" value="CR0805-JW-102ELF"/>
+      <property name="Mouser Part Number" value="652-CR0805JW-102ELF"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.com/ProductDetail/Bourns/CR0805-JW-102ELF?qs=sGAEpiMZZMtlubZbdhIBIPJRFm2x4gVbKRFwRkY2vaI%3D"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>eb5e52fa-84d7-4ca2-b1a0-c722f1cf29d0</tstamps>
+    </comp>
+    <comp ref="R12">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Manufacturer">Bourns</field>
+        <field name="Manufacturer Part Number">CR0805-JW-102ELF</field>
+        <field name="Mouser Part Number">652-CR0805JW-102ELF</field>
+        <field name="Mouser Price/Stock">https://www.mouser.com/ProductDetail/Bourns/CR0805-JW-102ELF?qs=sGAEpiMZZMtlubZbdhIBIPJRFm2x4gVbKRFwRkY2vaI%3D</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Manufacturer" value="Bourns"/>
+      <property name="Manufacturer Part Number" value="CR0805-JW-102ELF"/>
+      <property name="Mouser Part Number" value="652-CR0805JW-102ELF"/>
+      <property name="Mouser Price/Stock" value="https://www.mouser.com/ProductDetail/Bourns/CR0805-JW-102ELF?qs=sGAEpiMZZMtlubZbdhIBIPJRFm2x4gVbKRFwRkY2vaI%3D"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="Resistor"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>013d72b8-19cc-4e8c-81e2-729b0c78a41a</tstamps>
+    </comp>
+    <comp ref="RN1">
+      <value>R_Pack04_Split_2</value>
+      <footprint>Resistor_SMD:R_Array_Concave_4x0603</footprint>
+      <libsource lib="Device" part="R_Pack04_Split" description="4 resistor network, parallel topology, split"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="4 resistor network, parallel topology, split"/>
+      <property name="ki_keywords" value="R network parallel topology isolated"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>fcc9a199-8055-461e-929e-774bc34833c7 fbc302e3-7e6b-49ff-bef6-595c8c8997e8 8ba5f342-45b9-4221-bfe6-ff34dcd0ca5a 2bc21631-5de7-4c75-b9a3-f9fca41f396f</tstamps>
+    </comp>
+    <comp ref="RN2">
+      <value>R_Pack04_Split_2</value>
+      <footprint>Resistor_SMD:R_Array_Concave_4x0603</footprint>
+      <libsource lib="Device" part="R_Pack04_Split" description="4 resistor network, parallel topology, split"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="4 resistor network, parallel topology, split"/>
+      <property name="ki_keywords" value="R network parallel topology isolated"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>aa62ec50-2a06-4dba-9088-6b982fdafc3b 997b439b-a67c-413a-8bd0-50416fa0ea09 67b6142f-1e6a-40f8-93e1-497e15b0378c 231ab7d9-28ed-4737-93d6-c5f2692be270</tstamps>
+    </comp>
+    <comp ref="TP1">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Loop_D2.50mm_Drill1.85mm</footprint>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="test point"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d92efbfd-bd65-4666-8806-43b170f7cf11</tstamps>
+    </comp>
+    <comp ref="TP2">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Loop_D2.50mm_Drill1.85mm</footprint>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="test point"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>4e2dbc79-5a1f-4b2a-8537-d8d9547586dd</tstamps>
+    </comp>
+    <comp ref="TP3">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Loop_D2.50mm_Drill1.85mm</footprint>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="test point"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>4dd0b255-5ff8-441b-a4e7-8372ea699ab2</tstamps>
+    </comp>
+    <comp ref="TP4">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Loop_D2.50mm_Drill1.85mm</footprint>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="test point"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>3e5a4f3c-8700-4793-8629-483f94e68c72</tstamps>
+    </comp>
+    <comp ref="TP5">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Loop_D2.50mm_Drill1.85mm</footprint>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="test point"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>6cc0d271-148d-4e93-9dc6-249ccb8c65d7</tstamps>
+    </comp>
+    <comp ref="TP6">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Loop_D2.50mm_Drill1.85mm</footprint>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="test point"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ddfdb4f4-655b-4eb1-9302-248acb3f54c3</tstamps>
+    </comp>
+    <comp ref="TP7">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Loop_D2.50mm_Drill1.85mm</footprint>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="test point"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>01bb54e8-6ad6-49d9-a298-b22a5d6f4524</tstamps>
+    </comp>
+    <comp ref="TP8">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Loop_D2.50mm_Drill1.85mm</footprint>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="test point"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a4dfd0d9-8a7e-436b-b12e-d7d1c19d8fc3</tstamps>
+    </comp>
+    <comp ref="TP9">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Loop_D2.50mm_Drill1.85mm</footprint>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="test point"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e589bf94-ea03-47a2-b7d2-f86b00c34e3b</tstamps>
+    </comp>
+    <comp ref="TP10">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Loop_D2.50mm_Drill1.85mm</footprint>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="test point"/>
+      <property name="ki_keywords" value="test point tp"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2cebe195-f58b-4240-913b-a8fbf423188d</tstamps>
+    </comp>
+    <comp ref="U1">
+      <value>MIC5504-3.3YM5</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23-5</footprint>
+      <datasheet>http://ww1.microchip.com/downloads/en/DeviceDoc/MIC550X.pdf</datasheet>
+      <libsource lib="Regulator_Linear" part="MIC5504-3.3YM5" description="300mA Low-dropout Voltage Regulator, Vout 3.3V, Vin up to 5.5V, SOT-23"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="300mA Low-dropout Voltage Regulator, Vout 3.3V, Vin up to 5.5V, SOT-23"/>
+      <property name="ki_keywords" value="Micrel LDO voltage regulator"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7bfac6cf-e2c9-4e48-8524-cce27da6e76e</tstamps>
+    </comp>
+    <comp ref="U2">
+      <value>STM32G030F6Px</value>
+      <footprint>Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm</footprint>
+      <datasheet>https://www.st.com/resource/en/datasheet/stm32g030f6.pdf</datasheet>
+      <libsource lib="MCU_ST_STM32G0" part="STM32G030F6Px" description="STMicroelectronics Arm Cortex-M0+ MCU, 32KB flash, 8KB RAM, 64 MHz, 2.0-3.6V, 17 GPIO, TSSOP20"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <property name="ki_description" value="STMicroelectronics Arm Cortex-M0+ MCU, 32KB flash, 8KB RAM, 64 MHz, 2.0-3.6V, 17 GPIO, TSSOP20"/>
+      <property name="ki_keywords" value="Arm Cortex-M0+ STM32G0 STM32G0x0 Value line"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d496ea78-b82a-411b-bbc7-b3062371f386</tstamps>
+    </comp>
+    <comp ref="U3">
+      <value>~</value>
+      <footprint>Package_SO:SOIC-14_3.9x8.7mm_P1.27mm</footprint>
+      <datasheet>https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP6486-Family-Data-Sheet-DS20006679.pdf</datasheet>
+      <libsource lib="RTOS_POD" part="MCP6489-E/SL" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="462FinalProject.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>f676f9eb-2375-4542-a7ce-3e4d70f37f99 f540cb14-8a15-4ce8-89b6-c097a5a2ea28 f7852c86-b1f7-4e6d-9a6d-d06d56dcfb76 87709f0d-a72b-4836-b3a1-0557e2a7467f</tstamps>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="BSS84AK_215" part="BSS84AK,215">
+      <description>BSS84AK,215 P-Channel MOSFET, 180 mA, 50 V, 3-Pin SOT-23 Nexperia</description>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">BSS84AK,215</field>
+        <field name="Footprint">SOT95P230X110-3N</field>
+        <field name="Height">1.1</field>
+        <field name="Mouser Part Number">771-BSS84AK215</field>
+        <field name="Mouser Price/Stock">https://www.mouser.co.uk/ProductDetail/Nexperia/BSS84AK215?qs=A1cBxND5mHJndJgHJTE1yg%3D%3D</field>
+        <field name="Manufacturer_Name">Nexperia</field>
+        <field name="Manufacturer_Part_Number">BSS84AK,215</field>
+      </fields>
+      <pins>
+        <pin num="1" name="G" type="passive"/>
+        <pin num="2" name="S" type="passive"/>
+        <pin num="3" name="D" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="Conn_01x03_Pin">
+      <description>Generic connector, single row, 01x03, script generated</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x03_Pin</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="Conn_01x04_Pin">
+      <description>Generic connector, single row, 01x04, script generated</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x04_Pin</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="TestPoint">
+      <description>test point</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Pin*</fp>
+        <fp>Test*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">TP</field>
+        <field name="Value">TestPoint</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="USB_B_Micro">
+      <description>USB Micro Type B connector</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>USB*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">USB_B_Micro</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VBUS" type="power_out"/>
+        <pin num="2" name="D-" type="bidirectional"/>
+        <pin num="3" name="D+" type="bidirectional"/>
+        <pin num="4" name="ID" type="passive"/>
+        <pin num="5" name="GND" type="power_out"/>
+        <pin num="6" name="Shield" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C_Small">
+      <description>Unpolarized capacitor, small symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_Small</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="L">
+      <description>Inductor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Choke_*</fp>
+        <fp>*Coil*</fp>
+        <fp>Inductor_*</fp>
+        <fp>L_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">L</field>
+        <field name="Value">L</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="Q_NMOS_GSD">
+      <description>N-MOSFET transistor, gate/source/drain</description>
+      <docs>~</docs>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">Q_NMOS_GSD</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="G" type="input"/>
+        <pin num="2" name="S" type="passive"/>
+        <pin num="3" name="D" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R">
+      <description>Resistor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R_Pack04_Split">
+      <description>4 resistor network, parallel topology, split</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>DIP*</fp>
+        <fp>SOIC*</fp>
+        <fp>R*Array*Concave*</fp>
+        <fp>R*Array*Convex*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">RN</field>
+        <field name="Value">R_Pack04_Split</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="R1.1" type="passive"/>
+        <pin num="2" name="R2.1" type="passive"/>
+        <pin num="3" name="R3.1" type="passive"/>
+        <pin num="4" name="R4.1" type="passive"/>
+        <pin num="5" name="R4.2" type="passive"/>
+        <pin num="6" name="R3.2" type="passive"/>
+        <pin num="7" name="R2.2" type="passive"/>
+        <pin num="8" name="R1.2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Diode" part="1N5711">
+      <description>70V 33mA Schottky diode, DO-35</description>
+      <docs>https://www.microsemi.com/document-portal/doc_download/8865-lds-0040-datasheet</docs>
+      <footprints>
+        <fp>D*DO?35*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">1N5711</field>
+        <field name="Footprint">Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal</field>
+        <field name="Datasheet">https://www.microsemi.com/document-portal/doc_download/8865-lds-0040-datasheet</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="MCU_ST_STM32G0" part="STM32G030F6Px">
+      <description>STMicroelectronics Arm Cortex-M0+ MCU, 32KB flash, 8KB RAM, 64 MHz, 2.0-3.6V, 17 GPIO, TSSOP20</description>
+      <docs>https://www.st.com/resource/en/datasheet/stm32g030f6.pdf</docs>
+      <footprints>
+        <fp>TSSOP*4.4x6.5mm*P0.65mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">STM32G030F6Px</field>
+        <field name="Footprint">Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm</field>
+        <field name="Datasheet">https://www.st.com/resource/en/datasheet/stm32g030f6.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="PB7/PB8" type="bidirectional"/>
+        <pin num="2" name="PC14/PB9" type="bidirectional"/>
+        <pin num="3" name="PC15" type="bidirectional"/>
+        <pin num="4" name="VDD" type="power_in"/>
+        <pin num="5" name="VSS" type="power_in"/>
+        <pin num="6" name="NRST" type="input"/>
+        <pin num="7" name="PA0" type="bidirectional"/>
+        <pin num="8" name="PA1" type="bidirectional"/>
+        <pin num="9" name="PA2" type="bidirectional"/>
+        <pin num="10" name="PA3" type="bidirectional"/>
+        <pin num="11" name="PA4" type="bidirectional"/>
+        <pin num="12" name="PA5" type="bidirectional"/>
+        <pin num="13" name="PA6" type="bidirectional"/>
+        <pin num="14" name="PA7" type="bidirectional"/>
+        <pin num="15" name="PB0/PB1/PB2/PA8" type="bidirectional"/>
+        <pin num="16" name="PA11/PA9" type="bidirectional"/>
+        <pin num="17" name="PA12/PA10" type="bidirectional"/>
+        <pin num="18" name="PA13" type="bidirectional"/>
+        <pin num="19" name="PA14/PA15" type="bidirectional"/>
+        <pin num="20" name="PB3/PB4/PB5/PB6" type="bidirectional"/>
+      </pins>
+    </libpart>
+    <libpart lib="RTOS_POD" part="MCP6489-E/SL">
+      <docs>https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP6486-Family-Data-Sheet-DS20006679.pdf</docs>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Footprint">Package_SO:SOIC-14_3.9x8.7mm_P1.27mm</field>
+        <field name="Datasheet">https://ww1.microchip.com/downloads/aemDocuments/documents/MSLD/ProductDocuments/DataSheets/MCP6486-Family-Data-Sheet-DS20006679.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="OUTA" type="output"/>
+        <pin num="2" name="INA-" type="input"/>
+        <pin num="3" name="INA+" type="input"/>
+        <pin num="4" name="VDD" type="power_in"/>
+        <pin num="5" name="INB+" type="input"/>
+        <pin num="6" name="INB-" type="input"/>
+        <pin num="7" name="OUTB" type="output"/>
+        <pin num="8" name="OUTA" type="output"/>
+        <pin num="9" name="INC-" type="input"/>
+        <pin num="10" name="INC+" type="input"/>
+        <pin num="11" name="VSS" type="power_in"/>
+        <pin num="12" name="IND+" type="input"/>
+        <pin num="13" name="IND-" type="input"/>
+        <pin num="14" name="OUTD" type="output"/>
+      </pins>
+    </libpart>
+    <libpart lib="Regulator_Linear" part="MIC5504-3.3YM5">
+      <description>300mA Low-dropout Voltage Regulator, Vout 3.3V, Vin up to 5.5V, SOT-23</description>
+      <docs>http://ww1.microchip.com/downloads/en/DeviceDoc/MIC550X.pdf</docs>
+      <footprints>
+        <fp>SOT?23?5*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">MIC5504-3.3YM5</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23-5</field>
+        <field name="Datasheet">http://ww1.microchip.com/downloads/en/DeviceDoc/MIC550X.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VIN" type="power_in"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="EN" type="input"/>
+        <pin num="4" name="NC" type="no_connect"/>
+        <pin num="5" name="VOUT" type="power_out"/>
+      </pins>
+    </libpart>
+    <libpart lib="SRR1205-500YL" part="SRR1205-500YL">
+      <description>Fixed Inductors 50uH 15% SMD 1205</description>
+      <docs>https://www.bourns.com/data/global/pdfs/SRR1205.pdf</docs>
+      <fields>
+        <field name="Reference">L</field>
+        <field name="Value">SRR1205-500YL</field>
+        <field name="Footprint">SRR1205500YL</field>
+        <field name="Datasheet">https://www.bourns.com/data/global/pdfs/SRR1205.pdf</field>
+        <field name="Height">5.5</field>
+        <field name="Mouser Part Number">652-SRR1205-500YL</field>
+        <field name="Mouser Price/Stock">https://www.mouser.co.uk/ProductDetail/Bourns/SRR1205-500YL?qs=iR9JlTGiDnVu0txHEBsynw%3D%3D</field>
+        <field name="Manufacturer_Name">Bourns</field>
+        <field name="Manufacturer_Part_Number">SRR1205-500YL</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="TPS562231DRLR" part="TPS562231DRLR">
+      <description>4.5-V to 17-V input, 2-A output, synchronous step-down converter</description>
+      <docs>http://www.ti.com/lit/gpn/TPS562231</docs>
+      <fields>
+        <field name="Reference">IC</field>
+        <field name="Value">TPS562231DRLR</field>
+        <field name="Footprint">SOTFL50P160X60-6N</field>
+        <field name="Datasheet">http://www.ti.com/lit/gpn/TPS562231</field>
+        <field name="Height">0.6</field>
+        <field name="Mouser Part Number">595-TPS562231DRLR</field>
+        <field name="Mouser Price/Stock">https://www.mouser.co.uk/ProductDetail/Texas-Instruments/TPS562231DRLR?qs=l4Gc20tDgJK5KnXgCyg0Bw%3D%3D</field>
+        <field name="Manufacturer_Name">Texas Instruments</field>
+        <field name="Manufacturer_Part_Number">TPS562231DRLR</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VIN" type="passive"/>
+        <pin num="2" name="SW" type="passive"/>
+        <pin num="3" name="GND" type="passive"/>
+        <pin num="4" name="BST" type="passive"/>
+        <pin num="5" name="EN" type="passive"/>
+        <pin num="6" name="FB" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="BSS84AK_215">
+      <uri>/home/jkmunson/workspace/win24/RTOS_POD/BatteryCharger/BSS84AK_215.kicad_sym</uri>
+    </library>
+    <library logical="Connector">
+      <uri>/app/extensions/Library/symbols//Connector.kicad_sym</uri>
+    </library>
+    <library logical="Device">
+      <uri>/app/extensions/Library/symbols//Device.kicad_sym</uri>
+    </library>
+    <library logical="Diode">
+      <uri>/app/extensions/Library/symbols//Diode.kicad_sym</uri>
+    </library>
+    <library logical="MCU_ST_STM32G0">
+      <uri>/app/extensions/Library/symbols//MCU_ST_STM32G0.kicad_sym</uri>
+    </library>
+    <library logical="RTOS_POD">
+      <uri>/home/jkmunson/workspace/win24/RTOS_POD/BatteryCharger/RTOS_POD.kicad_sym</uri>
+    </library>
+    <library logical="Regulator_Linear">
+      <uri>/app/extensions/Library/symbols//Regulator_Linear.kicad_sym</uri>
+    </library>
+    <library logical="SRR1205-500YL">
+      <uri>/home/jkmunson/workspace/win24/RTOS_POD/BatteryCharger/SRR1205-500YL.kicad_sym</uri>
+    </library>
+    <library logical="TPS562231DRLR">
+      <uri>/home/jkmunson/workspace/win24/RTOS_POD/BatteryCharger/TPS562231DRLR.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="3.3v Battery">
+      <node ref="C5" pin="2" pintype="passive"/>
+      <node ref="J4" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="L2" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="R5" pin="1" pintype="passive"/>
+    </net>
+    <net code="2" name="ADC_Current">
+      <node ref="R9" pin="2" pintype="passive"/>
+      <node ref="U2" pin="11" pinfunction="PA4" pintype="bidirectional"/>
+      <node ref="U3" pin="1" pinfunction="OUTA" pintype="output"/>
+    </net>
+    <net code="3" name="ADC_v-to-c">
+      <node ref="Q1" pin="2" pinfunction="S" pintype="passive"/>
+      <node ref="Q2" pin="2" pinfunction="S" pintype="passive"/>
+      <node ref="R1" pin="1" pintype="passive"/>
+      <node ref="RN2" pin="1" pinfunction="R1.1" pintype="passive"/>
+      <node ref="RN2" pin="7" pinfunction="R2.2" pintype="passive"/>
+      <node ref="U3" pin="3" pinfunction="INA+" pintype="input"/>
+    </net>
+    <net code="4" name="BST">
+      <node ref="C4" pin="2" pintype="passive"/>
+      <node ref="IC1" pin="4" pinfunction="BST" pintype="passive"/>
+    </net>
+    <net code="5" name="FB">
+      <node ref="IC1" pin="6" pinfunction="FB" pintype="passive"/>
+      <node ref="R5" pin="2" pintype="passive"/>
+      <node ref="RN2" pin="6" pinfunction="R3.2" pintype="passive"/>
+    </net>
+    <net code="6" name="GND">
+      <node ref="C1" pin="1" pintype="passive"/>
+      <node ref="C2" pin="1" pintype="passive"/>
+      <node ref="C3" pin="1" pintype="passive"/>
+      <node ref="C5" pin="1" pintype="passive"/>
+      <node ref="C6" pin="1" pintype="passive"/>
+      <node ref="D5" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="IC1" pin="3" pinfunction="GND" pintype="passive"/>
+      <node ref="J3" pin="5" pinfunction="GND" pintype="power_out"/>
+      <node ref="J3" pin="6" pinfunction="Shield" pintype="passive"/>
+      <node ref="J5" pin="4" pinfunction="Pin_4" pintype="passive"/>
+      <node ref="Q3" pin="2" pinfunction="S" pintype="passive"/>
+      <node ref="Q4" pin="2" pinfunction="S" pintype="passive"/>
+      <node ref="Q9" pin="2" pinfunction="S" pintype="passive"/>
+      <node ref="R1" pin="2" pintype="passive"/>
+      <node ref="R10" pin="1" pintype="passive"/>
+      <node ref="RN1" pin="6" pinfunction="R3.2" pintype="passive"/>
+      <node ref="RN1" pin="8" pinfunction="R1.2" pintype="passive"/>
+      <node ref="RN2" pin="3" pinfunction="R3.1" pintype="passive"/>
+      <node ref="RN2" pin="4" pinfunction="R4.1" pintype="passive"/>
+      <node ref="U1" pin="2" pinfunction="GND" pintype="power_in"/>
+      <node ref="U2" pin="5" pinfunction="VSS" pintype="power_in"/>
+      <node ref="U3" pin="10" pinfunction="INC+" pintype="input"/>
+      <node ref="U3" pin="11" pinfunction="VSS" pintype="power_in"/>
+      <node ref="U3" pin="12" pinfunction="IND+" pintype="input"/>
+      <node ref="U3" pin="5" pinfunction="INB+" pintype="input"/>
+    </net>
+    <net code="7" name="LiPO High">
+      <node ref="C6" pin="2" pintype="passive"/>
+      <node ref="D7" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="IC1" pin="1" pinfunction="VIN" pintype="passive"/>
+      <node ref="IC1" pin="5" pinfunction="EN" pintype="passive"/>
+      <node ref="J2" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="J4" pin="3" pinfunction="Pin_3" pintype="passive"/>
+    </net>
+    <net code="8" name="LiPO Low">
+      <node ref="D1" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="J2" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="J4" pin="1" pinfunction="Pin_1" pintype="passive"/>
+    </net>
+    <net code="9" name="LiPO Mid">
+      <node ref="J2" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="Q2" pin="3" pinfunction="D" pintype="passive"/>
+      <node ref="Q6" pin="2" pinfunction="S" pintype="passive"/>
+    </net>
+    <net code="10" name="LiPO1_Control">
+      <node ref="Q1" pin="1" pinfunction="G" pintype="input"/>
+      <node ref="Q9" pin="1" pinfunction="G" pintype="input"/>
+      <node ref="RN1" pin="1" pinfunction="R1.1" pintype="passive"/>
+      <node ref="RN2" pin="2" pinfunction="R2.1" pintype="passive"/>
+      <node ref="U2" pin="13" pinfunction="PA6" pintype="bidirectional"/>
+    </net>
+    <net code="11" name="LiPO2_Control">
+      <node ref="Q2" pin="1" pinfunction="G" pintype="input"/>
+      <node ref="Q4" pin="1" pinfunction="G" pintype="input"/>
+      <node ref="RN1" pin="3" pinfunction="R3.1" pintype="passive"/>
+      <node ref="RN2" pin="8" pinfunction="R1.2" pintype="passive"/>
+      <node ref="U2" pin="14" pinfunction="PA7" pintype="bidirectional"/>
+    </net>
+    <net code="12" name="MCU Vdd">
+      <node ref="C2" pin="2" pintype="passive"/>
+      <node ref="C3" pin="2" pintype="passive"/>
+      <node ref="U1" pin="5" pinfunction="VOUT" pintype="power_out"/>
+      <node ref="U2" pin="4" pinfunction="VDD" pintype="power_in"/>
+    </net>
+    <net code="13" name="NRST">
+      <node ref="J5" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="U2" pin="6" pinfunction="NRST" pintype="input"/>
+    </net>
+    <net code="14" name="Net-(D1-K)">
+      <node ref="D1" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="Q1" pin="3" pinfunction="D" pintype="passive"/>
+    </net>
+    <net code="15" name="Net-(D5-K)">
+      <node ref="D5" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="L1" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="Q7" pin="2" pinfunction="S" pintype="passive"/>
+    </net>
+    <net code="16" name="Net-(D7-A)">
+      <node ref="D7" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="Q8" pin="2" pinfunction="S" pintype="passive"/>
+    </net>
+    <net code="17" name="Net-(Q3-D)">
+      <node ref="Q3" pin="3" pinfunction="D" pintype="passive"/>
+      <node ref="Q7" pin="1" pinfunction="G" pintype="passive"/>
+      <node ref="R12" pin="1" pintype="passive"/>
+    </net>
+    <net code="18" name="Net-(Q4-D)">
+      <node ref="Q4" pin="3" pinfunction="D" pintype="passive"/>
+      <node ref="Q8" pin="1" pinfunction="G" pintype="passive"/>
+      <node ref="RN1" pin="4" pinfunction="R4.1" pintype="passive"/>
+    </net>
+    <net code="19" name="Net-(Q6-G)">
+      <node ref="Q6" pin="1" pinfunction="G" pintype="passive"/>
+      <node ref="Q9" pin="3" pinfunction="D" pintype="passive"/>
+      <node ref="RN1" pin="7" pinfunction="R2.2" pintype="passive"/>
+    </net>
+    <net code="20" name="Net-(U1-EN)">
+      <node ref="R4" pin="1" pintype="passive"/>
+      <node ref="U1" pin="3" pinfunction="EN" pintype="input"/>
+    </net>
+    <net code="21" name="Net-(U3A-INA-)">
+      <node ref="R10" pin="2" pintype="passive"/>
+      <node ref="R9" pin="1" pintype="passive"/>
+      <node ref="U3" pin="2" pinfunction="INA-" pintype="input"/>
+    </net>
+    <net code="22" name="Net-(U3B-INB-)">
+      <node ref="U3" pin="6" pinfunction="INB-" pintype="input"/>
+      <node ref="U3" pin="7" pinfunction="OUTB" pintype="output"/>
+    </net>
+    <net code="23" name="Net-(U3C-INC-)">
+      <node ref="U3" pin="8" pinfunction="OUTA" pintype="output"/>
+      <node ref="U3" pin="9" pinfunction="INC-" pintype="input"/>
+    </net>
+    <net code="24" name="Net-(U3D-IND-)">
+      <node ref="U3" pin="13" pinfunction="IND-" pintype="input"/>
+      <node ref="U3" pin="14" pinfunction="OUTD" pintype="output"/>
+    </net>
+    <net code="25" name="PA0_MCU">
+      <node ref="TP1" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U2" pin="7" pinfunction="PA0" pintype="bidirectional"/>
+    </net>
+    <net code="26" name="PA1_MCU">
+      <node ref="TP2" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U2" pin="8" pinfunction="PA1" pintype="bidirectional"/>
+    </net>
+    <net code="27" name="PA2_MCU">
+      <node ref="TP3" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U2" pin="9" pinfunction="PA2" pintype="bidirectional"/>
+    </net>
+    <net code="28" name="PA3_MCU">
+      <node ref="TP4" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U2" pin="10" pinfunction="PA3" pintype="bidirectional"/>
+    </net>
+    <net code="29" name="PA11_PA9_MCU">
+      <node ref="TP5" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U2" pin="16" pinfunction="PA11/PA9" pintype="bidirectional"/>
+    </net>
+    <net code="30" name="PA12_PA10_MCU">
+      <node ref="TP6" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U2" pin="17" pinfunction="PA12/PA10" pintype="bidirectional"/>
+    </net>
+    <net code="31" name="PB3_PB4_PB5P_PB6_MCU">
+      <node ref="TP9" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U2" pin="20" pinfunction="PB3/PB4/PB5/PB6" pintype="bidirectional"/>
+    </net>
+    <net code="32" name="PB7_PB8_MCU">
+      <node ref="TP10" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U2" pin="1" pinfunction="PB7/PB8" pintype="bidirectional"/>
+    </net>
+    <net code="33" name="PC14_PB9_MCU">
+      <node ref="TP7" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U2" pin="2" pinfunction="PC14/PB9" pintype="bidirectional"/>
+    </net>
+    <net code="34" name="PC15_MCU">
+      <node ref="TP8" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U2" pin="3" pinfunction="PC15" pintype="bidirectional"/>
+    </net>
+    <net code="35" name="SW">
+      <node ref="C4" pin="1" pintype="passive"/>
+      <node ref="IC1" pin="2" pinfunction="SW" pintype="passive"/>
+      <node ref="L2" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="36" name="SWCLK">
+      <node ref="J5" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="U2" pin="19" pinfunction="PA14/PA15" pintype="bidirectional"/>
+    </net>
+    <net code="37" name="SWDIO">
+      <node ref="J5" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="U2" pin="18" pinfunction="PA13" pintype="bidirectional"/>
+    </net>
+    <net code="38" name="Switch_Regulated_V">
+      <node ref="D6" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="L1" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="Q6" pin="3" pinfunction="D" pintype="passive"/>
+      <node ref="Q8" pin="3" pinfunction="D" pintype="passive"/>
+      <node ref="U2" pin="12" pinfunction="PA5" pintype="bidirectional"/>
+    </net>
+    <net code="39" name="Switch_Regulator_PWM">
+      <node ref="Q3" pin="1" pinfunction="G" pintype="input"/>
+      <node ref="RN2" pin="5" pinfunction="R4.2" pintype="passive"/>
+      <node ref="U2" pin="15" pinfunction="PB0/PB1/PB2/PA8" pintype="bidirectional"/>
+    </net>
+    <net code="40" name="USB Vdc">
+      <node ref="C1" pin="2" pintype="passive"/>
+      <node ref="D6" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="J3" pin="1" pinfunction="VBUS" pintype="power_out"/>
+      <node ref="Q7" pin="3" pinfunction="D" pintype="passive"/>
+      <node ref="R12" pin="2" pintype="passive"/>
+      <node ref="R4" pin="2" pintype="passive"/>
+      <node ref="RN1" pin="2" pinfunction="R2.1" pintype="passive"/>
+      <node ref="RN1" pin="5" pinfunction="R4.2" pintype="passive"/>
+      <node ref="U1" pin="1" pinfunction="VIN" pintype="power_in"/>
+      <node ref="U3" pin="4" pinfunction="VDD" pintype="power_in"/>
+    </net>
+    <net code="41" name="unconnected-(J3-D+-Pad3)">
+      <node ref="J3" pin="3" pinfunction="D+" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="42" name="unconnected-(J3-D--Pad2)">
+      <node ref="J3" pin="2" pinfunction="D-" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="43" name="unconnected-(J3-ID-Pad4)">
+      <node ref="J3" pin="4" pinfunction="ID" pintype="passive+no_connect"/>
+    </net>
+    <net code="44" name="unconnected-(U1-NC-Pad4)">
+      <node ref="U1" pin="4" pinfunction="NC" pintype="no_connect"/>
+    </net>
+  </nets>
+</export>
