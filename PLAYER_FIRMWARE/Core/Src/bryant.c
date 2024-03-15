@@ -3,7 +3,6 @@
 #include <string.h>
 #include "wav.h"
 #include "main.h"
-#include "cmsis_os.h"
 #include "app_fatfs.h"
 #include <stdio.h>
 #include "fonts.h"
@@ -168,7 +167,31 @@ done :
     return;
 }
 
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  if(htim->Instance == TIM2)
+  {
+	  if (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2) == GPIO_PIN_RESET)
+	  {
+	   if (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_4) == GPIO_PIN_RESET)
+	   {
+	    while (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_4) == GPIO_PIN_RESET){};
+	    counter--;
+	    while (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2) == GPIO_PIN_RESET){};
+	   }
+	  }
 
+	   else {
+		   if (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_4) == GPIO_PIN_RESET)
+		   	  {
+	    counter++;
+	    while (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_4) == GPIO_PIN_RESET){};
+	    while (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2) == GPIO_PIN_RESET){};
+		   	  }
+	   }
+  }
+
+}
 void bryant_main(void *ignore) {
 
 
