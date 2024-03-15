@@ -51,7 +51,6 @@ ADC_HandleTypeDef hadc4;
 ADC_HandleTypeDef hadc5;
 
 DAC_HandleTypeDef hdac1;
-DAC_HandleTypeDef hdac2;
 DAC_HandleTypeDef hdac3;
 DAC_HandleTypeDef hdac4;
 DMA_HandleTypeDef hdma_dac1_ch1;
@@ -90,7 +89,6 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_DMA_Init(void);
 static void MX_DAC1_Init(void);
-static void MX_DAC2_Init(void);
 static void MX_DAC3_Init(void);
 static void MX_DAC4_Init(void);
 static void MX_OPAMP1_Init(void);
@@ -164,7 +162,6 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_DAC1_Init();
-  MX_DAC2_Init();
   MX_DAC3_Init();
   MX_DAC4_Init();
   MX_OPAMP1_Init();
@@ -656,53 +653,6 @@ static void MX_DAC1_Init(void)
   /* USER CODE BEGIN DAC1_Init 2 */
 
   /* USER CODE END DAC1_Init 2 */
-
-}
-
-/**
-  * @brief DAC2 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_DAC2_Init(void)
-{
-
-  /* USER CODE BEGIN DAC2_Init 0 */
-
-  /* USER CODE END DAC2_Init 0 */
-
-  DAC_ChannelConfTypeDef sConfig = {0};
-
-  /* USER CODE BEGIN DAC2_Init 1 */
-
-  /* USER CODE END DAC2_Init 1 */
-
-  /** DAC Initialization
-  */
-  hdac2.Instance = DAC2;
-  if (HAL_DAC_Init(&hdac2) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-  /** DAC channel OUT1 config
-  */
-  sConfig.DAC_HighFrequency = DAC_HIGH_FREQUENCY_INTERFACE_MODE_AUTOMATIC;
-  sConfig.DAC_DMADoubleDataMode = DISABLE;
-  sConfig.DAC_SignedFormat = DISABLE;
-  sConfig.DAC_SampleAndHold = DAC_SAMPLEANDHOLD_DISABLE;
-  sConfig.DAC_Trigger = DAC_TRIGGER_NONE;
-  sConfig.DAC_Trigger2 = DAC_TRIGGER_NONE;
-  sConfig.DAC_OutputBuffer = DAC_OUTPUTBUFFER_ENABLE;
-  sConfig.DAC_ConnectOnChipPeripheral = DAC_CHIPCONNECT_EXTERNAL;
-  sConfig.DAC_UserTrimming = DAC_TRIMMING_FACTORY;
-  if (HAL_DAC_ConfigChannel(&hdac2, &sConfig, DAC_CHANNEL_1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN DAC2_Init 2 */
-
-  /* USER CODE END DAC2_Init 2 */
 
 }
 
@@ -1354,7 +1304,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOC, MICRO_SD_CS_Pin|AUD_GREEN_L_OUTPUT_EN_Pin|AUD_GREEN_R_OUTPUT_EN_Pin|ROT_B_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(TFT_SPI_DC_GPIO_Port, TFT_SPI_DC_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, TFT_SPI_DC_Pin|GPIO_PIN_6, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : TFT_NRST_Pin */
   GPIO_InitStruct.Pin = TFT_NRST_Pin;
@@ -1397,12 +1347,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : TFT_SPI_DC_Pin */
-  GPIO_InitStruct.Pin = TFT_SPI_DC_Pin;
+  /*Configure GPIO pins : TFT_SPI_DC_Pin PA6 */
+  GPIO_InitStruct.Pin = TFT_SPI_DC_Pin|GPIO_PIN_6;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(TFT_SPI_DC_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */

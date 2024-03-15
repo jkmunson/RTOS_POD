@@ -221,7 +221,7 @@ void FSMtest(){
 		  viewDirectory = true;
 		  break;
 	  default:
-
+		  break;
 	  }
 }
 

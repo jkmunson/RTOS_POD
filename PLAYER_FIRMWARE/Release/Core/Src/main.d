@@ -56,7 +56,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h \
  ../Middlewares/Third_Party/FatFs/src/diskio.h \
  ../Middlewares/Third_Party/FatFs/src/ff.h ../FATFS/Target/user_diskio.h \
- ../Core/Inc/jeremy.h ../Core/Inc/bryant.h ../Core/Inc/braeden.h
+ ../Core/Inc/jeremy.h ../Core/Inc/wyatt.h ../Core/Inc/bryant.h \
+ ../Core/Inc/braeden.h
 ../Core/Inc/main.h:
 ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:
 ../Core/Inc/stm32g4xx_hal_conf.h:
@@ -119,5 +120,6 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Middlewares/Third_Party/FatFs/src/ff.h:
 ../FATFS/Target/user_diskio.h:
 ../Core/Inc/jeremy.h:
+../Core/Inc/wyatt.h:
 ../Core/Inc/bryant.h:
 ../Core/Inc/braeden.h:
