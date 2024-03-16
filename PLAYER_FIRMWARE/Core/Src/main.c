@@ -121,12 +121,12 @@ void StartDefaultTask(void *argument);
 #include "wyatt.h"
 //void wyatt_main(void *ignore){vTaskDelete(NULL);}; //temporary measure
 #include "bryant.h"
-#include "braeden.h"
+//#include "braeden.h"
 
-uint8_t __attribute__((section(".sram1_low"))) wyatt_memspace[4096];
-uint8_t __attribute__((section(".sram1_low"))) bryant_memspace[4096];
-uint8_t __attribute__((section(".sram1_low"))) braeden_memspace[4096];
-uint8_t __attribute__((section(".sram1_low"))) jeremy_memspace[4096];
+uint8_t __attribute__((section(".sram2"))) wyatt_memspace[4096];
+uint8_t __attribute__((section(".sram2"))) bryant_memspace[4096];
+//uint8_t __attribute__((section(".sram1_low"))) braeden_memspace[4096];
+uint8_t __attribute__((section(".sram2"))) jeremy_memspace[4096];
 
 uint8_t __attribute__((section(".sram1_upper"))) audio_buffer[AUD_BUFFER_SIZE]; //48k
 
@@ -217,7 +217,7 @@ int main(void)
   xTaskCreateStatic(wyatt_main, 	"wyatt_main_thread", 	1024, NULL, 5, (StackType_t *)wyatt_memspace, 	&threads[0]);
   xTaskCreateStatic(jeremy_main, 	"jeremy_main_thread", 	1024, NULL, 5, (StackType_t *)jeremy_memspace, 	&threads[1]);
   xTaskCreateStatic(bryant_main, 	"bryant_main_thread", 	1024, NULL, 5, (StackType_t *)bryant_memspace, 	&threads[2]);
-  xTaskCreateStatic(braeden_main, 	"braeden_main_thread", 	1024, NULL, 5, (StackType_t *)braeden_memspace, &threads[3]);
+  //xTaskCreateStatic(braeden_main, 	"braeden_main_thread", 	1024, NULL, 5, (StackType_t *)braeden_memspace, &threads[3]);
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_EVENTS */
@@ -981,7 +981,7 @@ static void MX_SPI2_Init(void)
   hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi2.Init.NSS = SPI_NSS_HARD_OUTPUT;
-  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4;
+  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_16;
   hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -1021,7 +1021,7 @@ static void MX_SPI3_Init(void)
   hspi3.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi3.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi3.Init.NSS = SPI_NSS_SOFT;
-  hspi3.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4;
+  hspi3.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_16;
   hspi3.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi3.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi3.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -1061,7 +1061,7 @@ static void MX_SPI4_Init(void)
   hspi4.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi4.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi4.Init.NSS = SPI_NSS_HARD_OUTPUT;
-  hspi4.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4;
+  hspi4.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_64;
   hspi4.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi4.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi4.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -1226,7 +1226,7 @@ static void MX_USART3_Init(void)
 
   /* USER CODE END USART3_Init 1 */
   husart3.Instance = USART3;
-  husart3.Init.BaudRate = 8000000;
+  husart3.Init.BaudRate = 1000000;
   husart3.Init.WordLength = USART_WORDLENGTH_8B;
   husart3.Init.StopBits = USART_STOPBITS_1;
   husart3.Init.Parity = USART_PARITY_NONE;
@@ -1304,7 +1304,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOC, MICRO_SD_CS_Pin|AUD_GREEN_L_OUTPUT_EN_Pin|AUD_GREEN_R_OUTPUT_EN_Pin|ROT_B_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, TFT_SPI_DC_Pin|GPIO_PIN_6, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, TFT_SPI_DC_Pin|TFT_LED_LEVEL_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : TFT_NRST_Pin */
   GPIO_InitStruct.Pin = TFT_NRST_Pin;
@@ -1347,8 +1347,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : TFT_SPI_DC_Pin PA6 */
-  GPIO_InitStruct.Pin = TFT_SPI_DC_Pin|GPIO_PIN_6;
+  /*Configure GPIO pins : TFT_SPI_DC_Pin TFT_LED_LEVEL_Pin */
+  GPIO_InitStruct.Pin = TFT_SPI_DC_Pin|TFT_LED_LEVEL_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

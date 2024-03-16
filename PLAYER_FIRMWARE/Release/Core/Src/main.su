@@ -1,5 +1,0 @@
-../Core/Src/main.c:1422:6:StartDefaultTask	8	static
-../Core/Src/main.c:248:6:SystemClock_Config	96	static,ignoring_inline_asm
-../Core/Src/main.c:141:5:main	128	static,ignoring_inline_asm
-../Core/Src/main.c:1441:6:HAL_TIM_PeriodElapsedCallback	16	static
-../Core/Src/main.c:1482:6:Error_Handler	0	static,ignoring_inline_asm

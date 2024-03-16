@@ -1,3 +1,0 @@
-../Core/Src/bryant.c:50:13:prepareDACBuffer_8Bit	20	static
-../Core/Src/bryant.c:65:13:prepareDACBuffer_16Bit	20	static
-../Core/Src/bryant.c:172:6:bryant_main	1312	static,ignoring_inline_asm

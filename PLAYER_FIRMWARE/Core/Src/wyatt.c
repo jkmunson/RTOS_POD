@@ -63,56 +63,56 @@ void init() {
 }
 
 void mountFileSystem(){
-	  fres = f_mount(&FatFs, "", 1); //1=mount now
-	  if (fres != FR_OK) {
+	fres = f_mount(&FatFs, "", 1); //1=mount now
+	if (fres != FR_OK) {
 		ILI9341_WriteString(0,0,"f_mount error",Font_11x18,ILI9341_BLACK,ILI9341_WHITE);
 		while(1);
-	  }
+	}
 }
 
 void getSDstats(){
-	  fres = f_getfree("", &free_clusters, &getFreeFs);
-	  if (fres != FR_OK) {
+	fres = f_getfree("", &free_clusters, &getFreeFs);
+	if (fres != FR_OK) {
 		ILI9341_WriteString(0,0,"f_getfree error",Font_11x18,ILI9341_BLACK,ILI9341_WHITE);
 		while(1);
-	  }
+	}
 
-	  //Formula comes from ChaN's documentation
-	  total_sectors = (getFreeFs->n_fatent - 2) * getFreeFs->csize;
-	  free_sectors = free_clusters * getFreeFs->csize;
+	//Formula comes from ChaN's documentation
+	total_sectors = (getFreeFs->n_fatent - 2) * getFreeFs->csize;
+	free_sectors = free_clusters * getFreeFs->csize;
 
-	  uint32_t ts = total_sectors/2;
-	  uint32_t fs = free_sectors/2;
-	  char ts_str[20];
-	  char fs_str[20];
-	  sprintf(ts_str, "%u", ts);
-	  sprintf(fs_str, "%u", fs);
+	uint32_t ts = total_sectors/2;
+	uint32_t fs = free_sectors/2;
+	char ts_str[20];
+	char fs_str[20];
+	sprintf(ts_str, "%u", ts);
+	sprintf(fs_str, "%u", fs);
 
-	  ILI9341_WriteString(0,1*SPACER,"KiB total drive space: ",Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
-	  ILI9341_WriteString(160,1*SPACER,ts_str,Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
-	  ILI9341_WriteString(0,2*SPACER,"KiB available: ",Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
-	  ILI9341_WriteString(160,2*SPACER,fs_str,Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
+	ILI9341_WriteString(0,1*SPACER,"KiB total drive space: ",Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
+	ILI9341_WriteString(160,1*SPACER,ts_str,Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
+	ILI9341_WriteString(0,2*SPACER,"KiB available: ",Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
+	ILI9341_WriteString(160,2*SPACER,fs_str,Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
 }
 
 void gatherFileNames(){
-	  fres = f_opendir(&dir, "/");	// open the root directory ("\" = root)
-	  if (fres != FR_OK){
+	fres = f_opendir(&dir, "/");	// open the root directory ("\" = root)
+	if (fres != FR_OK){
 			ILI9341_WriteString(0,10*SPACER, "open directory error",Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
 			while(1);
-	  }
+	}
 
-	  nfile = 0;
-	  for (;;){
-		  fres = f_readdir(&dir, &fno);					// read a directory item
-		  if (fres != FR_OK || fno.fname[0]==0) break;	// Check for error or end of directory
+	nfile = 0;
+	for (;;){
+		fres = f_readdir(&dir, &fno);					// read a directory item
+		if (fres != FR_OK || fno.fname[0]==0) break;	// Check for error or end of directory
 
-		  if (fno.fattrib != AM_DIR) {	// ignore directories
-			  strcpy(*(filenames + nfile), fno.fname);
-			  nfile++;
-		  }
-	  }
+		if (fno.fattrib != AM_DIR) {	// ignore directories
+			strcpy(*(filenames + nfile), fno.fname);
+			nfile++;
+		}
+	}
 
-	  f_closedir(&dir); 		// close directory
+	f_closedir(&dir); 		// close directory
 }
 
 void showFileNames(){
@@ -129,14 +129,14 @@ void showFileNames(){
 }
 
 void checkNewSelection(){
-	  if ((sel_next) & (sel < nfile-1) & (currentState == viewingDirectory)){
-		  sel_next = false;
-		  sel++;
-	  }
-	  if ((sel_prev) & (sel > 1) & (currentState == viewingDirectory)){
-		  sel_prev = false;
-		  sel--;
-	  }
+	if ((sel_next) & (sel < nfile-1) & (currentState == viewingDirectory)){
+		sel_next = false;
+		sel++;
+	}
+	if ((sel_prev) & (sel > 1) & (currentState == viewingDirectory)){
+		sel_prev = false;
+		sel--;
+	}
 }
 
 void showFileContents(){
@@ -191,98 +191,99 @@ void showFileContents(){
 }
 
 void FSMtest(){
-	  /* experiment code */
-	  switch (tick){
-	  case 5:
-		  sel_next = true;
-		  break;
-	  case 10:
-		  readFile = true;
-		  break;
-	  case 15:
-		  viewDirectory = true;
-		  break;
-	  case 20:
-		  sel_next = true;
-		  break;
-	  case 25:
-		  readFile = true;
-		  break;
-	  case 30:
-		  viewDirectory = true;
-		  break;
-	  case 35:
-		  sel_next = true;
-		  break;
-	  case 40:
-		  readFile = true;
-		  break;
-	  case 45:
-		  viewDirectory = true;
-		  break;
-	  default:
-		  break;
-	  }
+	/* experiment code */
+	switch (tick){
+	case 5:
+		sel_next = true;
+		break;
+	case 10:
+		readFile = true;
+		break;
+	case 15:
+		viewDirectory = true;
+		break;
+	case 20:
+		sel_next = true;
+		break;
+	case 25:
+		readFile = true;
+		break;
+	case 30:
+		viewDirectory = true;
+		break;
+	case 35:
+		sel_next = true;
+		break;
+	case 40:
+		readFile = true;
+		break;
+	case 45:
+		viewDirectory = true;
+		break;
+	default:
+		break;
+	}
 }
 
 void wyatt_main(void *ignore) {
-	  init();							// initialize TFT display
-	  ILI9341_DrawImage(0, 0, 320, 240, (const uint16_t*)startup_img_320x240);
-	  osDelay(2000);					// Stall to view intro screen
+	HAL_GPIO_WritePin(TFT_LED_LEVEL_GPIO_Port, TFT_LED_LEVEL_Pin, 1);
+	init();							// initialize TFT display
+	ILI9341_DrawImage(0, 0, 320, 240, (const uint16_t*)startup_img_320x240);
+	osDelay(2000);					// Stall to view intro screen
 
-	  mountFileSystem();				// connect with SD card
-	  getSDstats();						// View total space / available space
-	  osDelay(1000);					// delay to view stats
+	mountFileSystem();				// connect with SD card
+	getSDstats();						// View total space / available space
+	osDelay(1000);					// delay to view stats
 
-	  ILI9341_DrawImage(0, 0, 320, 240, (const uint16_t*)startup_img_320x240);
-	  gatherFileNames();				// gather file names
-	  //f_mount(NULL, "", 0); 			// de-mount drive
+	ILI9341_DrawImage(0, 0, 320, 240, (const uint16_t*)startup_img_320x240);
+	gatherFileNames();				// gather file names
+	//f_mount(NULL, "", 0); 			// de-mount drive
 
-	  nextState = currentState;			// initialize next state
+	nextState = currentState;			// initialize next state
 
 
-	  /* Infinite loop */
-	  for(;;)
-	  {
-		  /* ---------- NEXT STATE LOGIC ---------- */
-		  switch (currentState){
-			  case viewingDirectory:
-				  if (readFile) {
-					  nextState = readingFile;
-					  readFile = viewDirectory = contentsPosted = false;
-				  }
-				  break;
-			  case readingFile:
-				  if (viewDirectory) {
-					  nextState = viewingDirectory;
-					  readFile = viewDirectory = false;
-				  }
-				  break;
-		  }
+	/* Infinite loop */
+	for(;;)
+	{
+		/* ---------- NEXT STATE LOGIC ---------- */
+		switch (currentState){
+			case viewingDirectory:
+				if (readFile) {
+					nextState = readingFile;
+					readFile = viewDirectory = contentsPosted = false;
+				}
+				break;
+			case readingFile:
+				if (viewDirectory) {
+					nextState = viewingDirectory;
+					readFile = viewDirectory = false;
+				}
+				break;
+		}
 
-		  //FSMtest();					// used to change states without hardware
+		//FSMtest();					// used to change states without hardware
 
-		  /* ---------- OUTPUT LOGIC ---------- */
-		  if (currentState == viewingDirectory){
-			  showFileNames();
-		  } else {
-			  if (!contentsPosted){		// Prevents display rewrite redundancy
-				  showFileContents();	// Displays selected file's contents
-			  }
-		  }
+		/* ---------- OUTPUT LOGIC ---------- */
+		if (currentState == viewingDirectory){
+			showFileNames();
+		} else {
+			if (!contentsPosted){		// Prevents display rewrite redundancy
+				showFileContents();	// Displays selected file's contents
+			}
+		}
 
-		  if (currentState != nextState) ILI9341_DrawImage(0, 0, 320, 240, (const uint16_t*)startup_img_320x240); // clear screen for transition
+		if (currentState != nextState) ILI9341_DrawImage(0, 0, 320, 240, (const uint16_t*)startup_img_320x240); // clear screen for transition
 
-		  /* ---------- STATE REGISTER ---------- */
-		  checkNewSelection();			// Adjusts current file selection
-		  currentState = nextState;		// transition to next state
+		/* ---------- STATE REGISTER ---------- */
+		checkNewSelection();			// Adjusts current file selection
+		currentState = nextState;		// transition to next state
 
-		  //sprintf(disp_buf, "ticks: %u", tick);
-		  //ILI9341_WriteString(0,0*SPACER, disp_buf,Font_7x10,MAIN_FONT_COLOR, BG_COLOR);
-		  tick++;
-		  osDelay(500);
-	  }
-	  vTaskSuspend(xTaskGetCurrentTaskHandle()); //LEAVE AT THE END
-	  vTaskDelete(NULL);
+		//sprintf(disp_buf, "ticks: %u", tick);
+		//ILI9341_WriteString(0,0*SPACER, disp_buf,Font_7x10,MAIN_FONT_COLOR, BG_COLOR);
+		tick++;
+		osDelay(500);
+	}
+	vTaskSuspend(xTaskGetCurrentTaskHandle()); //LEAVE AT THE END
+	vTaskDelete(NULL);
 }
 
