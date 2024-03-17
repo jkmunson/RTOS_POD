@@ -1,5 +1,3 @@
 #!/bin/bash
-sudo stty -parenb -F /dev/ttyACM0 2000000 cs8 -cstopb raw
-#921600
+sudo stty -parenb -F /dev/ttyACM0 16000000 cs8 -cstopb raw
 sudo cat /dev/ttyACM0
-#sudo screen /dev/ttyACM0 921600
