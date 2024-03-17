@@ -4,3 +4,4 @@
 /PLAYER_FIRMWARE/Debug/*
 /PLAYER_FIRMWARE/Release/*
 /PLAYER_FIRMWARE/.settings/.*
+player_system/player_system-backups/*
