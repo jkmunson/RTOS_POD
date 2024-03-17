@@ -6,6 +6,9 @@
 #include "stm32g4xx_hal_dma.h"
 #include "stm32g4xx_hal_tim.h"
 #include "main.h"
+#include "console.h"
+
+
 #include <string.h>
 
 extern DMA_HandleTypeDef hdma_dac1_ch1;
@@ -28,6 +31,15 @@ size_t get_audio_buffer_current_index(void){
 }
 
 void jeremy_main(void *ignore) {
+	char buf[75];
+
+
+	while(1){
+		sprintf(buf, "Jeremy: Uptime: %d.%03d\n", xTaskGetTickCount()/1000, xTaskGetTickCount()%1000, audio_dma_current_index);
+		console_write(buf, strlen(buf));
+		vTaskDelay(1007);
+	}
+	/*
 	const char *jeremy_main_msg = "Jeremy: Entered Jeremy Main\n";
 	const char *jeremy_main_cb = "Jeremy: Registered timer callback\n";
 	const char *jeremy_main_dma = "Jeremy: Initiated DMA\n";
@@ -52,7 +64,7 @@ void jeremy_main(void *ignore) {
 		sprintf(buf, "Jeremy: Uptime: %d\n", i, audio_dma_current_index);
 		HAL_UART_Transmit(&huart5, buf, strlen(buf), 0xFFFF);
 		vTaskDelay(1000);
-	}
+	}*/
 	vTaskSuspend(xTaskGetCurrentTaskHandle()); //LEAVE AT THE END
 	vTaskDelete(NULL);
 }

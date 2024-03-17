@@ -23,6 +23,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <string.h>
+
 #include <FreeRTOS.h>
 #include <task.h>
 #include "stm32g4xx_hal.h"
@@ -122,11 +124,13 @@ void StartDefaultTask(void *argument);
 //void wyatt_main(void *ignore){vTaskDelete(NULL);}; //temporary measure
 #include "bryant.h"
 //#include "braeden.h"
+#include "console.h"
 
 uint8_t __attribute__((section(".sram2"))) wyatt_memspace[4096];
 uint8_t __attribute__((section(".sram2"))) bryant_memspace[4096];
 //uint8_t __attribute__((section(".sram1_low"))) braeden_memspace[4096];
 uint8_t __attribute__((section(".sram2"))) jeremy_memspace[4096];
+uint8_t __attribute__((section(".sram2"))) console_memspace[1024];
 
 uint8_t __attribute__((section(".sram1_upper"))) audio_buffer[AUD_BUFFER_SIZE]; //48k
 
@@ -187,6 +191,19 @@ int main(void)
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
+  {
+	  HAL_UART_Transmit(&CONSOLE_UART_HANDLE, "\n\n-------------------------------\n" , 33, 0xFFFF);
+	  const char tmp[] = "----Peripherals Initialized----\n";
+	  const char tmp2[] = "\n----SYSTEM RESET---------------\n";
+	  HAL_UART_Transmit(&CONSOLE_UART_HANDLE, tmp2, sizeof(tmp2) , 0xFFFF);
+	  HAL_UART_Transmit(&CONSOLE_UART_HANDLE, tmp, sizeof(tmp) , 0xFFFF);
+	  HAL_UART_Transmit(&CONSOLE_UART_HANDLE, "Build: " , 7, 0xFFFF);
+	  HAL_UART_Transmit(&CONSOLE_UART_HANDLE, __DATE__, sizeof(__DATE__) , 0xFFFF);
+	  HAL_UART_Transmit(&CONSOLE_UART_HANDLE, " " , 1, 0xFFFF);
+	  HAL_UART_Transmit(&CONSOLE_UART_HANDLE, __TIME__, sizeof(__TIME__) , 0xFFFF);
+	  HAL_UART_Transmit(&CONSOLE_UART_HANDLE, "\n" , 1, 0xFFFF);
+	  HAL_UART_Transmit(&CONSOLE_UART_HANDLE, "-------------------------------\n" , 32, 0xFFFF);
+  }
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -213,11 +230,13 @@ int main(void)
   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
-  static StaticTask_t threads[4];
+  static StaticTask_t threads[5];
+  xTaskCreateStatic(console_main, 	"console_main_thread", 	256, NULL, 5, (StackType_t *)console_memspace, 	&threads[4]);
   xTaskCreateStatic(wyatt_main, 	"wyatt_main_thread", 	1024, NULL, 5, (StackType_t *)wyatt_memspace, 	&threads[0]);
   xTaskCreateStatic(jeremy_main, 	"jeremy_main_thread", 	1024, NULL, 5, (StackType_t *)jeremy_memspace, 	&threads[1]);
   xTaskCreateStatic(bryant_main, 	"bryant_main_thread", 	1024, NULL, 5, (StackType_t *)bryant_memspace, 	&threads[2]);
   //xTaskCreateStatic(braeden_main, 	"braeden_main_thread", 	1024, NULL, 5, (StackType_t *)braeden_memspace, &threads[3]);
+
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_EVENTS */
@@ -254,14 +273,12 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI|RCC_OSCILLATORTYPE_HSE;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
-  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-  RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLM = RCC_PLLM_DIV1;
-  RCC_OscInitStruct.PLL.PLLN = 21;
+  RCC_OscInitStruct.PLL.PLLN = 20;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
   RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV4;
   RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
@@ -1177,7 +1194,7 @@ static void MX_UART5_Init(void)
 
   /* USER CODE END UART5_Init 1 */
   huart5.Instance = UART5;
-  huart5.Init.BaudRate = 2000000;
+  huart5.Init.BaudRate = 16000000;
   huart5.Init.WordLength = UART_WORDLENGTH_8B;
   huart5.Init.StopBits = UART_STOPBITS_1;
   huart5.Init.Parity = UART_PARITY_NONE;
@@ -1372,11 +1389,9 @@ static void MX_GPIO_Init(void)
 void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+	for(uint32_t uptime; true; uptime++)
+	//console_printf("Sys: \t Uptime: %d\n", uptime);
+	vTaskDelay(1000);
   /* USER CODE END 5 */
 }
 

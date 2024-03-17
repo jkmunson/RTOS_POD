@@ -64,6 +64,9 @@ extern TIM_HandleTypeDef htim6;
 #define AUD_BUFFER_SIZE 49152
 extern uint8_t audio_buffer[AUD_BUFFER_SIZE];
 
+#define CONSOLE_UART_HANDLE huart5
+extern UART_HandleTypeDef huart5;
+
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
