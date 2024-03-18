@@ -75,6 +75,7 @@ TIM_HandleTypeDef htim6;
 
 UART_HandleTypeDef huart5;
 USART_HandleTypeDef husart3;
+DMA_HandleTypeDef hdma_uart5_tx;
 
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
@@ -1296,6 +1297,12 @@ static void MX_DMA_Init(void)
   /* DMA1_Channel1_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA1_Channel1_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA1_Channel1_IRQn);
+  /* DMA1_Channel2_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel2_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel2_IRQn);
+  /* DMAMUX_OVR_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMAMUX_OVR_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(DMAMUX_OVR_IRQn);
 
 }
 

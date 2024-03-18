@@ -23,7 +23,7 @@ void user_colors(char buf) {
 #define CONSOLE_BLOCKING_DELAY_TICKS 5
 
 
-static TaskHandle_t console_thread;
+TaskHandle_t console_thread;
 
 struct transfer_info {
 	union {
@@ -58,16 +58,20 @@ void console_main(void *ignore __attribute__((unused))){
 		while(console.current_transfer != console.last_transfer) {
 
 			while(!console.transfers[console.current_transfer].ready){
-				vTaskSuspend(NULL); //We are supposed to be woken by console_write and console_printf after they set ready
+				vTaskSuspend(NULL); //We are supposed to be woken by console_write and console_printf and DMA after they set ready
 			};
 
 			switch(console.transfers[console.current_transfer].type){
 			case transfer_IN_PLACE:
-				HAL_UART_Transmit(&CONSOLE_UART_HANDLE, console.transfers[console.current_transfer].location.buf_in_place, console.transfers[console.current_transfer].len , 0xFFFF);
+				while(HAL_UART_Transmit_DMA(&CONSOLE_UART_HANDLE, console.transfers[console.current_transfer].location.buf_in_place, console.transfers[console.current_transfer].len) == HAL_BUSY){
+					vTaskSuspend(NULL);
+				}
 			break;
 
 			case transfer_BUFFERED:
-				HAL_UART_Transmit(&CONSOLE_UART_HANDLE, &console.buf[console.transfers[console.current_transfer].location.buf_index], console.transfers[console.current_transfer].len , 0xFFFF);
+				while(HAL_UART_Transmit_DMA(&CONSOLE_UART_HANDLE, &console.buf[console.transfers[console.current_transfer].location.buf_index], console.transfers[console.current_transfer].len) == HAL_BUSY) {
+					vTaskSuspend(NULL);
+				}
 				console.buf_start_idx += console.transfers[console.current_transfer].len;
 				console.buf_start_idx = console.buf_start_idx > CONSOLE_BUFFER_SIZE ? 0 : console.buf_start_idx;
 			break;

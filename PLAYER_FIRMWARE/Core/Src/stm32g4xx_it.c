@@ -22,6 +22,10 @@
 #include "stm32g4xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "FreeRTOS.h"
+#include "task.h"
+
+#include "console.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -61,6 +65,8 @@ extern DAC_HandleTypeDef hdac3;
 extern DAC_HandleTypeDef hdac4;
 extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim6;
+extern DMA_HandleTypeDef hdma_uart5_tx;
+extern UART_HandleTypeDef huart5;
 extern TIM_HandleTypeDef htim7;
 
 /* USER CODE BEGIN EV */
@@ -181,6 +187,20 @@ void DMA1_Channel1_IRQHandler(void)
 }
 
 /**
+  * @brief This function handles DMA1 channel2 global interrupt.
+  */
+void DMA1_Channel2_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA1_Channel2_IRQn 0 */
+  xTaskResumeFromISR(console_thread);
+  /* USER CODE END DMA1_Channel2_IRQn 0 */
+  HAL_DMA_IRQHandler(&hdma_uart5_tx);
+  /* USER CODE BEGIN DMA1_Channel2_IRQn 1 */
+
+  /* USER CODE END DMA1_Channel2_IRQn 1 */
+}
+
+/**
   * @brief This function handles TIM2 global interrupt.
   */
 void TIM2_IRQHandler(void)
@@ -192,6 +212,20 @@ void TIM2_IRQHandler(void)
   /* USER CODE BEGIN TIM2_IRQn 1 */
 
   /* USER CODE END TIM2_IRQn 1 */
+}
+
+/**
+  * @brief This function handles UART5 global interrupt / UART5 wake-up interrupt through EXTI line 35.
+  */
+void UART5_IRQHandler(void)
+{
+  /* USER CODE BEGIN UART5_IRQn 0 */
+	xTaskResumeFromISR(console_thread);
+  /* USER CODE END UART5_IRQn 0 */
+  HAL_UART_IRQHandler(&huart5);
+  /* USER CODE BEGIN UART5_IRQn 1 */
+
+  /* USER CODE END UART5_IRQn 1 */
 }
 
 /**
@@ -223,6 +257,21 @@ void TIM7_DAC_IRQHandler(void)
   /* USER CODE BEGIN TIM7_DAC_IRQn 1 */
 
   /* USER CODE END TIM7_DAC_IRQn 1 */
+}
+
+/**
+  * @brief This function handles DMAMUX overrun interrupt.
+  */
+void DMAMUX_OVR_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMAMUX_OVR_IRQn 0 */
+
+  /* USER CODE END DMAMUX_OVR_IRQn 0 */
+  // Handle DMA1_Channel2
+  HAL_DMAEx_MUX_IRQHandler(&hdma_uart5_tx);
+  /* USER CODE BEGIN DMAMUX_OVR_IRQn 1 */
+
+  /* USER CODE END DMAMUX_OVR_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */
