@@ -31,6 +31,7 @@
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
+typedef StaticTask_t osStaticThreadDef_t;
 /* USER CODE BEGIN PTD */
 
 /* USER CODE END PTD */
@@ -77,10 +78,15 @@ USART_HandleTypeDef husart3;
 
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
+uint32_t defaultTaskBuffer[ 512 ];
+osStaticThreadDef_t defaultTaskControlBlock;
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
+  .stack_mem = &defaultTaskBuffer[0],
+  .stack_size = sizeof(defaultTaskBuffer),
+  .cb_mem = &defaultTaskControlBlock,
+  .cb_size = sizeof(defaultTaskControlBlock),
   .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 128 * 4
 };
 /* USER CODE BEGIN PV */
 	int counter;
@@ -190,6 +196,7 @@ int main(void)
   MX_TIM6_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
+  empty_console_memory();
   HAL_TIM_Base_Start_IT(&htim2);
   {
 	  HAL_UART_Transmit(&CONSOLE_UART_HANDLE, "\n\n-------------------------------\n" , 33, 0xFFFF);
@@ -1389,9 +1396,15 @@ static void MX_GPIO_Init(void)
 void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
-	for(uint32_t uptime; true; uptime++)
+
+	while(1){
+		vTaskDelay(5000);
+		console_print_time();
+		console_print("\n");
+	}
+	/*for(uint32_t uptime; true; uptime++)
 	//console_printf("Sys: \t Uptime: %d\n", uptime);
-	vTaskDelay(1000);
+	vTaskDelay(1000);*/
   /* USER CODE END 5 */
 }
 

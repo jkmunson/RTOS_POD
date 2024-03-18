@@ -10,6 +10,7 @@
 
 
 #include <string.h>
+#include <stdio.h>
 
 extern DMA_HandleTypeDef hdma_dac1_ch1;
 #define AUD_GREEN_L_DMA hdma_dac1_ch1;
@@ -30,14 +31,11 @@ size_t get_audio_buffer_current_index(void){
 	return audio_dma_current_index;
 }
 
-void jeremy_main(void *ignore) {
-	char buf[75];
-
-
+void jeremy_main(void *ignore __attribute__ ((unused))) {
 	while(1){
-		sprintf(buf, "Jeremy: Uptime: %d.%03d\n", xTaskGetTickCount()/1000, xTaskGetTickCount()%1000, audio_dma_current_index);
-		console_write(buf, strlen(buf));
-		vTaskDelay(1007);
+		//console_print("Jeremy Main\n");
+		vTaskDelay(1000);
+		if(xTaskGetTickCount()/1000 > 30 && xTaskGetTickCount()/1000 < 32) console_print_time(), console_print("Jeremy: At least 30 seconds have passed.\n");
 	}
 	/*
 	const char *jeremy_main_msg = "Jeremy: Entered Jeremy Main\n";
