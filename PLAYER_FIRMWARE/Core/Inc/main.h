@@ -77,6 +77,8 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define SD_CS_Pin GPIO_PIN_4
+#define SD_CS_GPIO_Port GPIOE
 #define TFT_NRST_Pin GPIO_PIN_6
 #define TFT_NRST_GPIO_Port GPIOB
 #define BRIDGE_CLK_Pin GPIO_PIN_1

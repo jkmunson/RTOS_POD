@@ -31,12 +31,9 @@ size_t get_audio_buffer_current_index(void){
 	return audio_dma_current_index;
 }
 
+
 void jeremy_main(void *ignore __attribute__ ((unused))) {
-	while(1){
-		//console_print("Jeremy Main\n");
-		vTaskDelay(1000);
-		if(xTaskGetTickCount()/1000 > 30 && xTaskGetTickCount()/1000 < 32) console_print_time(), console_print("Jeremy: At least 30 seconds have passed.\n");
-	}
+
 	/*
 	const char *jeremy_main_msg = "Jeremy: Entered Jeremy Main\n";
 	const char *jeremy_main_cb = "Jeremy: Registered timer callback\n";
@@ -63,6 +60,6 @@ void jeremy_main(void *ignore __attribute__ ((unused))) {
 		HAL_UART_Transmit(&huart5, buf, strlen(buf), 0xFFFF);
 		vTaskDelay(1000);
 	}*/
-	vTaskSuspend(xTaskGetCurrentTaskHandle()); //LEAVE AT THE END
+	vTaskSuspend(NULL); //LEAVE AT THE END
 	vTaskDelete(NULL);
 }

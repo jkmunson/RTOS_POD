@@ -14,6 +14,7 @@ bool console_print_blocked(const char * const str, TickType_t timeout_ticks);
 bool console_printf_blocked(const char * const fmt, TickType_t timeout_ticks, ...);
 
 bool console_print_time(void);
+bool console_print_time_blocked(void);
 
 void console_main(void * ignore);
 void empty_console_memory(void);

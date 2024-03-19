@@ -58,6 +58,7 @@ void TIM2_IRQHandler(void);
 void UART5_IRQHandler(void);
 void TIM6_DAC_IRQHandler(void);
 void TIM7_DAC_IRQHandler(void);
+void SPI4_IRQHandler(void);
 void DMAMUX_OVR_IRQHandler(void);
 /* USER CODE BEGIN EFP */
 

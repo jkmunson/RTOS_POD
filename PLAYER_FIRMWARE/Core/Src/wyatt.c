@@ -225,7 +225,7 @@ void FSMtest(){
 	}
 }
 
-void wyatt_main(void *ignore) {
+void wyatt_main(void *ignore __attribute__((unused))) {
 	HAL_GPIO_WritePin(TFT_LED_LEVEL_GPIO_Port, TFT_LED_LEVEL_Pin, 1);
 	init();							// initialize TFT display
 	ILI9341_DrawImage(0, 0, 320, 240, (const uint16_t*)startup_img_320x240);
@@ -281,7 +281,7 @@ void wyatt_main(void *ignore) {
 		//sprintf(disp_buf, "ticks: %u", tick);
 		//ILI9341_WriteString(0,0*SPACER, disp_buf,Font_7x10,MAIN_FONT_COLOR, BG_COLOR);
 		tick++;
-		osDelay(500);
+   		osDelay(500);
 	}
 	vTaskSuspend(xTaskGetCurrentTaskHandle()); //LEAVE AT THE END
 	vTaskDelete(NULL);
