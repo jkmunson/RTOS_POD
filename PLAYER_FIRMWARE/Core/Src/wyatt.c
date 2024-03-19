@@ -22,7 +22,8 @@ static void mountFileSystem(void);		// mount file system
 static void getSDstats(void);			// gets space stats
 static void showFileNames(void);
 static void checkNewSelection(void);
-static void showFileContents(void);
+static void openSelectedFile(void);
+static void closeSelectedFile(void);
 static void FSMtest(void);
 
 char disp_buf[50];
@@ -34,6 +35,7 @@ bool sel_next = false;
 bool sel_prev = false;
 bool readFile = false;
 bool viewDirectory = false;
+
 bool contentsPosted = false;
 
 STATE currentState = viewingDirectory;
@@ -55,8 +57,15 @@ char filenames[10][20];		// string array of file names
 
 BYTE readBuf[30];
 
+FIL *audio_file_handle;
+bool file_ready;
+bool stop_playing;	// not used yet
+bool pause;			// not used yet
+bool song_complete;	// not used yet
+
 
 void init() {
+	HAL_GPIO_WritePin(TFT_LED_LEVEL_GPIO_Port, TFT_LED_LEVEL_Pin, 1);
     ILI9341_Unselect();
     ILI9341_TouchUnselect();
     ILI9341_Init();
@@ -119,7 +128,7 @@ void showFileNames(){
 	ILI9341_WriteString(10,2*SPACER, "Directory contents:",Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
 
 	for (file=1; file<nfile; file++){
-		if (file == sel & (tick%2==0)){
+		if ((file == sel) & (tick%2==0)){
 			// flashing effect for selected file
 			ILI9341_WriteString(10,(3+file)*SPACER, filenames[file], Font_7x10,BG_COLOR,MAIN_FONT_COLOR);
 		} else {
@@ -139,11 +148,24 @@ void checkNewSelection(){
 	}
 }
 
-void showFileContents(){
+void openSelectedFile(){
 	fres = f_open(&fil, filenames[sel], FA_READ);	// open file
 	if (fres != FR_OK) {
 		while(1);
 	}
+
+	audio_file_handle = &fil;	// added 3/19
+	file_ready = true;
+
+	// commented out code used for printing contents of .txt files.
+	/*
+	TCHAR* rres = f_gets((TCHAR*)readBuf, 30, audio_file_handle);
+	if(rres != 0) {
+		ILI9341_WriteString(10,4*SPACER,readBuf,Font_11x18,MAIN_FONT_COLOR,BG_COLOR);
+	}
+
+	ILI9341_WriteString(10,2*SPACER, "File contents:", Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
+
 
 	TCHAR* rres = f_gets((TCHAR*)readBuf, 30, &fil);
 	if(rres != 0) {
@@ -152,7 +174,7 @@ void showFileContents(){
 
 	ILI9341_WriteString(10,2*SPACER, "File contents:", Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
 
-	/*
+
 	for (int i=0; i<10; i++){
 		unsigned char tmp[2];
 		unsigned char bits[2];
@@ -186,9 +208,15 @@ void showFileContents(){
 		}
 	*/
 
-	f_close(&fil);		// close file
+	//f_close(&fil);		// close file
 	contentsPosted = true;
 }
+
+void closeSelectedFile(){
+	file_ready = false;
+	f_close(audio_file_handle);		// close file
+}
+
 
 void FSMtest(){
 	/* experiment code */
@@ -226,7 +254,6 @@ void FSMtest(){
 }
 
 void wyatt_main(void *ignore __attribute__((unused))) {
-	HAL_GPIO_WritePin(TFT_LED_LEVEL_GPIO_Port, TFT_LED_LEVEL_Pin, 1);
 	init();							// initialize TFT display
 	ILI9341_DrawImage(0, 0, 320, 240, (const uint16_t*)startup_img_320x240);
 	osDelay(2000);					// Stall to view intro screen
@@ -257,18 +284,19 @@ void wyatt_main(void *ignore __attribute__((unused))) {
 				if (viewDirectory) {
 					nextState = viewingDirectory;
 					readFile = viewDirectory = false;
+					closeSelectedFile();
 				}
 				break;
 		}
 
-		FSMtest();					// used to change states without hardware
+		//FSMtest();					// used to change states without hardware
 
 		/* ---------- OUTPUT LOGIC ---------- */
 		if (currentState == viewingDirectory){
 			showFileNames();
 		} else {
 			if (!contentsPosted){		// Prevents display rewrite redundancy
-				showFileContents();	// Displays selected file's contents
+				openSelectedFile();		// Displays selected file's contents
 			}
 		}
 

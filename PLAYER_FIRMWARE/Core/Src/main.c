@@ -1097,7 +1097,7 @@ static void MX_SPI4_Init(void)
   hspi4.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi4.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi4.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
-  hspi4.Init.CRCPolynomial = 10;
+  hspi4.Init.CRCPolynomial = 7;
   hspi4.Init.CRCLength = SPI_CRC_LENGTH_DATASIZE;
   hspi4.Init.NSSPMode = SPI_NSS_PULSE_DISABLE;
   if (HAL_SPI_Init(&hspi4) != HAL_OK)

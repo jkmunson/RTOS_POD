@@ -31,6 +31,7 @@ extern bool sel_next;
 extern bool sel_prev;
 extern bool readFile;
 extern bool viewDirectory;
+
 extern bool contentsPosted;
 
 extern FATFS FatFs; 			//Fatfs handle
@@ -46,6 +47,15 @@ extern uint16_t nfile; 			// no. of files and directories
 extern char filenames[10][20];	// string array of file names
 
 extern BYTE readBuf[30];
+//--------------- added 3/19
+extern FIL *audio_file_handle;
+extern bool file_ready;
+extern bool stop_playing;	// not used yet
+extern bool pause;			// not used yet
+extern bool song_complete;	// not used yet
+//--------------
+
+
 
 void wyatt_main(void *);
 
