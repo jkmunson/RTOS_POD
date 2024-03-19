@@ -261,7 +261,7 @@ void wyatt_main(void *ignore __attribute__((unused))) {
 				break;
 		}
 
-		//FSMtest();					// used to change states without hardware
+		FSMtest();					// used to change states without hardware
 
 		/* ---------- OUTPUT LOGIC ---------- */
 		if (currentState == viewingDirectory){
