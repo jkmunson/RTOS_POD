@@ -25,6 +25,7 @@ static void showFileNames(void);
 static void checkNewSelection(void);
 static void openSelectedFile(void);
 static void closeSelectedFile(void);
+static void handleButtonPress(void);
 static void FSMtest(void);
 
 char disp_buf[50];
@@ -129,7 +130,7 @@ void showFileNames(){
 	ILI9341_WriteString(10,2*SPACER, "Directory contents:",Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
 
 	for (file=1; file<nfile; file++){
-		if ((file == sel) & (tick%2==0)){
+		if ((file == sel) & (tick%10>4)){
 			// flashing effect for selected file
 			ILI9341_WriteString(10,(3+file)*SPACER, filenames[file], Font_7x10,BG_COLOR,MAIN_FONT_COLOR);
 		} else {
@@ -162,7 +163,7 @@ void openSelectedFile(){
 	file_ready = true;
 
 	// commented out code used for printing contents of .txt files.
-	/*
+
 	TCHAR* rres = f_gets((TCHAR*)readBuf, 30, audio_file_handle);
 	if(rres != 0) {
 		ILI9341_WriteString(10,4*SPACER,readBuf,Font_11x18,MAIN_FONT_COLOR,BG_COLOR);
@@ -170,6 +171,7 @@ void openSelectedFile(){
 
 	ILI9341_WriteString(10,2*SPACER, "File contents:", Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
 
+	/*
 
 	TCHAR* rres = f_gets((TCHAR*)readBuf, 30, &fil);
 	if(rres != 0) {
@@ -276,7 +278,6 @@ void handleButtonPress(void){
 		right_pressed = false;
 		readFile = true;
 	}
-
 }
 
 
@@ -339,7 +340,7 @@ void wyatt_main(void *ignore __attribute__((unused))) {
 		//sprintf(disp_buf, "ticks: %u", tick);
 		//ILI9341_WriteString(0,0*SPACER, disp_buf,Font_7x10,MAIN_FONT_COLOR, BG_COLOR);
 		tick++;
-   		osDelay(500);
+   		osDelay(100);
 	}
 	vTaskSuspend(xTaskGetCurrentTaskHandle()); //LEAVE AT THE END
 	vTaskDelete(NULL);
