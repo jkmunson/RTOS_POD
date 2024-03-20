@@ -23,6 +23,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 		up_button 		= 	{0, &up_pressed, 	&up_held, 	 true},
 		down_button 	= 	{0, &down_pressed, 	&down_held,  true},
 		left_button 	= 	{0, &left_pressed, 	&left_held,  true},
+		rot_enc_button  =	{0, &right_pressed,	&right_held, true},
 		*current_button = NULL;
 
 	const enum{FALLING, RISING} edge_type = (uint8_t)HAL_GPIO_ReadPin(GPIOA, GPIO_Pin);
@@ -42,6 +43,9 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 
 		case LEFT_BUTTON_Pin:
 			current_button = &left_button;
+		break;
+		case ROT_S1_Pin:
+			current_button = &rot_enc_button;
 		break;
 	}
 
