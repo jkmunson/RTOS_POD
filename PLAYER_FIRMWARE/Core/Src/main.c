@@ -65,7 +65,6 @@ DMA_HandleTypeDef hdma_dac1_ch1;
 OPAMP_HandleTypeDef hopamp1;
 OPAMP_HandleTypeDef hopamp3;
 OPAMP_HandleTypeDef hopamp4;
-OPAMP_HandleTypeDef hopamp5;
 OPAMP_HandleTypeDef hopamp6;
 
 QSPI_HandleTypeDef hqspi1;
@@ -108,7 +107,6 @@ static void MX_DAC4_Init(void);
 static void MX_OPAMP1_Init(void);
 static void MX_OPAMP3_Init(void);
 static void MX_OPAMP4_Init(void);
-static void MX_OPAMP5_Init(void);
 static void MX_OPAMP6_Init(void);
 static void MX_QUADSPI1_Init(void);
 static void MX_SPI2_Init(void);
@@ -133,15 +131,14 @@ void StartDefaultTask(void *argument);
 /* USER CODE BEGIN 0 */
 #include "jeremy.h"
 #include "wyatt.h"
-//void wyatt_main(void *ignore){vTaskDelete(NULL);}; //temporary measure
-//#include "bryant.h"
-//#include "braeden.h"
+#include "bryant.h"
+#include "braeden.h"
 #include "console.h"
 
 uint8_t __attribute__((section(".sram2"))) wyatt_memspace[4096];
 uint8_t __attribute__((section(".sram2"))) bryant_memspace[4096];
-//uint8_t __attribute__((section(".sram1_low"))) braeden_memspace[4096];
-uint8_t __attribute__((section(".sram2"))) jeremy_memspace[4096];
+uint8_t __attribute__((section(".sram2"))) braeden_memspace[2048];
+uint8_t __attribute__((section(".sram2"))) jeremy_memspace[2048];
 uint8_t __attribute__((section(".sram2"))) console_memspace[2048];
 
 uint8_t __attribute__((section(".sram1_upper"))) audio_buffer[AUD_BUFFER_SIZE]; //48k
@@ -183,7 +180,6 @@ int main(void)
   MX_OPAMP1_Init();
   MX_OPAMP3_Init();
   MX_OPAMP4_Init();
-  MX_OPAMP5_Init();
   MX_OPAMP6_Init();
   MX_QUADSPI1_Init();
   MX_SPI2_Init();
@@ -249,7 +245,7 @@ int main(void)
   xTaskCreateStatic(wyatt_main, 	"wyatt_main_thread", 	1024, NULL, 5, (StackType_t *)wyatt_memspace, 	&threads[0]);
   xTaskCreateStatic(jeremy_main, 	"jeremy_main_thread", 	1024, NULL, 5, (StackType_t *)jeremy_memspace, 	&threads[1]);
   //xTaskCreateStatic(bryant_main, 	"bryant_main_thread", 	1024, NULL, 5, (StackType_t *)bryant_memspace, 	&threads[2]);
-  //xTaskCreateStatic(braeden_main, 	"braeden_main_thread", 	1024, NULL, 5, (StackType_t *)braeden_memspace, &threads[3]);
+  xTaskCreateStatic(braeden_main, 	"braeden_main_thread", 	1024, NULL, 5, (StackType_t *)braeden_memspace, &threads[3]);
 
   /* USER CODE END RTOS_THREADS */
 
@@ -259,7 +255,6 @@ int main(void)
 
   /* Start scheduler */
   osKernelStart();
-
   /* We should never get here as control is now taken by the scheduler */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -893,38 +888,6 @@ static void MX_OPAMP4_Init(void)
 }
 
 /**
-  * @brief OPAMP5 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_OPAMP5_Init(void)
-{
-
-  /* USER CODE BEGIN OPAMP5_Init 0 */
-
-  /* USER CODE END OPAMP5_Init 0 */
-
-  /* USER CODE BEGIN OPAMP5_Init 1 */
-
-  /* USER CODE END OPAMP5_Init 1 */
-  hopamp5.Instance = OPAMP5;
-  hopamp5.Init.PowerMode = OPAMP_POWERMODE_NORMALSPEED;
-  hopamp5.Init.Mode = OPAMP_FOLLOWER_MODE;
-  hopamp5.Init.NonInvertingInput = OPAMP_NONINVERTINGINPUT_DAC;
-  hopamp5.Init.InternalOutput = DISABLE;
-  hopamp5.Init.TimerControlledMuxmode = OPAMP_TIMERCONTROLLEDMUXMODE_DISABLE;
-  hopamp5.Init.UserTrimming = OPAMP_TRIMMING_FACTORY;
-  if (HAL_OPAMP_Init(&hopamp5) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN OPAMP5_Init 2 */
-
-  /* USER CODE END OPAMP5_Init 2 */
-
-}
-
-/**
   * @brief OPAMP6 Initialization Function
   * @param None
   * @retval None
@@ -1369,6 +1332,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Alternate = GPIO_AF4_TIM8;
   HAL_GPIO_Init(BRIDGE_CLK_GPIO_Port, &GPIO_InitStruct);
 
+  /*Configure GPIO pins : RIGHT_BUTTON_Pin UP_BUTTON_Pin DOWN_BUTTON_Pin LEFT_BUTTON_Pin */
+  GPIO_InitStruct.Pin = RIGHT_BUTTON_Pin|UP_BUTTON_Pin|DOWN_BUTTON_Pin|LEFT_BUTTON_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
   /*Configure GPIO pins : AUD_ORANGE_R_OUTPUT_EN_Pin AUD_ORANGE_L_OUTPUT_EN_Pin */
   GPIO_InitStruct.Pin = AUD_ORANGE_R_OUTPUT_EN_Pin|AUD_ORANGE_L_OUTPUT_EN_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -1402,6 +1371,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI9_5_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
 }
@@ -1425,6 +1401,10 @@ void StartDefaultTask(void *argument)
 		console_print_time(), console_write("System Up\n", 11);
 	}
   /* USER CODE END 5 */
+}
+
+__weak void get_audio_sample(void){
+
 }
 
 /**
@@ -1462,6 +1442,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 	  if(htim->Instance == AUDIO_44_1_KHZ_TIMER.Instance) {
 		  update_green_DMA_addr();
+		  get_audio_sample();
 	  }
   /* USER CODE END Callback 0 */
   if (htim->Instance == TIM7) {

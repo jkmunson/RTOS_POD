@@ -7,6 +7,7 @@
 #include "stm32g4xx_hal_tim.h"
 #include "main.h"
 #include "console.h"
+#include "buttons.h"
 
 
 #include <string.h>
@@ -33,7 +34,13 @@ size_t get_audio_buffer_current_index(void){
 
 
 void jeremy_main(void *ignore __attribute__ ((unused))) {
-
+	while(1){
+		if(up_pressed) 		up_pressed=0, 	console_print_time(), console_print("Button Pressed: UP\n");
+		if(down_pressed) 	down_pressed=0,	console_print_time(), console_print("Button Pressed: DOWN\n");
+		if(left_pressed) 	left_pressed=0,	console_print_time(), console_print("Button Pressed: LEFT\n");
+		if(right_pressed) 	right_pressed=0,console_print_time(), console_print("Button Pressed: RIGHT\n");
+		vTaskDelay(100);
+	}
 	/*
 	const char *jeremy_main_msg = "Jeremy: Entered Jeremy Main\n";
 	const char *jeremy_main_cb = "Jeremy: Registered timer callback\n";
