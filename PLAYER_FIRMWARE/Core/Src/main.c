@@ -137,9 +137,9 @@ void StartDefaultTask(void *argument);
 
 uint8_t __attribute__((section(".sram2"))) wyatt_memspace[4096];
 uint8_t __attribute__((section(".sram2"))) bryant_memspace[4096];
-uint8_t __attribute__((section(".sram2"))) braeden_memspace[2048];
-uint8_t __attribute__((section(".sram2"))) jeremy_memspace[2048];
-uint8_t __attribute__((section(".sram2"))) console_memspace[2048];
+uint8_t __attribute__((section(".sram2"))) braeden_memspace[4096];
+uint8_t __attribute__((section(".sram2"))) jeremy_memspace[4096];
+uint8_t __attribute__((section(".ccm_sram_all"))) console_memspace[2048];
 
 uint8_t __attribute__((section(".sram1_upper"))) audio_buffer[AUD_BUFFER_SIZE]; //48k
 
@@ -1393,7 +1393,7 @@ static void MX_GPIO_Init(void)
   * @retval None
   */
 /* USER CODE END Header_StartDefaultTask */
-void StartDefaultTask(void *argument)
+void StartDefaultTask(void *argument __attribute__((unused)))
 {
   /* USER CODE BEGIN 5 */
 	while(1){
