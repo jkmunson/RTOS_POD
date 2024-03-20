@@ -14,6 +14,7 @@
 
 #include "startup_img.h"
 #include "wyatt.h"
+#include "buttons.h"
 
 
 //internal functions
@@ -146,6 +147,9 @@ void checkNewSelection(){
 		sel_prev = false;
 		sel--;
 	}
+
+	sel_next = sel_prev = false;
+
 }
 
 void openSelectedFile(){
@@ -253,6 +257,29 @@ void FSMtest(){
 	}
 }
 
+
+void handleButtonPress(void){
+	if (up_pressed){
+		up_pressed = false;
+		sel_prev = true;
+	}
+	if (down_pressed){
+		down_pressed = false;
+		sel_next = true;
+	}
+
+	if (left_pressed){
+		left_pressed = false;
+		viewDirectory = true;
+	}
+	if (right_pressed){
+		right_pressed = false;
+		readFile = true;
+	}
+
+}
+
+
 void wyatt_main(void *ignore __attribute__((unused))) {
 	init();							// initialize TFT display
 	ILI9341_DrawImage(0, 0, 320, 240, (const uint16_t*)startup_img_320x240);
@@ -288,6 +315,9 @@ void wyatt_main(void *ignore __attribute__((unused))) {
 				}
 				break;
 		}
+
+
+		handleButtonPress();
 
 		//FSMtest();					// used to change states without hardware
 
