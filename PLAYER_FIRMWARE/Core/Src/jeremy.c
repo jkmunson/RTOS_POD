@@ -2,7 +2,6 @@
 #include "task.h"
 #include "cmsis_os.h"
 #include "stm32g4xx_hal.h"
-#include "stm32g4xx_hal_dac.h"
 #include "stm32g4xx_hal_dma.h"
 #include "stm32g4xx_hal_tim.h"
 #include "main.h"
@@ -13,56 +12,116 @@
 #include <string.h>
 #include <stdio.h>
 
-extern DMA_HandleTypeDef hdma_dac1_ch1;
-#define AUD_GREEN_L_DMA hdma_dac1_ch1;
-
-extern UART_HandleTypeDef huart5;
-//DAC_DHR12LD
-
-size_t audio_dma_current_index;
-
-void update_green_DMA_addr(void){
-	audio_dma_current_index = (audio_dma_current_index+4)%AUD_BUFFER_SIZE;
-	const char *tim_msg = "DMA Update started or wrapped\n";
-	HAL_UART_Transmit(&huart5,tim_msg,strlen(tim_msg), 0xFFFF);
-	if ((audio_dma_current_index==0))	HAL_UART_Transmit(&huart5,tim_msg,strlen(tim_msg), 0xFFFF);
+void print_all_ports(void){
+	console_print("PORT A\t\tPORT B\t\tPORT C\t\tPORT D\t\tPORT E\t\tPORT F\n");
+	console_printf("0x%08x\t0x%08x\t0x%08x\t0x%08x\t0x%08x\t0x%08x\t\n",
+			GPIOA->IDR & 0x1FFF,
+			GPIOB->IDR & ~(1<<4),
+			GPIOC->IDR & ~(1<<12),
+			GPIOD->IDR & ~(1<<2),
+			GPIOE->IDR,
+			GPIOF->IDR);
 }
-
-size_t get_audio_buffer_current_index(void){
-	return audio_dma_current_index;
-}
-
 
 void jeremy_main(void *ignore __attribute__ ((unused))) {
-	while(1){
-		vTaskDelay(100);
-	}
+	vTaskDelay(100);
+	console_print("Testing Port B\n");
+	console_print("Initial Pin Values:\n");
+	print_all_ports();
 	/*
-	const char *jeremy_main_msg = "Jeremy: Entered Jeremy Main\n";
-	const char *jeremy_main_cb = "Jeremy: Registered timer callback\n";
-	const char *jeremy_main_dma = "Jeremy: Initiated DMA\n";
-	const char *jeremy_main_tim = "Jeremy: Initiated Timer\n";
-	char buf[75];
+	// GPIO E TESTING
+		for(int pin = 0; pin < 16; pin++){
+					console_printf("PortE Pin %2d\n", pin);
+					if(pin == 77) continue;
+					char a = 0;
+					while(a != 'x') {
+						HAL_UART_Receive(&huart5, &a, 1, HAL_MAX_DELAY);
+					}
+					GPIOE->MODER = GPIOE->MODER&~(3<<(pin*2)) | (1<<(pin*2));
+					for(int i = 0; i < 50; i++){
+						GPIOE->ODR ^= GPIO_ODR_OD0 << (pin);
+						print_all_ports();
+						vTaskDelay(10);
+					}
+					GPIOE->MODER = GPIOE->MODER&~(3<<(pin*2));
 
-	HAL_UART_Transmit(&huart5,jeremy_main_msg,strlen(jeremy_main_msg), 0xFFFF);
+			}*/
 
-	HAL_TIM_Base_Start(&AUDIO_44_1_KHZ_TIMER);
-	HAL_UART_Transmit(&huart5,jeremy_main_tim,strlen(jeremy_main_tim), 0xFFFF);
-	HAL_DAC_Start(&AUD_GREEN_DAC, DAC_CHANNEL_1);
-	HAL_DAC_Start(&AUD_GREEN_DAC, DAC_CHANNEL_2);
+/*
+	// GPIO D TESTING
+		for(int pin = 0; pin < 16; pin++){
+					console_printf("PortD Pin %2d\n", pin);
+					if(pin == 2) continue;
+					char a = 0;
+					while(a != 'x') {
+						HAL_UART_Receive(&huart5, &a, 1, HAL_MAX_DELAY);
+					}
+					GPIOD->MODER = GPIOD->MODER&~(3<<(pin*2)) | (1<<(pin*2));
+					for(int i = 0; i < 50; i++){
+						GPIOD->ODR ^= GPIO_ODR_OD0 << (pin);
+						print_all_ports();
+						vTaskDelay(10);
+					}
+					GPIOD->MODER = GPIOD->MODER&~(3<<(pin*2));
 
-	HAL_DAC_Start_DMA(&AUD_GREEN_DAC, DAC_CHANNEL_1, (uint32_t*)audio_buffer, (AUD_BUFFER_SIZE>>2)-1 , DAC_ALIGN_12B_L);
-	HAL_DAC_Start_DMA(&AUD_GREEN_DAC, DAC_CHANNEL_2, (uint32_t*)(audio_buffer+2), (AUD_BUFFER_SIZE>>2)-1 , DAC_ALIGN_12B_L);
+			}*/
+
+/*
+	// GPIO C TESTING
+	for(int pin = 0; pin < 16; pin++){
+				console_printf("PortC Pin %2d\n", pin);
+				if(pin == 12) continue;
+				char a = 0;
+				while(a != 'x') {
+					HAL_UART_Receive(&huart5, &a, 1, HAL_MAX_DELAY);
+				}
+				GPIOC->MODER = GPIOC->MODER&~(3<<(pin*2)) | (1<<(pin*2));
+				for(int i = 0; i < 50; i++){
+					GPIOC->ODR ^= GPIO_ODR_OD0 << (pin);
+					print_all_ports();
+					vTaskDelay(10);
+				}
+				GPIOC->MODER = GPIOC->MODER&~(3<<(pin*2));
+
+		}*/
 
 
+	// GPIO B TESTING
+	for(int pin = 0; pin < 16; pin++){
+			console_printf("PortB Pin %2d\n", pin);
+			if(pin == 3 || pin == 4) continue;
+			char a = 0;
+			while(a != 'x') {
+				HAL_UART_Receive(&huart5, &a, 1, HAL_MAX_DELAY);
+			}
+			GPIOB->MODER = GPIOB->MODER&~(3<<(pin*2)) | (1<<(pin*2));
+			for(int i = 0; i < 50; i++){
+				GPIOB->ODR ^= GPIO_ODR_OD0 << (pin);
+				print_all_ports();
+				vTaskDelay(10);
+			}
+			GPIOB->MODER = GPIOB->MODER&~(3<<(pin*2));
 
-	HAL_UART_Transmit(&huart5,jeremy_main_dma,strlen(jeremy_main_dma), 0xFFFF);
-	audio_dma_current_index = 0; //Reset the index now, in case it had counted up before we started DMA. its okay to be a ways behind the dma.
-	for(int i=0; 1; i++){
-		sprintf(buf, "Jeremy: Uptime: %d\n", i, audio_dma_current_index);
-		HAL_UART_Transmit(&huart5, buf, strlen(buf), 0xFFFF);
-		vTaskDelay(1000);
-	}*/
+	}
+
+
+	// GPIO A TESTING
+	for(int pin = 0; pin < 13; pin++){
+		console_printf("PortA Pin %2d\n", pin);
+		char a = 0;
+		while(a != 'x') {
+			HAL_UART_Receive(&huart5, &a, 1, HAL_MAX_DELAY);
+		}
+		GPIOA->MODER = GPIOA->MODER&~(3<<(pin*2)) | (1<<(pin*2));
+		for(int i = 0; i < 50; i++){
+			GPIOA->ODR ^= GPIO_ODR_OD0 << (pin);
+			print_all_ports();
+			vTaskDelay(10);
+		}
+		GPIOA->MODER = GPIOA->MODER&~(3<<(pin*2));
+
+	}
+
 	vTaskSuspend(NULL); //LEAVE AT THE END
 	vTaskDelete(NULL);
 }
