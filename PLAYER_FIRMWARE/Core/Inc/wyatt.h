@@ -13,7 +13,7 @@
 
 // external variables
 typedef enum {
-	  viewingDirectory, readingFile
+	  viewingDirectory, readingFile, viewingRecordSlots, recording
 } STATE;
 
 //extern SPI_HandleTypeDef hspi4;
@@ -31,6 +31,8 @@ extern bool sel_next;
 extern bool sel_prev;
 extern bool readFile;
 extern bool viewDirectory;
+extern bool viewRecordSlots;
+extern bool startRecording;
 
 extern bool contentsPosted;
 
@@ -53,8 +55,10 @@ extern bool file_ready;
 extern bool stop_playing;	// not used yet
 extern bool pause;			// not used yet
 extern bool song_complete;	// not used yet
-//--------------
-
+//-------------- added 3/21
+extern FIL *write_file_handle;
+extern bool start_recording;
+extern bool stop_recording;
 
 
 void wyatt_main(void *);
