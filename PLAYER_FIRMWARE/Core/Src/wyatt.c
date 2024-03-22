@@ -15,6 +15,7 @@
 #include "startup_img.h"
 #include "wyatt.h"
 #include "buttons.h"
+#include "braeden.h"
 
 
 //internal functions
@@ -149,7 +150,7 @@ void showRecordSlots(void){
 	ILI9341_WriteString(10,2*SPACER, "Hold right to record to selected file:",Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
 
 	for (int i=1; i<4; i++){
-		if ((i == sel) & (tick%10>4)){
+		if ((i == sel) & (tick%6>2)){
 			ILI9341_WriteString(10,(3+i)*SPACER, recording_names[i], Font_7x10,BG_COLOR,MAIN_FONT_COLOR);
 		} else {
 			ILI9341_WriteString(10,(3+i)*SPACER, recording_names[i], Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
@@ -162,7 +163,7 @@ void showFileNames(){
 	ILI9341_WriteString(10,2*SPACER, "Make a selection:",Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
 
 	for (file=1; file<nfile; file++){
-		if ((file == sel) & (tick%10>4)){
+		if ((file == sel) & (tick%6>2)){
 			// flashing effect for selected file
 			ILI9341_WriteString(10,(3+file)*SPACER, filenames[file], Font_7x10,BG_COLOR,MAIN_FONT_COLOR);
 		} else {
@@ -171,7 +172,7 @@ void showFileNames(){
 	}
 
 	if (sel == nfile){
-		if (tick%10>4){
+		if (tick%6>2){
 			ILI9341_WriteString(10,(3+nfile)*SPACER, "RECORD", Font_7x10,BG_COLOR,MAIN_FONT_COLOR);
 		} else {
 			ILI9341_WriteString(10,(3+nfile)*SPACER, "RECORD", Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
@@ -370,7 +371,9 @@ void passRecordFile(void){
 	fres = f_open(&fil, recording_paths[sel], FA_WRITE);	// open file
 	if (fres != FR_OK) {
 		ILI9341_WriteString(10,6*SPACER, "Error opening write file", Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
-		while(1);
+		while(1){
+			vTaskSuspend(NULL);
+		}
 	}
 
 	write_file_handle = &fil;
@@ -382,7 +385,9 @@ void passRecordFile(void){
 void closeRecordFile(void){
 	/*
 	stop_recording = true;
-	while (!write_complete){};
+	while (!recording_complete){
+		vTaskDelay(1)
+	};
 	f_close(write_file_handle);		// close file
 	*/
 }
@@ -485,7 +490,7 @@ void wyatt_main(void *ignore __attribute__((unused))) {
 		//sprintf(disp_buf, "ticks: %u", tick);
 		//ILI9341_WriteString(0,0*SPACER, disp_buf,Font_7x10,MAIN_FONT_COLOR, BG_COLOR);
 		tick++;
-   		osDelay(100);
+   		vTaskDelay(100);
 	}
 	vTaskSuspend(xTaskGetCurrentTaskHandle()); //LEAVE AT THE END
 	vTaskDelete(NULL);
