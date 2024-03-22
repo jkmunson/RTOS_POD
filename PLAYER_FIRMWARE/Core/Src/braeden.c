@@ -56,8 +56,8 @@ void braeden_main(void *ignore __attribute__((unused))) {
 		if(!aud_buf_ready) continue;
 		aud_buf_ready = false;
 		div++;
-		if(div%1000)continue;
-		console_printf_blocked("Sample: %d\n", 100, (int)main_buf[0]);
+		if(div%100)continue;
+		console_printf("Sample: %d\n", 100, (int)HAL_ADC_GetValue(&hadc1));
 		//res = f_open(&microphone, "recording", FA_WRITE | FA_CREATE_ALWAYS);
 
 		//f_write(&microphone, &adcBuffer, BUF_SIZE, NULL);
