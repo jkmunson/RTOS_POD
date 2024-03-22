@@ -85,8 +85,7 @@ uint16_t long_press_count = 0;
 bool long_press_detected;
 bool start_recording;
 bool stop_recording;
-char recording_names[4][20] = {"", "recording1", "recording2", "recording3"};
-char recording_paths[4][40] = {"", "/Recordings/recording1.wav", "/Recordings/recording2.wav", "/Recordings/recording3.wav"};
+char recording_names[4][20] = {"", "recording1.wav", "recording2.wav", "recording3.wav"};
 unsigned int a;
 
 
@@ -222,6 +221,8 @@ void openSelectedFile(){
 
 	// commented out code used for printing contents of .txt files.
 
+	/*
+
 	TCHAR* rres = f_gets((TCHAR*)readBuf, 30, audio_file_handle);
 	if(rres != 0) {
 		ILI9341_WriteString(10,4*SPACER,readBuf,Font_11x18,MAIN_FONT_COLOR,BG_COLOR);
@@ -229,7 +230,7 @@ void openSelectedFile(){
 
 	ILI9341_WriteString(10,2*SPACER, "File contents:", Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
 
-	/*
+
 
 	TCHAR* rres = f_gets((TCHAR*)readBuf, 30, &fil);
 	if(rres != 0) {
@@ -370,7 +371,8 @@ void postRecordingPrompt(void){
 }
 
 void passRecordFile(void){
-	fres = f_open(&fil, recording_paths[sel], FA_WRITE);	// open file
+	fres = f_opendir(&dir, "/Recordings");
+	fres = f_open(&fil, recording_names[sel], FA_WRITE);	// open file
 	if (fres != FR_OK) {
 		ILI9341_WriteString(10,6*SPACER, "Error opening write file", Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
 		while(1){
@@ -390,6 +392,7 @@ void closeRecordFile(void){
 		vTaskDelay(1);
 	};
 	f_close(write_file_handle);		// close file
+	f_closedir(&dir); 		// close directory
 }
 
 void setAllFalse(void){
