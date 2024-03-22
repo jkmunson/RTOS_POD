@@ -83,7 +83,7 @@ static void outputSamples(FIL *fil, struct Wav_Header *header)
 	
 	static dac_started = false;
 	
-	while(bytes_left > 0) {
+	while((bytes_left > 0) && !stop_playing) {
 		
 		int blksize = MIN(bytes_left, BUFSIZE);
 		
@@ -102,9 +102,11 @@ static void outputSamples(FIL *fil, struct Wav_Header *header)
 		}
 		
 		if(!dac_started) {
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, GPIO_PIN_SET);
 			HAL_DAC_Start_DMA(&AUD_GREEN_DAC, DAC_CHANNEL_1, left_buf, AUDIO_BUF_SIZE/4, DAC_ALIGN_12B_L);
 			HAL_DAC_Start_DMA(&AUD_GREEN_DAC, DAC_CHANNEL_2, right_buf, AUDIO_BUF_SIZE/4, DAC_ALIGN_12B_L);
-			dac_started = 1;
+			dac_started = true;
 		}
 		
 		while(!dma_done && !dma_half_done) vTaskDelay(15);
@@ -115,6 +117,9 @@ static void outputSamples(FIL *fil, struct Wav_Header *header)
 
 	HAL_DAC_Stop_DMA(&AUD_GREEN_DAC, DAC_CHANNEL_1);
 	HAL_DAC_Stop_DMA(&AUD_GREEN_DAC, DAC_CHANNEL_2);
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, GPIO_PIN_RESET);
+
 
 	song_complete = true;
 }
@@ -153,6 +158,7 @@ static void playWavFile(FIL *fil)
 done:
 	song_complete = true;
 	file_ready = false;
+	stop_playing = false;
 }
 
 void bryant_main(void *ignore __attribute__((unused))) {
