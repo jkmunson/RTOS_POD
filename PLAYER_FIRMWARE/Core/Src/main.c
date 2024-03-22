@@ -215,7 +215,7 @@ int main(void)
 	  HAL_UART_Transmit(&CONSOLE_UART_HANDLE, "-------------------------------\n" , 32, 0xFFFF);
   }
   freeRTOS_ready = true;
-  HAL_TIM_Base_Start(&AUDIO_44_1_KHZ_TIMER);
+  HAL_TIM_Base_Start_IT(&AUDIO_44_1_KHZ_TIMER);
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -247,7 +247,7 @@ int main(void)
   xTaskCreateStatic(wyatt_main, 	"wyatt_main_thread", 	1024, NULL, 5, (StackType_t *)wyatt_memspace, 	&threads[0]);
   xTaskCreateStatic(jeremy_main, 	"jeremy_main_thread", 	1024, NULL, 5, (StackType_t *)jeremy_memspace, 	&threads[1]);
   xTaskCreateStatic(bryant_main, 	"bryant_main_thread", 	1024, NULL, 5, (StackType_t *)bryant_memspace, 	&threads[2]);
-  //xTaskCreateStatic(braeden_main, 	"braeden_main_thread", 	1024, NULL, 5, (StackType_t *)braeden_memspace, &threads[3]);
+  xTaskCreateStatic(braeden_main, 	"braeden_main_thread", 	1024, NULL, 5, (StackType_t *)braeden_memspace, &threads[3]);
 
   /* USER CODE END RTOS_THREADS */
 
@@ -1431,7 +1431,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		   {
 		    while (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_4) == GPIO_PIN_RESET){};
 		    counter--;
-		    up_pressed;
+		    up_pressed = true;
 		    while (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2) == GPIO_PIN_RESET){};
 		   }
 		  }
@@ -1440,7 +1440,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			   if (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_4) == GPIO_PIN_RESET)
 			   	  {
 		    counter++;
-		    down_pressed;
+		    down_pressed = true;
 		    while (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_4) == GPIO_PIN_RESET){};
 		    while (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_2) == GPIO_PIN_RESET){};
 			   	  }

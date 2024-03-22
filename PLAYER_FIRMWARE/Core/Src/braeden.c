@@ -26,7 +26,6 @@ bool aud_buf_ready = false;
 bool ready_to_start = false;
 
 void get_audio_sample(void){
-	console_print(".");
 	static int entry = -1;
 
 	if(!ready_to_start) return;
@@ -40,7 +39,7 @@ void get_audio_sample(void){
 	if (entry == BUF_SIZE-1){
 		swap_buffers();
 		aud_buf_ready = true;
-		vTaskResume(task_handle);
+		xTaskResumeFromISR(task_handle);
 	}
 }
 
@@ -50,19 +49,18 @@ void braeden_main(void *ignore __attribute__((unused))) {
 	ready_to_start = true;
 	isr_buf = adcBuffer;
 	main_buf = adcBuffer+BUF_SIZE;
-
-
+	static int div = 0;
+	console_print("Hello\n");
 	while(1) {
-		console_print("Hello\n");
 		vTaskSuspend(NULL);
 		if(!aud_buf_ready) continue;
-		static div = 0;
-		if((++div) % 1000) continue;
-		console_printf("Sample: %d", main_buf[0]);
+		aud_buf_ready = false;
+		div++;
+		if(div%100)continue;
+		console_printf("Sample: %d\n", (int)HAL_ADC_GetValue(&hadc1));
 		//res = f_open(&microphone, "recording", FA_WRITE | FA_CREATE_ALWAYS);
 
 		//f_write(&microphone, &adcBuffer, BUF_SIZE, NULL);
-		aud_buf_ready = false;
 	}
 	vTaskSuspend(xTaskGetCurrentTaskHandle()); //LEAVE AT THE END
 	vTaskDelete(NULL);
