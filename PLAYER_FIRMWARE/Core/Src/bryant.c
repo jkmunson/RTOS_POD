@@ -34,17 +34,15 @@ static uint8_t fileBuffer[BUFSIZE];
 static uint8_t dmaBuffer[2][BUFSIZE];
 static uint8_t dmaBank = 0;
 
-static void setSampleRate(uint16_t freq)
-{
-  uint16_t period = (80000000 / freq) - 1;
-  htim6.Instance = TIM6;
-  htim6.Init.Prescaler = 0;
-  htim6.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim6.Init.Period = period;
-  htim6.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  htim6.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
-  HAL_TIM_Base_Init(&htim6);
-}
+
+
+//uint16_t audio_convert(int16_t old_val, uint16_t volume) {
+//	int32_t expanded = ((int32_t)old_val)*(int32_t)VOLUME_ADC_RANGE;
+//	int32_t attenuated = expanded/volume;
+//	uint32_t shifted = (uint32_t)(attenuated + 32768);
+//	uint16_t truncated = shifted;
+//	return truncated;
+//}
 
 static inline uint16_t val2Dac8(int32_t v)
 {
@@ -118,7 +116,7 @@ static void outputSamples(FIL *fil, struct Wav_Header *header)
 
     prepareData(channels, numSamples, pInput, pOutput);
 
-    // wait for DMA complete
+
     while(flg_dma_done == 0) {
       __NOP();
     }
@@ -130,19 +128,27 @@ static void outputSamples(FIL *fil, struct Wav_Header *header)
 	HAL_DAC_Start(&AUD_GREEN_DAC, DAC_CHANNEL_1);
 	HAL_DAC_Start(&AUD_GREEN_DAC, DAC_CHANNEL_2);
 
-	HAL_DAC_Start_DMA(&AUD_GREEN_DAC, DAC_CHANNEL_1, (uint32_t*)dmaBuffer[dmaBank], numSamples, DAC_ALIGN_12B_R);
-	HAL_DAC_Start_DMA(&AUD_GREEN_DAC, DAC_CHANNEL_2, (uint32_t*)(dmaBuffer[dmaBank]+2), numSamples, DAC_ALIGN_12B_R);
+	HAL_DAC_Start_DMA(&AUD_GREEN_DAC, DAC_CHANNEL_1, (uint32_t*)dmaBuffer[dmaBank], (numSamples>>2)-1, DAC_ALIGN_12B_R);
+	HAL_DAC_Start_DMA(&AUD_GREEN_DAC, DAC_CHANNEL_2, (uint32_t*)(dmaBuffer[dmaBank]+2), (numSamples>>2)-1, DAC_ALIGN_12B_R);
 
     dmaBank = !dmaBank;
     bytes_last -= blksize;
   };
 
+
+//  bool pause;			// not used yet
+
+
   while(flg_dma_done == 0) {
+	  if(stop_playing)
+		  break;
     __NOP();
   }
 
 	HAL_DAC_Stop_DMA(&AUD_GREEN_DAC, DAC_CHANNEL_1);
 	HAL_DAC_Stop_DMA(&AUD_GREEN_DAC, DAC_CHANNEL_2);
+
+	song_complete = true;
 }
 
 static uint8_t isSupprtedWavFile(const struct Wav_Header *header)
@@ -174,7 +180,6 @@ static void playWavFile(FIL *fil)
   if (!isSupprtedWavFile(&header))
     goto done;
 
-  setSampleRate(header.sampleFreq);
   outputSamples(fil, &header);
 
 done :
@@ -183,9 +188,6 @@ done :
     return;
 }
 
-
-
-
 void bryant_main(void *ignore __attribute__((unused))) {
 
 	FIL *filename = audio_file_handle;
@@ -193,10 +195,7 @@ void bryant_main(void *ignore __attribute__((unused))) {
 	if(file_ready) {
 		playWavFile(filename);
 	}
-
-
 	vTaskDelay(1000);
 	vTaskSuspend(NULL); //LEAVE AT THE END
 	vTaskDelete(NULL);
 }
-
