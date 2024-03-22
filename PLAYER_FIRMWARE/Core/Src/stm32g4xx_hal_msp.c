@@ -25,6 +25,8 @@
 /* USER CODE END Includes */
 extern DMA_HandleTypeDef hdma_dac1_ch1;
 
+extern DMA_HandleTypeDef hdma_dac1_ch2;
+
 extern DMA_HandleTypeDef hdma_uart5_tx;
 
 /* Private typedef -----------------------------------------------------------*/
@@ -440,8 +442,8 @@ void HAL_DAC_MspInit(DAC_HandleTypeDef* hdac)
     hdma_dac1_ch1.Init.Direction = DMA_MEMORY_TO_PERIPH;
     hdma_dac1_ch1.Init.PeriphInc = DMA_PINC_DISABLE;
     hdma_dac1_ch1.Init.MemInc = DMA_MINC_ENABLE;
-    hdma_dac1_ch1.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
-    hdma_dac1_ch1.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
+    hdma_dac1_ch1.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;
+    hdma_dac1_ch1.Init.MemDataAlignment = DMA_MDATAALIGN_HALFWORD;
     hdma_dac1_ch1.Init.Mode = DMA_CIRCULAR;
     hdma_dac1_ch1.Init.Priority = DMA_PRIORITY_MEDIUM;
     if (HAL_DMA_Init(&hdma_dac1_ch1) != HAL_OK)
@@ -450,6 +452,23 @@ void HAL_DAC_MspInit(DAC_HandleTypeDef* hdac)
     }
 
     __HAL_LINKDMA(hdac,DMA_Handle1,hdma_dac1_ch1);
+
+    /* DAC1_CH2 Init */
+    hdma_dac1_ch2.Instance = DMA1_Channel2;
+    hdma_dac1_ch2.Init.Request = DMA_REQUEST_DAC1_CHANNEL2;
+    hdma_dac1_ch2.Init.Direction = DMA_MEMORY_TO_PERIPH;
+    hdma_dac1_ch2.Init.PeriphInc = DMA_PINC_DISABLE;
+    hdma_dac1_ch2.Init.MemInc = DMA_MINC_ENABLE;
+    hdma_dac1_ch2.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;
+    hdma_dac1_ch2.Init.MemDataAlignment = DMA_MDATAALIGN_HALFWORD;
+    hdma_dac1_ch2.Init.Mode = DMA_CIRCULAR;
+    hdma_dac1_ch2.Init.Priority = DMA_PRIORITY_MEDIUM;
+    if (HAL_DMA_Init(&hdma_dac1_ch2) != HAL_OK)
+    {
+      Error_Handler();
+    }
+
+    __HAL_LINKDMA(hdac,DMA_Handle2,hdma_dac1_ch2);
 
     /* DAC1 interrupt Init */
     HAL_NVIC_SetPriority(TIM6_DAC_IRQn, 5, 0);
@@ -513,6 +532,7 @@ void HAL_DAC_MspDeInit(DAC_HandleTypeDef* hdac)
 
     /* DAC1 DMA DeInit */
     HAL_DMA_DeInit(hdac->DMA_Handle1);
+    HAL_DMA_DeInit(hdac->DMA_Handle2);
 
     /* DAC1 interrupt DeInit */
   /* USER CODE BEGIN DAC1:TIM6_DAC_IRQn disable */
@@ -1161,7 +1181,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
 
     /* UART5 DMA Init */
     /* UART5_TX Init */
-    hdma_uart5_tx.Instance = DMA1_Channel2;
+    hdma_uart5_tx.Instance = DMA2_Channel1;
     hdma_uart5_tx.Init.Request = DMA_REQUEST_UART5_TX;
     hdma_uart5_tx.Init.Direction = DMA_MEMORY_TO_PERIPH;
     hdma_uart5_tx.Init.PeriphInc = DMA_PINC_DISABLE;

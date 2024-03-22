@@ -20,7 +20,6 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "app_fatfs.h"
-#include "buttons.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -33,6 +32,7 @@
 #include "stm32g4xx_hal.h"
 
 #include "console.h"
+#include "buttons.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -62,6 +62,7 @@ DAC_HandleTypeDef hdac1;
 DAC_HandleTypeDef hdac3;
 DAC_HandleTypeDef hdac4;
 DMA_HandleTypeDef hdma_dac1_ch1;
+DMA_HandleTypeDef hdma_dac1_ch2;
 
 OPAMP_HandleTypeDef hopamp1;
 OPAMP_HandleTypeDef hopamp3;
@@ -1264,6 +1265,7 @@ static void MX_DMA_Init(void)
   /* DMA controller clock enable */
   __HAL_RCC_DMAMUX1_CLK_ENABLE();
   __HAL_RCC_DMA1_CLK_ENABLE();
+  __HAL_RCC_DMA2_CLK_ENABLE();
 
   /* DMA interrupt init */
   /* DMA1_Channel1_IRQn interrupt configuration */
@@ -1272,8 +1274,11 @@ static void MX_DMA_Init(void)
   /* DMA1_Channel2_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA1_Channel2_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(DMA1_Channel2_IRQn);
+  /* DMA2_Channel1_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Channel1_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Channel1_IRQn);
   /* DMAMUX_OVR_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMAMUX_OVR_IRQn, 5, 0);
+  HAL_NVIC_SetPriority(DMAMUX_OVR_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(DMAMUX_OVR_IRQn);
 
 }
@@ -1398,7 +1403,7 @@ static void MX_GPIO_Init(void)
   * @retval None
   */
 /* USER CODE END Header_StartDefaultTask */
-void StartDefaultTask(void *argument __attribute__((unused)))
+void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
 	while(1){
@@ -1406,10 +1411,6 @@ void StartDefaultTask(void *argument __attribute__((unused)))
 		console_print_time(), console_write("System Up\n", 11);
 	}
   /* USER CODE END 5 */
-}
-
-__weak void get_audio_sample(void){
-
 }
 
 /**

@@ -37,7 +37,7 @@ void get_audio_sample(void){
 	static int entry = -1;
 	uint32_t bytes_written;
 
-	if (stop_recording == true & write_complete == true){
+	if ((stop_recording == true) && (write_complete == true)){
 		ready_to_start = false;
 		bytes_written = num_writes * 256 * 2;
 	}

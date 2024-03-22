@@ -60,6 +60,7 @@
 
 /* External variables --------------------------------------------------------*/
 extern DMA_HandleTypeDef hdma_dac1_ch1;
+extern DMA_HandleTypeDef hdma_dac1_ch2;
 extern DAC_HandleTypeDef hdac1;
 extern DAC_HandleTypeDef hdac3;
 extern DAC_HandleTypeDef hdac4;
@@ -193,9 +194,9 @@ void DMA1_Channel1_IRQHandler(void)
 void DMA1_Channel2_IRQHandler(void)
 {
   /* USER CODE BEGIN DMA1_Channel2_IRQn 0 */
-  xTaskResumeFromISR(console_thread);
+
   /* USER CODE END DMA1_Channel2_IRQn 0 */
-  HAL_DMA_IRQHandler(&hdma_uart5_tx);
+  HAL_DMA_IRQHandler(&hdma_dac1_ch2);
   /* USER CODE BEGIN DMA1_Channel2_IRQn 1 */
 
   /* USER CODE END DMA1_Channel2_IRQn 1 */
@@ -292,6 +293,20 @@ void TIM7_DAC_IRQHandler(void)
 }
 
 /**
+  * @brief This function handles DMA2 channel1 global interrupt.
+  */
+void DMA2_Channel1_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA2_Channel1_IRQn 0 */
+	xTaskResumeFromISR(console_thread);
+  /* USER CODE END DMA2_Channel1_IRQn 0 */
+  HAL_DMA_IRQHandler(&hdma_uart5_tx);
+  /* USER CODE BEGIN DMA2_Channel1_IRQn 1 */
+
+  /* USER CODE END DMA2_Channel1_IRQn 1 */
+}
+
+/**
   * @brief This function handles SPI4 global interrupt.
   */
 void SPI4_IRQHandler(void)
@@ -313,7 +328,7 @@ void DMAMUX_OVR_IRQHandler(void)
   /* USER CODE BEGIN DMAMUX_OVR_IRQn 0 */
 
   /* USER CODE END DMAMUX_OVR_IRQn 0 */
-  // Handle DMA1_Channel2
+  // Handle DMA2_Channel1
   HAL_DMAEx_MUX_IRQHandler(&hdma_uart5_tx);
   /* USER CODE BEGIN DMAMUX_OVR_IRQn 1 */
 

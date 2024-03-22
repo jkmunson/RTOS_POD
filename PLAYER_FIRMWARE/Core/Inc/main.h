@@ -69,7 +69,6 @@ extern UART_HandleTypeDef huart5;
 
 //Defines for audio in
 extern ADC_HandleTypeDef hadc1;
-extern threads[5];
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
