@@ -34,7 +34,7 @@ void get_audio_sample(void){
 	static int entry = -1;
 	uint32_t bytes_written;
 
-	if ((stop_recording == true) & (write_complete == true)){
+	if (stop_recording == true & write_complete == true){
 		ready_to_start = false;
 		bytes_written = num_writes * 256 * 2;
 	}
@@ -76,7 +76,7 @@ void braeden_main(void *ignore __attribute__((unused))) {
 		console_printf("Sample: %d\n", (int)HAL_ADC_GetValue(&hadc1));
 		//res = f_open(&microphone, "recording", FA_WRITE | FA_CREATE_ALWAYS);
 
-		f_write(&write_file_handle, &adcBuffer, BUF_SIZE, NULL);
+		//f_write(&microphone, &adcBuffer, BUF_SIZE, NULL);
 		write_complete = true;
 		num_writes++;
 	}
