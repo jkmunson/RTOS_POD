@@ -24,7 +24,6 @@ static uint8_t dmaBank = 0;
 static void setSampleRate(uint16_t freq)
 {
   uint16_t period = (80000000 / freq) - 1;
-
   htim6.Instance = TIM6;
   htim6.Init.Prescaler = 0;
   htim6.Init.CounterMode = TIM_COUNTERMODE_UP;
