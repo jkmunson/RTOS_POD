@@ -85,7 +85,7 @@ uint16_t long_press_count = 0;
 bool long_press_detected;
 bool start_recording;
 bool stop_recording;
-char recording_names[4][20] = {"", "recording1.wav", "recording2.wav", "recording3.wav"};
+char recording_names[4][20] = {"", "/Recordings/recording1.wav", "/Recordings/ecording2.wav", "/Recordings/recording3.wav"};
 unsigned int a;
 
 
@@ -219,61 +219,6 @@ void openSelectedFile(){
 	audio_file_handle = &fil;	// added 3/19
 	file_ready = true;
 
-	// commented out code used for printing contents of .txt files.
-
-	/*
-
-	TCHAR* rres = f_gets((TCHAR*)readBuf, 30, audio_file_handle);
-	if(rres != 0) {
-		ILI9341_WriteString(10,4*SPACER,readBuf,Font_11x18,MAIN_FONT_COLOR,BG_COLOR);
-	}
-
-	ILI9341_WriteString(10,2*SPACER, "File contents:", Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
-
-
-
-	TCHAR* rres = f_gets((TCHAR*)readBuf, 30, &fil);
-	if(rres != 0) {
-		ILI9341_WriteString(10,4*SPACER,readBuf,Font_11x18,MAIN_FONT_COLOR,BG_COLOR);
-	}
-
-	ILI9341_WriteString(10,2*SPACER, "File contents:", Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
-
-
-	for (int i=0; i<10; i++){
-		unsigned char tmp[2];
-		unsigned char bits[2];
-		unsigned char mask = 1;
-		unsigned char char_num[2];
-
-		// ----------- Display character number ---------------
-		char_num[0] = 48 + i;
-		char_num[1] = '\0';
-		ILI9341_WriteString(0,6*10, "char number:", Font_11x18, ILI9341_BLACK, ILI9341_WHITE);
-		ILI9341_WriteString(160,6*10, char_num, Font_11x18, ILI9341_BLACK, ILI9341_WHITE);
-
-		// ---------- Display individual character -----------
-		tmp[0] = readBuf[i];
-		tmp[1] = '\0';
-		ILI9341_WriteString(0,8*10, "character:", Font_11x18, ILI9341_BLACK, ILI9341_WHITE);
-		ILI9341_WriteString(160,8*10, tmp, Font_11x18, ILI9341_BLACK, ILI9341_WHITE);
-
-		// ---------- Display binary representation -----------
-		ILI9341_WriteString(0, 10*10, "binary:", Font_11x18, ILI9341_BLACK, ILI9341_WHITE);
-		for (int j=0; j<8; j++){
-			bits[0] = (tmp[0] & (mask<<j)) != 0;
-			if (bits[0] == 0){
-				bits[0] = 48; // ascii 0
-			} else {
-				bits[0] = 49; // ascii 1
-			}
-			// display binary representation
-			bits[1] = '\0';
-			ILI9341_WriteString(265 - j*15, 10*10, bits, Font_11x18, ILI9341_BLACK, ILI9341_WHITE);
-		}
-	*/
-
-	//f_close(&fil);		// close file
 	contentsPosted = true;
 }
 
@@ -335,7 +280,7 @@ void handleButtonPress(void){
 	if (right_pressed){
 		right_pressed = false;
 		if (currentState == viewingDirectory){
-			if (sel < nfile-1){
+			if (sel < nfile){
 				readFile = true;
 			} else {
 				viewRecordSlots = true;
@@ -371,7 +316,6 @@ void postRecordingPrompt(void){
 }
 
 void passRecordFile(void){
-	fres = f_opendir(&dir, "/Recordings");
 	fres = f_open(&fil, recording_names[sel], FA_WRITE);	// open file
 	if (fres != FR_OK) {
 		ILI9341_WriteString(10,6*SPACER, "Error opening write file", Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
@@ -389,10 +333,10 @@ void passRecordFile(void){
 void closeRecordFile(void){
 	stop_recording = true;
 	while (!recording_complete){
+		ILI9341_WriteString(10,3*SPACER, "Waiting for recording complete", Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
 		vTaskDelay(1);
 	};
 	f_close(write_file_handle);		// close file
-	f_closedir(&dir); 		// close directory
 }
 
 void setAllFalse(void){
