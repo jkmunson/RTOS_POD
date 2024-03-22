@@ -68,7 +68,7 @@ extern uint8_t audio_buffer[AUD_BUFFER_SIZE];
 extern UART_HandleTypeDef huart5;
 
 //Defines for audio in
-extern ADC_HandleTypeDef hadc5;
+extern ADC_HandleTypeDef hadc1;
 extern threads[5];
 /* USER CODE END EM */
 

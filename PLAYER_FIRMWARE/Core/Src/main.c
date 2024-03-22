@@ -215,6 +215,7 @@ int main(void)
 	  HAL_UART_Transmit(&CONSOLE_UART_HANDLE, "-------------------------------\n" , 32, 0xFFFF);
   }
   freeRTOS_ready = true;
+  HAL_TIM_Base_Start(&AUDIO_44_1_KHZ_TIMER);
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -1447,7 +1448,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	  }
 
 	  if(htim->Instance == AUDIO_44_1_KHZ_TIMER.Instance) {
-		  update_green_DMA_addr();
 		  get_audio_sample();
 	  }
   /* USER CODE END Callback 0 */
