@@ -85,7 +85,7 @@ uint16_t long_press_count = 0;
 bool long_press_detected;
 bool start_recording;
 bool stop_recording;
-char recording_names[4][20] = {"", "/Recordings/recording1.wav", "/Recordings/ecording2.wav", "/Recordings/recording3.wav"};
+char recording_names[4][20] = {"", "recording1.wav", "ecording2.wav", "recording3.wav"};
 unsigned int a;
 
 
