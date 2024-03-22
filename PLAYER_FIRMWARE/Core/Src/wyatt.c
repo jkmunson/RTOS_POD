@@ -316,7 +316,7 @@ void postRecordingPrompt(void){
 }
 
 void passRecordFile(void){
-	fres = f_open(&fil, recording_names[sel], FA_WRITE);	// open file
+	fres = f_open(&fil, recording_names[sel], FA_CREATE_ALWAYS | FA_WRITE);	// open file
 	if (fres != FR_OK) {
 		ILI9341_WriteString(10,6*SPACER, "Error opening write file", Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
 		while(1){

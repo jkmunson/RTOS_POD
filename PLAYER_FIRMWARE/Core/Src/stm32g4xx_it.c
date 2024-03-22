@@ -298,7 +298,7 @@ void TIM7_DAC_IRQHandler(void)
 void DMA2_Channel1_IRQHandler(void)
 {
   /* USER CODE BEGIN DMA2_Channel1_IRQn 0 */
-	if(console_thread){	xTaskResumeFromISR(console_thread);}
+	//if(console_thread){	xTaskResumeFromISR(console_thread);}
   /* USER CODE END DMA2_Channel1_IRQn 0 */
   HAL_DMA_IRQHandler(&hdma_uart5_tx);
   /* USER CODE BEGIN DMA2_Channel1_IRQn 1 */
