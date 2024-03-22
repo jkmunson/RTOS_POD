@@ -58,13 +58,11 @@ void AUDIO_DMA_full(struct __DMA_HandleTypeDef *hdma __attribute__((unused))){
 
 static void prepareDACBuffer_16Bit(uint8_t channels __attribute__((unused)), uint16_t numSamples, uint16_t *pIn, uint16_t *pOutput)
 {
-	
-	const uint16_t *left_buf = pOutput;
-	const uint16_t *right_buf = pOutput+(AUDIO_BUF_SIZE/4);
-	
 	for(int i = 0; i < numSamples*2;) {
-		buf_iter = (buf_iter+1);
-		if(buf_iter >= AUDIO_BUF_SIZE/4) {
+		left_buf[buf_iter] = pIn[i++];
+		right_buf[buf_iter] = pIn[i++];
+		
+		if(++buf_iter >= AUDIO_BUF_SIZE/4) {
 			buf_iter = 0;
 			buf_filled = 1;
 		}
