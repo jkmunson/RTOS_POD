@@ -3,6 +3,7 @@
 #include <main.h>
 #include <console.h>
 #include "app_fatfs.h"
+#include <wyatt.h>
 
 
 
