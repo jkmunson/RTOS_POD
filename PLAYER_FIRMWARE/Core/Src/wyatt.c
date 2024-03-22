@@ -367,7 +367,6 @@ void postRecordingPrompt(void){
 }
 
 void passRecordFile(void){
-	/*
 	fres = f_open(&fil, recording_paths[sel], FA_WRITE);	// open file
 	if (fres != FR_OK) {
 		ILI9341_WriteString(10,6*SPACER, "Error opening write file", Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
@@ -377,6 +376,9 @@ void passRecordFile(void){
 	}
 
 	write_file_handle = &fil;
+
+	f_write(write_file_handle, wav_header_bin, wav_header_bin_len, &a);
+
 	start_recording = true;
 	*/
 
