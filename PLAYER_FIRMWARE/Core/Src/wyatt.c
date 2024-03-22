@@ -16,6 +16,8 @@
 #include "wyatt.h"
 #include "buttons.h"
 #include "braeden.h"
+#include "bryant.h"
+#include "wav_header.h"
 
 
 //internal functions
@@ -85,6 +87,7 @@ bool start_recording;
 bool stop_recording;
 char recording_names[4][20] = {"", "recording1", "recording2", "recording3"};
 char recording_paths[4][40] = {"", "/Recordings/recording1.wav", "/Recordings/recording2.wav", "/Recordings/recording3.wav"};
+unsigned int a;
 
 
 void init() {
@@ -376,22 +379,17 @@ void passRecordFile(void){
 	}
 
 	write_file_handle = &fil;
-
 	f_write(write_file_handle, wav_header_bin, wav_header_bin_len, &a);
 
 	start_recording = true;
-	*/
-
 }
 
 void closeRecordFile(void){
-	/*
 	stop_recording = true;
 	while (!recording_complete){
-		vTaskDelay(1)
+		vTaskDelay(1);
 	};
 	f_close(write_file_handle);		// close file
-	*/
 }
 
 void setAllFalse(void){
