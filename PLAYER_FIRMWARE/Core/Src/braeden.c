@@ -3,23 +3,26 @@
 #include <main.h>
 #include <console.h>
 #include "app_fatfs.h"
-#include <wyatt.h>
 
-
-
+#include "wyatt.h"
+#include "braeden.h"
 
 #define BUF_SIZE 256
 uint16_t adcBuffer[BUF_SIZE*2];
 uint16_t *main_buf, *isr_buf;
 
+
 //Swaps the contents of the isr_buf and main_buf
+
+bool recording_complete;
+
+
 void swap_buffers(void){
 	uint16_t *temp = main_buf;
 	main_buf = isr_buf;
 	isr_buf = temp;
 }
 
-FIL microphone;
 FRESULT res;
 
 TaskHandle_t task_handle = NULL;
@@ -65,20 +68,20 @@ void braeden_main(void *ignore __attribute__((unused))) {
 	ready_to_start = true;
 	isr_buf = adcBuffer;
 	main_buf = adcBuffer+BUF_SIZE;
-	static int div = 0;
-	console_print("Hello\n");
+
+	static size_t chars_written = 0;
 	while(1) {
 		vTaskSuspend(NULL);
 		if(!aud_buf_ready) continue;
 		aud_buf_ready = false;
-		div++;
-		if(div%100)continue;
-		console_printf("Sample: %d\n", (int)HAL_ADC_GetValue(&hadc1));
-		//res = f_open(&microphone, "recording", FA_WRITE | FA_CREATE_ALWAYS);
+		if(!start_recording) {chars_written = 0; continue;};
+		chars_written += BUF_SIZE;
+		f_write(write_file_handle, main_buf, BUF_SIZE, NULL);
+		if(chars_written >= 882000) {
+			recording_complete = true;
+			start_recording = false;
+		}
 
-		//f_write(&microphone, &adcBuffer, BUF_SIZE, NULL);
-		write_complete = true;
-		num_writes++;
 	}
 	vTaskSuspend(xTaskGetCurrentTaskHandle()); //LEAVE AT THE END
 	vTaskDelete(NULL);
