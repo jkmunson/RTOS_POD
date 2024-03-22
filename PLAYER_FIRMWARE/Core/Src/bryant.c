@@ -16,6 +16,7 @@
 #include "main.h"
 #include "console.h"
 #include "buttons.h"
+#include "wyatt.h"
 
 
 #include <string.h>
@@ -197,13 +198,15 @@ done :
 void bryant_main(void *ignore __attribute__((unused))) {
 
 
-	char *filename = "sound-1-16781.WAV";
+	//char *filename = *audio_file_handle;
+	char *filename = "sound-1-16781.wav";
 
-	if (strstr(filename, ".WAV") != 0) {
+	if (strstr(filename, ".wav") != 0) {
 	  playWavFile(filename);
 	}
 
 	vTaskDelay(1000);
-
+	vTaskSuspend(NULL); //LEAVE AT THE END
+	vTaskDelete(NULL);
 }
 
