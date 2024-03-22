@@ -53,7 +53,7 @@
 /  1: Enable without LF-CRLF conversion.
 /  2: Enable with LF-CRLF conversion. */
 
-#define _USE_FIND            0
+#define _USE_FIND            1
 /* This option switches filtered directory read functions, f_findfirst() and
 /  f_findnext(). (0:Disable, 1:Enable 2:Enable with matching altname[] too) */
 
@@ -63,18 +63,18 @@
 #define _USE_FASTSEEK        1
 /* This option switches fast seek feature. (0:Disable or 1:Enable) */
 
-#define	_USE_EXPAND		0
+#define	_USE_EXPAND		1
 /* This option switches f_expand function. (0:Disable or 1:Enable) */
 
-#define _USE_CHMOD		0
+#define _USE_CHMOD		1
 /* This option switches attribute manipulation functions, f_chmod() and f_utime().
 /  (0:Disable or 1:Enable) Also _FS_READONLY needs to be 0 to enable this option. */
 
-#define _USE_LABEL           0
+#define _USE_LABEL           1
 /* This option switches volume label functions, f_getlabel() and f_setlabel().
 /  (0:Disable or 1:Enable) */
 
-#define _USE_FORWARD         0
+#define _USE_FORWARD         1
 /* This option switches f_forward() function. (0:Disable or 1:Enable) */
 
 /*-----------------------------------------------------------------------------/
@@ -109,8 +109,8 @@
 /   950 - Traditional Chinese (DBCS)
 */
 
-#define _USE_LFN     0    /* 0 to 3 */
-#define _MAX_LFN     255  /* Maximum LFN length to handle (12 to 255) */
+#define _USE_LFN     3    /* 0 to 3 */
+#define _MAX_LFN     128  /* Maximum LFN length to handle (12 to 255) */
 /* The _USE_LFN switches the support of long file name (LFN).
 /
 /   0: Disable support of LFN. _MAX_LFN has no effect.
@@ -142,7 +142,7 @@
 /
 /  This option has no effect when _LFN_UNICODE == 0. */
 
-#define _FS_RPATH       0 /* 0 to 2 */
+#define _FS_RPATH       2 /* 0 to 2 */
 /* This option configures support of relative path.
 /
 /   0: Disable relative path and remove related functions.
@@ -209,7 +209,7 @@
 /  Instead of private sector buffer eliminated from the file object, common sector
 /  buffer in the file system object (FATFS) is used for the file data transfer. */
 
-#define _FS_EXFAT	0
+#define _FS_EXFAT	1
 /* This option switches support of exFAT file system. (0:Disable or 1:Enable)
 /  When enable exFAT, also LFN needs to be enabled. (_USE_LFN >= 1)
 /  Note that enabling exFAT discards C89 compatibility. */

@@ -51,14 +51,14 @@ void get_audio_sample(void){
 
 	entry = (entry+1)%BUF_SIZE;
 
-	adcBuffer[entry] = HAL_ADC_GetValue(&hadc1);
+	isr_buf[entry] = HAL_ADC_GetValue(&hadc1);
 
 	HAL_ADC_Start(&hadc1);
 
 	if (entry == BUF_SIZE-1){
 		swap_buffers();
 		aud_buf_ready = true;
-		xTaskResumeFromISR(task_handle);
+		//xTaskResumeFromISR(task_handle);
 	}
 }
 
@@ -71,7 +71,7 @@ void braeden_main(void *ignore __attribute__((unused))) {
 
 	static size_t chars_written = 0;
 	while(1) {
-		vTaskSuspend(NULL);
+		//vTaskSuspend(NULL);
 		if(!aud_buf_ready) continue;
 		aud_buf_ready = false;
 		if(!start_recording) {chars_written = 0; continue;};
