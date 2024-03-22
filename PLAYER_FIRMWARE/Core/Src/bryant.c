@@ -1,12 +1,25 @@
-#include <FreeRTOS.h>
-#include <task.h>
 #include <string.h>
 #include "wav.h"
 #include "main.h"
 #include "app_fatfs.h"
 #include <stdio.h>
 #include "fonts.h"
-//extern uint8_t audio_buffer[49152]; //Can be recast to a more appropriate type.
+#include "FreeRTOS.h"
+#include "task.h"
+#include "cmsis_os.h"
+#include "stm32g4xx_hal.h"
+#include "stm32g4xx_hal_dac.h"
+#include "stm32g4xx_hal_dma.h"
+#include "stm32g4xx_hal_tim.h"
+#include "console.h"
+#include "buttons.h"
+#include "wyatt.h"
+#include "bryant.h"
+
+extern uint8_t audio_buffer[49152]; //Can be recast to a more appropriate type.
+extern DMA_HandleTypeDef hdma_dac1_ch1;
+#define AUD_GREEN_L_DMA hdma_dac1_ch1;
+
 
 #define BUFSIZE 512
 
@@ -110,9 +123,15 @@ static void outputSamples(FIL *fil, struct Wav_Header *header)
       __NOP();
     }
 
-    HAL_DAC_Stop_DMA(&hdac1, DAC_CHANNEL_1);
+	HAL_DAC_Stop_DMA(&AUD_GREEN_DAC, DAC_CHANNEL_1);
+	HAL_DAC_Stop_DMA(&AUD_GREEN_DAC, DAC_CHANNEL_2);
+
     flg_dma_done = 0;
-    HAL_DAC_Start_DMA(&hdac1, DAC_CHANNEL_1, (uint32_t*)dmaBuffer[dmaBank], numSamples, DAC_ALIGN_12B_R);
+	HAL_DAC_Start(&AUD_GREEN_DAC, DAC_CHANNEL_1);
+	HAL_DAC_Start(&AUD_GREEN_DAC, DAC_CHANNEL_2);
+
+	HAL_DAC_Start_DMA(&AUD_GREEN_DAC, DAC_CHANNEL_1, (uint32_t*)dmaBuffer[dmaBank], numSamples, DAC_ALIGN_12B_R);
+	HAL_DAC_Start_DMA(&AUD_GREEN_DAC, DAC_CHANNEL_2, (uint32_t*)(dmaBuffer[dmaBank]+2), numSamples, DAC_ALIGN_12B_R);
 
     dmaBank = !dmaBank;
     bytes_last -= blksize;
@@ -122,7 +141,8 @@ static void outputSamples(FIL *fil, struct Wav_Header *header)
     __NOP();
   }
 
-  HAL_DAC_Stop_DMA(&hdac1, DAC_CHANNEL_1);
+	HAL_DAC_Stop_DMA(&AUD_GREEN_DAC, DAC_CHANNEL_1);
+	HAL_DAC_Stop_DMA(&AUD_GREEN_DAC, DAC_CHANNEL_2);
 }
 
 static uint8_t isSupprtedWavFile(const struct Wav_Header *header)
@@ -139,19 +159,15 @@ static uint8_t isSupprtedWavFile(const struct Wav_Header *header)
   return 1;
 }
 
-static void playWavFile(char *filename)
+static void playWavFile(FIL *fil)
 {
-  FIL fil;
+
   FRESULT res;
   UINT count = 0;
 
   struct Wav_Header header;
 
-  res = f_open(&fil, filename, FA_READ);
-  if (res != FR_OK)
-    return;
-
-  res = f_read(&fil, &header, sizeof(struct Wav_Header), &count);
+  res = f_read(fil, &header, sizeof(struct Wav_Header), &count);
   if (res != FR_OK)
     goto done;
 
@@ -159,47 +175,28 @@ static void playWavFile(char *filename)
     goto done;
 
   setSampleRate(header.sampleFreq);
-  outputSamples(&fil, &header);
+  outputSamples(fil, &header);
 
 done :
-  res = f_close(&fil);
+  res = f_close(fil);
   if (res != FR_OK)
     return;
 }
 
 
-void bryant_main(void *ignore) {
 
 
-	vTaskSuspend(xTaskGetCurrentTaskHandle()); //LEAVE AT THE END
+void bryant_main(void *ignore __attribute__((unused))) {
+
+	FIL *filename = audio_file_handle;
+
+	if(file_ready) {
+		playWavFile(filename);
+	}
+
+
+	vTaskDelay(1000);
+	vTaskSuspend(NULL); //LEAVE AT THE END
 	vTaskDelete(NULL);
-
-	HAL_TIM_Base_Start(&htim6);
-
-	FATFS FatFs;
-	FRESULT res;
-	DIR dir;
-	FILINFO fno;
-
-	res = f_mount(&FatFs, "", 0);
-	if (res != FR_OK) {while(1);}
-
-	res = f_opendir(&dir, "");
-	if (res != FR_OK){while(1);}
-	while(1) {
-	res = f_readdir(&dir, &fno);
-	if (res != FR_OK || fno.fname[0] == 0)
-	  break;
-
-	char *filename = fno.fname;
-
-	if (strstr(filename, ".WAV") != 0) {
-	  playWavFile(filename);
-	}
-
-	HAL_Delay(1000);
-	}
-
-	res = f_closedir(&dir);
 }
 

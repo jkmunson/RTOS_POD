@@ -631,25 +631,6 @@ void HAL_OPAMP_MspInit(OPAMP_HandleTypeDef* hopamp)
 
   /* USER CODE END OPAMP4_MspInit 1 */
   }
-  else if(hopamp->Instance==OPAMP5)
-  {
-  /* USER CODE BEGIN OPAMP5_MspInit 0 */
-
-  /* USER CODE END OPAMP5_MspInit 0 */
-
-    __HAL_RCC_GPIOA_CLK_ENABLE();
-    /**OPAMP5 GPIO Configuration
-    PA8     ------> OPAMP5_VOUT
-    */
-    GPIO_InitStruct.Pin = GPIO_PIN_8;
-    GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
-    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-  /* USER CODE BEGIN OPAMP5_MspInit 1 */
-
-  /* USER CODE END OPAMP5_MspInit 1 */
-  }
   else if(hopamp->Instance==OPAMP6)
   {
   /* USER CODE BEGIN OPAMP6_MspInit 0 */
@@ -724,21 +705,6 @@ void HAL_OPAMP_MspDeInit(OPAMP_HandleTypeDef* hopamp)
   /* USER CODE BEGIN OPAMP4_MspDeInit 1 */
 
   /* USER CODE END OPAMP4_MspDeInit 1 */
-  }
-  else if(hopamp->Instance==OPAMP5)
-  {
-  /* USER CODE BEGIN OPAMP5_MspDeInit 0 */
-
-  /* USER CODE END OPAMP5_MspDeInit 0 */
-
-    /**OPAMP5 GPIO Configuration
-    PA8     ------> OPAMP5_VOUT
-    */
-    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_8);
-
-  /* USER CODE BEGIN OPAMP5_MspDeInit 1 */
-
-  /* USER CODE END OPAMP5_MspDeInit 1 */
   }
   else if(hopamp->Instance==OPAMP6)
   {
@@ -963,18 +929,20 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
 
     __HAL_RCC_GPIOE_CLK_ENABLE();
     /**SPI4 GPIO Configuration
-    PE4     ------> SPI4_NSS
     PE5     ------> SPI4_MISO
     PE6     ------> SPI4_MOSI
     PE2     ------> SPI4_SCK
     */
-    GPIO_InitStruct.Pin = GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_2;
+    GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_2;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    GPIO_InitStruct.Pull = GPIO_PULLUP;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
     GPIO_InitStruct.Alternate = GPIO_AF5_SPI4;
     HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
 
+    /* SPI4 interrupt Init */
+    HAL_NVIC_SetPriority(SPI4_IRQn, 5, 0);
+    HAL_NVIC_EnableIRQ(SPI4_IRQn);
   /* USER CODE BEGIN SPI4_MspInit 1 */
 
   /* USER CODE END SPI4_MspInit 1 */
@@ -1042,13 +1010,14 @@ void HAL_SPI_MspDeInit(SPI_HandleTypeDef* hspi)
     __HAL_RCC_SPI4_CLK_DISABLE();
 
     /**SPI4 GPIO Configuration
-    PE4     ------> SPI4_NSS
     PE5     ------> SPI4_MISO
     PE6     ------> SPI4_MOSI
     PE2     ------> SPI4_SCK
     */
-    HAL_GPIO_DeInit(GPIOE, GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_2);
+    HAL_GPIO_DeInit(GPIOE, GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_2);
 
+    /* SPI4 interrupt DeInit */
+    HAL_NVIC_DisableIRQ(SPI4_IRQn);
   /* USER CODE BEGIN SPI4_MspDeInit 1 */
 
   /* USER CODE END SPI4_MspDeInit 1 */

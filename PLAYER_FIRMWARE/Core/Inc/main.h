@@ -67,6 +67,9 @@ extern uint8_t audio_buffer[AUD_BUFFER_SIZE];
 #define CONSOLE_UART_HANDLE huart5
 extern UART_HandleTypeDef huart5;
 
+//Defines for audio in
+extern ADC_HandleTypeDef hadc1;
+extern threads[5];
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
@@ -77,16 +80,30 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define SD_CS_Pin GPIO_PIN_4
+#define SD_CS_GPIO_Port GPIOE
 #define TFT_NRST_Pin GPIO_PIN_6
 #define TFT_NRST_GPIO_Port GPIOB
 #define BRIDGE_CLK_Pin GPIO_PIN_1
 #define BRIDGE_CLK_GPIO_Port GPIOD
+#define RIGHT_BUTTON_Pin GPIO_PIN_12
+#define RIGHT_BUTTON_GPIO_Port GPIOA
+#define RIGHT_BUTTON_EXTI_IRQn EXTI15_10_IRQn
+#define UP_BUTTON_Pin GPIO_PIN_11
+#define UP_BUTTON_GPIO_Port GPIOA
+#define UP_BUTTON_EXTI_IRQn EXTI15_10_IRQn
+#define DOWN_BUTTON_Pin GPIO_PIN_10
+#define DOWN_BUTTON_GPIO_Port GPIOA
+#define DOWN_BUTTON_EXTI_IRQn EXTI15_10_IRQn
 #define AUD_ORANGE_S_UNBUFFERED_IN_Pin GPIO_PIN_9
 #define AUD_ORANGE_S_UNBUFFERED_IN_GPIO_Port GPIOA
 #define AUD_ORANGE_R_OUTPUT_EN_Pin GPIO_PIN_9
 #define AUD_ORANGE_R_OUTPUT_EN_GPIO_Port GPIOF
 #define MICRO_SD_CS_Pin GPIO_PIN_9
 #define MICRO_SD_CS_GPIO_Port GPIOC
+#define LEFT_BUTTON_Pin GPIO_PIN_8
+#define LEFT_BUTTON_GPIO_Port GPIOA
+#define LEFT_BUTTON_EXTI_IRQn EXTI9_5_IRQn
 #define ROT_A_Pin GPIO_PIN_2
 #define ROT_A_GPIO_Port GPIOC
 #define AUD_GREEN_L_OUTPUT_EN_Pin GPIO_PIN_0
@@ -123,6 +140,7 @@ void Error_Handler(void);
 #define TFT_LED_LEVEL_GPIO_Port GPIOA
 #define ROT_S1_Pin GPIO_PIN_5
 #define ROT_S1_GPIO_Port GPIOC
+#define ROT_S1_EXTI_IRQn EXTI9_5_IRQn
 #define PINK_BUFFERED_ANALOG_IN_T_Pin GPIO_PIN_12
 #define PINK_BUFFERED_ANALOG_IN_T_GPIO_Port GPIOD
 #define PINK_BUFFERED_ANALOG_IN_S_Pin GPIO_PIN_7

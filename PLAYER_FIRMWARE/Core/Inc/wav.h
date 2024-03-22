@@ -1,6 +1,6 @@
 #ifndef __WAV_H__
 #define __WAV_H__
-
+#include "stdint.h"
 #pragma pack(1)
 struct Wav_Header {
   char     riff[4];

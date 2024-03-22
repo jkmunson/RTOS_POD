@@ -14,6 +14,8 @@
 
 #include "startup_img.h"
 #include "wyatt.h"
+#include "buttons.h"
+#include "braeden.h"
 
 
 //internal functions
@@ -22,8 +24,19 @@ static void mountFileSystem(void);		// mount file system
 static void getSDstats(void);			// gets space stats
 static void showFileNames(void);
 static void checkNewSelection(void);
-static void showFileContents(void);
+static void openSelectedFile(void);
+static void closeSelectedFile(void);
+static void handleButtonPress(void);
 static void FSMtest(void);
+static void setAllFalse(void);
+static void showRecordSlots(void);
+static void handleButtonPress(void);
+static void postRecordingPrompt(void);
+static void passRecordFile(void);
+static void closeRecordFile(void);
+static void setAllFalse(void);
+
+
 
 char disp_buf[50];
 uint16_t tick = 0;
@@ -34,6 +47,9 @@ bool sel_next = false;
 bool sel_prev = false;
 bool readFile = false;
 bool viewDirectory = false;
+bool viewRecordSlots = false;
+bool startRecording = false;
+
 bool contentsPosted = false;
 
 STATE currentState = viewingDirectory;
@@ -55,8 +71,24 @@ char filenames[10][20];		// string array of file names
 
 BYTE readBuf[30];
 
+FIL *audio_file_handle;
+bool file_ready;
+bool stop_playing;	// not used yet
+bool pause;			// not used yet
+bool song_complete;	// not used yet
+
+FIL *write_file_handle;
+
+uint16_t long_press_count = 0;
+bool long_press_detected;
+bool start_recording;
+bool stop_recording;
+char recording_names[4][20] = {"", "recording1", "recording2", "recording3"};
+char recording_paths[4][40] = {"", "/Recordings/recording1.wav", "/Recordings/recording2.wav", "/Recordings/recording3.wav"};
+
 
 void init() {
+	HAL_GPIO_WritePin(TFT_LED_LEVEL_GPIO_Port, TFT_LED_LEVEL_Pin, 1);
     ILI9341_Unselect();
     ILI9341_TouchUnselect();
     ILI9341_Init();
@@ -111,25 +143,49 @@ void gatherFileNames(){
 			nfile++;
 		}
 	}
-
 	f_closedir(&dir); 		// close directory
 }
 
+void showRecordSlots(void){
+	ILI9341_WriteString(10,2*SPACER, "Hold right to record to selected file:",Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
+
+	for (int i=1; i<4; i++){
+		if ((i == sel) & (tick%6>2)){
+			ILI9341_WriteString(10,(3+i)*SPACER, recording_names[i], Font_7x10,BG_COLOR,MAIN_FONT_COLOR);
+		} else {
+			ILI9341_WriteString(10,(3+i)*SPACER, recording_names[i], Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
+		}
+	}
+
+}
+
 void showFileNames(){
-	ILI9341_WriteString(10,2*SPACER, "Directory contents:",Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
+	ILI9341_WriteString(10,2*SPACER, "Make a selection:",Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
 
 	for (file=1; file<nfile; file++){
-		if (file == sel & (tick%2==0)){
+		if ((file == sel) & (tick%6>2)){
 			// flashing effect for selected file
 			ILI9341_WriteString(10,(3+file)*SPACER, filenames[file], Font_7x10,BG_COLOR,MAIN_FONT_COLOR);
 		} else {
 			ILI9341_WriteString(10,(3+file)*SPACER, filenames[file], Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
 		}
 	}
+
+	if (sel == nfile){
+		if (tick%6>2){
+			ILI9341_WriteString(10,(3+nfile)*SPACER, "RECORD", Font_7x10,BG_COLOR,MAIN_FONT_COLOR);
+		} else {
+			ILI9341_WriteString(10,(3+nfile)*SPACER, "RECORD", Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
+		}
+	} else {
+		ILI9341_WriteString(10,(3+nfile)*SPACER, "RECORD", Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
+	}
+
 }
 
 void checkNewSelection(){
-	if ((sel_next) & (sel < nfile-1) & (currentState == viewingDirectory)){
+	// Select limits for choosing files
+	if ((sel_next) & (sel < nfile) & (currentState == viewingDirectory)){
 		sel_next = false;
 		sel++;
 	}
@@ -137,13 +193,40 @@ void checkNewSelection(){
 		sel_prev = false;
 		sel--;
 	}
+
+	// select limits for choosing recordings
+	if ((sel_next) & (sel < 3) & (currentState == viewingRecordSlots)){
+		sel_next = false;
+		sel++;
+	}
+	if ((sel_prev) & (sel > 1) & (currentState == viewingRecordSlots)){
+		sel_prev = false;
+		sel--;
+	}
+
+	sel_next = sel_prev = false;
+
 }
 
-void showFileContents(){
+void openSelectedFile(){
 	fres = f_open(&fil, filenames[sel], FA_READ);	// open file
 	if (fres != FR_OK) {
 		while(1);
 	}
+
+	audio_file_handle = &fil;	// added 3/19
+	file_ready = true;
+
+	// commented out code used for printing contents of .txt files.
+
+	TCHAR* rres = f_gets((TCHAR*)readBuf, 30, audio_file_handle);
+	if(rres != 0) {
+		ILI9341_WriteString(10,4*SPACER,readBuf,Font_11x18,MAIN_FONT_COLOR,BG_COLOR);
+	}
+
+	ILI9341_WriteString(10,2*SPACER, "File contents:", Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
+
+	/*
 
 	TCHAR* rres = f_gets((TCHAR*)readBuf, 30, &fil);
 	if(rres != 0) {
@@ -152,7 +235,7 @@ void showFileContents(){
 
 	ILI9341_WriteString(10,2*SPACER, "File contents:", Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
 
-	/*
+
 	for (int i=0; i<10; i++){
 		unsigned char tmp[2];
 		unsigned char bits[2];
@@ -186,8 +269,13 @@ void showFileContents(){
 		}
 	*/
 
-	f_close(&fil);		// close file
+	//f_close(&fil);		// close file
 	contentsPosted = true;
+}
+
+void closeSelectedFile(){
+	file_ready = false;
+	f_close(audio_file_handle);		// close file
 }
 
 void FSMtest(){
@@ -225,8 +313,90 @@ void FSMtest(){
 	}
 }
 
-void wyatt_main(void *ignore) {
-	HAL_GPIO_WritePin(TFT_LED_LEVEL_GPIO_Port, TFT_LED_LEVEL_Pin, 1);
+void handleButtonPress(void){
+	if (up_pressed){
+		up_pressed = false;
+		sel_prev = true;
+	}
+	if (down_pressed){
+		down_pressed = false;
+		sel_next = true;
+	}
+
+	if (left_pressed){
+		left_pressed = false;
+		viewDirectory = true;
+	}
+
+	if (right_pressed){
+		right_pressed = false;
+		if (currentState == viewingDirectory){
+			if (sel < nfile-1){
+				readFile = true;
+			} else {
+				viewRecordSlots = true;
+			}
+		}
+	}
+
+
+	if (currentState == viewingRecordSlots){
+		if (right_held){
+			long_press_count++;
+			if (long_press_count > 10){
+				startRecording = true;
+			}
+		} else {
+			long_press_count = 0;
+		}
+	}
+
+	if (!right_held & (currentState == recording)){
+		viewRecordSlots = true;
+	}
+
+
+
+}
+
+void postRecordingPrompt(void){
+	ILI9341_WriteString(10,2*SPACER, "ACTIVELY RECORDING", Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
+	sprintf(disp_buf, "Writing to file %u", sel);
+	ILI9341_WriteString(10,3*SPACER, disp_buf, Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
+	contentsPosted = true;
+}
+
+void passRecordFile(void){
+	/*
+	fres = f_open(&fil, recording_paths[sel], FA_WRITE);	// open file
+	if (fres != FR_OK) {
+		ILI9341_WriteString(10,6*SPACER, "Error opening write file", Font_7x10,MAIN_FONT_COLOR,BG_COLOR);
+		while(1){
+			vTaskSuspend(NULL);
+		}
+	}
+
+	write_file_handle = &fil;
+	start_recording = true;
+	*/
+
+}
+
+void closeRecordFile(void){
+	/*
+	stop_recording = true;
+	while (!recording_complete){
+		vTaskDelay(1)
+	};
+	f_close(write_file_handle);		// close file
+	*/
+}
+
+void setAllFalse(void){
+	readFile = viewDirectory = viewRecordSlots = startRecording = contentsPosted = false;
+}
+
+void wyatt_main(void *ignore __attribute__((unused))) {
 	init();							// initialize TFT display
 	ILI9341_DrawImage(0, 0, 320, 240, (const uint16_t*)startup_img_320x240);
 	osDelay(2000);					// Stall to view intro screen
@@ -250,29 +420,68 @@ void wyatt_main(void *ignore) {
 			case viewingDirectory:
 				if (readFile) {
 					nextState = readingFile;
-					readFile = viewDirectory = contentsPosted = false;
+					setAllFalse();
+					}
+				if (viewRecordSlots) {
+					nextState = viewingRecordSlots;
+					setAllFalse();
 				}
 				break;
 			case readingFile:
 				if (viewDirectory) {
 					nextState = viewingDirectory;
-					readFile = viewDirectory = false;
+					setAllFalse();
+					closeSelectedFile();
 				}
 				break;
+			case viewingRecordSlots:
+				if (viewDirectory){
+					nextState = viewingDirectory;
+					setAllFalse();
+				}
+				if (startRecording){
+					nextState = recording;
+					setAllFalse();
+					passRecordFile();
+				}
+				break;
+			case recording:
+				if (viewRecordSlots){
+					nextState = viewingRecordSlots;
+					setAllFalse();
+					closeRecordFile();
+				}
+				break;
+
+
 		}
+
+
+		handleButtonPress();
 
 		//FSMtest();					// used to change states without hardware
 
 		/* ---------- OUTPUT LOGIC ---------- */
 		if (currentState == viewingDirectory){
 			showFileNames();
-		} else {
+		} else if (currentState == readingFile) {
 			if (!contentsPosted){		// Prevents display rewrite redundancy
-				showFileContents();	// Displays selected file's contents
+				openSelectedFile();		// Displays selected file's contents
+			}
+		} else if (currentState == viewingRecordSlots){ // viewing record slots
+			showRecordSlots();
+		} else {
+			if (!contentsPosted){
+				postRecordingPrompt();
 			}
 		}
 
-		if (currentState != nextState) ILI9341_DrawImage(0, 0, 320, 240, (const uint16_t*)startup_img_320x240); // clear screen for transition
+		if (currentState != nextState) {
+			ILI9341_DrawImage(0, 0, 320, 240, (const uint16_t*)startup_img_320x240); // clear screen for transition
+			if (nextState != recording){
+				sel = 1;	// reset sel except for when passing it to record.
+			}
+		}
 
 		/* ---------- STATE REGISTER ---------- */
 		checkNewSelection();			// Adjusts current file selection
@@ -281,7 +490,7 @@ void wyatt_main(void *ignore) {
 		//sprintf(disp_buf, "ticks: %u", tick);
 		//ILI9341_WriteString(0,0*SPACER, disp_buf,Font_7x10,MAIN_FONT_COLOR, BG_COLOR);
 		tick++;
-		osDelay(500);
+   		vTaskDelay(100);
 	}
 	vTaskSuspend(xTaskGetCurrentTaskHandle()); //LEAVE AT THE END
 	vTaskDelete(NULL);
