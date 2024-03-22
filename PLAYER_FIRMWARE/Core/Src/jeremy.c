@@ -36,6 +36,7 @@ size_t get_audio_buffer_current_index(void){
 void jeremy_main(void *ignore __attribute__ ((unused))) {
 	while(1){
 		vTaskDelay(100);
+		console_print_blocked("Hi\n", 200);
 	}
 	/*
 	const char *jeremy_main_msg = "Jeremy: Entered Jeremy Main\n";
