@@ -14,7 +14,6 @@
 #include "console.h"
 #include "buttons.h"
 #include "wyatt.h"
-#include <fatfs.h_disable>
 #include "bryant.h"
 
 extern uint8_t audio_buffer[49152]; //Can be recast to a more appropriate type.
@@ -34,8 +33,6 @@ uint8_t flg_dma_done;
 static uint8_t fileBuffer[BUFSIZE];
 static uint8_t dmaBuffer[2][BUFSIZE];
 static uint8_t dmaBank = 0;
-
-FIL fil;
 
 static void setSampleRate(uint16_t freq)
 {
@@ -190,17 +187,17 @@ done :
 
 
 
-//void bryant_main(void *ignore __attribute__((unused))) {
-//
-//	FIL *filename = audio_file_handle;
-//
-//	if(file_ready) {
-//		playWavFile(filename);
-//	}
-//
-//
-//	vTaskDelay(1000);
-//	vTaskSuspend(NULL); //LEAVE AT THE END
-//	vTaskDelete(NULL);
-//}
+void bryant_main(void *ignore __attribute__((unused))) {
+
+	FIL *filename = audio_file_handle;
+
+	if(file_ready) {
+		playWavFile(filename);
+	}
+
+
+	vTaskDelay(1000);
+	vTaskSuspend(NULL); //LEAVE AT THE END
+	vTaskDelete(NULL);
+}
 
