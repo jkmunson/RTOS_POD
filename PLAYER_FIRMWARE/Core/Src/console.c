@@ -16,7 +16,7 @@
 #define CONSOLE_BLOCKING_DELAY_TICKS 3
 
 
-TaskHandle_t console_thread;
+TaskHandle_t console_thread = NULL;
 
 struct transfer_info {
 	union {
